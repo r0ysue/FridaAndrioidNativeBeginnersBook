@@ -1,0 +1,21 @@
+#### 0312课时⑤:IDA入门
+
+- IDA安装与使用
+
+- IDA插件使用
+- IDA反汇编介绍
+- IDA分析与frida hook结合
+
+hex to ascii
+https://www.rapidtables.com/convert/number/hex-to-ascii.html
+
+IDA插件
+https://bbs.pediy.com/thread-264420.htm
+
+
+忍者镜像地址
+链接：https://pan.baidu.com/s/1bDzDBrGDAM5HBCb5Stsh_g
+提取码：y3p0
+
+
+https://mp.weixin.qq.com/s/xlgtU4xqoMqv2oXCMko7yQ

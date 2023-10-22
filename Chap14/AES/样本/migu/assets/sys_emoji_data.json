@@ -1,0 +1,448 @@
+[
+  {
+    "group": "sys",
+    "data": [
+      {
+        "id": "sys_1",
+        "display_content": "😊",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_2",
+        "display_content": "😀",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_3",
+        "display_content": "😍",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_4",
+        "display_content": "😚",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_5",
+        "display_content": "😎",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_6",
+        "display_content": "😭",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_7",
+        "display_content": "😉",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_8",
+        "display_content": "😂",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_9",
+        "display_content": "😆",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_10",
+        "display_content": "😋",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_11",
+        "display_content": "😏",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_12",
+        "display_content": "😅",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_13",
+        "display_content": "🤔",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_14",
+        "display_content": "😣",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_15",
+        "display_content": "😝",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_16",
+        "display_content": "😓",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_17",
+        "display_content": "😨",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_18",
+        "display_content": "😬",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_19",
+        "display_content": "😱",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_20",
+        "display_content": "😳",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_21",
+        "display_content": "<img src=\"skin_compose_emotion_delete\"/>",
+        "length": "1",
+        "encode": "icon",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_22",
+        "display_content": "😜",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_23",
+        "display_content": "😡",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_24",
+        "display_content": "😇",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_25",
+        "display_content": "👿",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_26",
+        "display_content": "💋",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_27",
+        "display_content": "🌹",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_28",
+        "display_content": "🎂",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_29",
+        "display_content": "🍻",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_30",
+        "display_content": "🐷",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_31",
+        "display_content": "💔",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_32",
+        "display_content": "❤️",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_33",
+        "display_content": "👻",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_34",
+        "display_content": "💩",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_35",
+        "display_content": "🙌",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_36",
+        "display_content": "👏",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_37",
+        "display_content": "👍",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_38",
+        "display_content": "👎",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_39",
+        "display_content": "✊",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_40",
+        "display_content": "✌️",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_41",
+        "display_content": "👋",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_21",
+        "display_content": "<img src=\"skin_compose_emotion_delete\"/>",
+        "length": "1",
+        "encode": "icon",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_42",
+        "display_content": "👌",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_43",
+        "display_content": "💪",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_44",
+        "display_content": "🙏",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_45",
+        "display_content": "👈",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_46",
+        "display_content": "👉",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_47",
+        "display_content": "🙈",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_48",
+        "display_content": "🙊",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_49",
+        "display_content": "🎤",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_50",
+        "display_content": "🎧",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_51",
+        "display_content": "🎼",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_52",
+        "display_content": "🎹",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_53",
+        "display_content": "🎺",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_54",
+        "display_content": "🎷",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_55",
+        "display_content": "🎸",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_56",
+        "display_content": "🎻",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_57",
+        "display_content": "💣",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_58",
+        "display_content": "🎁",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_59",
+        "display_content": "🎉",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_60",
+        "display_content": "💌",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_61",
+        "display_content": "🇨🇳",
+        "length": "1",
+        "encode": "string",
+        "place_holder": "[红心]"
+      },
+      {
+        "id": "sys_21",
+        "display_content": "<img src=\"skin_compose_emotion_delete\"/>",
+        "length": "1",
+        "encode": "icon",
+        "place_holder": "[红心]"
+      }
+    ]
+  }
+]

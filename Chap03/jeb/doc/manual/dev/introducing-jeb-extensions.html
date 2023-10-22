@@ -1,0 +1,1010 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for JEB Decompiler">
+      
+      
+        <link rel="canonical" href="https://www.pnfsoftware.com/jeb/manual/dev/introducing-jeb-extensions.html">
+      
+      
+        <meta name="author" content="PNF Software">
+      
+      <link rel="shortcut icon" href="../img/jeb-icon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Introducing JEB Extensions - JEB Decompiler</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#capabilities" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-header-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="../assets/jeb_128px_white.png" srcset="../assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            JEB Decompiler
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Introducing JEB Extensions
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="../assets/jeb_128px_white.png" srcset="../assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    JEB Decompiler
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Using JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Using JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Using JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../workspace.html" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../actions.html" title="Common Actions" class="md-nav__link">
+      Common Actions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../views.html" title="Common Views" class="md-nav__link">
+      Common Views
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../decompiling.html" title="Decompiling" class="md-nav__link">
+      Decompiling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../debugging.html" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android.html" title="Android Analysis" class="md-nav__link">
+      Android Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android-debugging.html" title="Android Debugging" class="md-nav__link">
+      Android Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../native.html" title="Native Code Analysis" class="md-nav__link">
+      Native Code Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../webassembly.html" title="WebAssembly Analysis" class="md-nav__link">
+      WebAssembly Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ethereum.html" title="Ethereum Analysis" class="md-nav__link">
+      Ethereum Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../misc.html" title="Miscellaneous" class="md-nav__link">
+      Miscellaneous
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Extending JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Extending JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Extending JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Introducing JEB Extensions
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="introducing-jeb-extensions.html" title="Introducing JEB Extensions" class="md-nav__link md-nav__link--active">
+      Introducing JEB Extensions
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    Capabilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-level-architecture" class="md-nav__link">
+    High-level Architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-programming-interfaces" class="md-nav__link">
+    Application Programming Interfaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts-vs-plugins" class="md-nav__link">
+    Scripts vs Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-scripts" class="md-nav__link">
+    Executing Scripts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-engines-plugins" class="md-nav__link">
+    Executing Engines Plugins
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-client-scripts.html" title="Writing Client Scripts" class="md-nav__link">
+      Writing Client Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android-scripting.html" title="Scripting for Android Reversing" class="md-nav__link">
+      Scripting for Android Reversing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Writing Parsers (Tutorial)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Writing Parsers (Tutorial)" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Writing Parsers (Tutorial)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="1-getting-started-with-parsers.html" title="Part 1: Getting Started with Parsers" class="md-nav__link">
+      Part 1: Getting Started with Parsers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-nav__link">
+      Part 2: Creating a Simple Parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="3-documents-delegation.html" title="Part 3: Documents and Delegation" class="md-nav__link">
+      Part 3: Documents and Delegation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="4-tables-trees.html" title="Part 4: Tables and Trees" class="md-nav__link">
+      Part 4: Tables and Trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="5-development-tips.html" title="Part 5: Development Tips" class="md-nav__link">
+      Part 5: Development Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="6-releasing-plugin.html" title="Part 6: Releasing a Plugin" class="md-nav__link">
+      Part 6: Releasing a Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="7-unit-interactivity.html" title="Part 7: Interactivity" class="md-nav__link">
+      Part 7: Interactivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="8-more-interactivity.html" title="Part 8: More on Interactivity" class="md-nav__link">
+      Part 8: More on Interactivity
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-engines-plugins.html" title="Writing Engines Plugins" class="md-nav__link">
+      Writing Engines Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-front-ends.html" title="Writing Front-Ends" class="md-nav__link">
+      Writing Front-Ends
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="other-resources.html" title="Additional Resources" class="md-nav__link">
+      Additional Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../settings.html" title="Settings" class="md-nav__link">
+      Settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client-configuration.html" title="Client Configuration" class="md-nav__link">
+      Client Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../engines-configuration.html" title="Engines Configuration" class="md-nav__link">
+      Engines Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../floating.html" title="Floating Controller" class="md-nav__link">
+      Floating Controller
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../faq.html" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    Capabilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-level-architecture" class="md-nav__link">
+    High-level Architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-programming-interfaces" class="md-nav__link">
+    Application Programming Interfaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts-vs-plugins" class="md-nav__link">
+    Scripts vs Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-scripts" class="md-nav__link">
+    Executing Scripts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-engines-plugins" class="md-nav__link">
+    Executing Engines Plugins
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Introducing JEB Extensions</h1>
+                
+                <p>JEB offers a rich API that can be used to develop:</p>
+<ul>
+<li><strong>Front-end clients</strong>, such as:<ul>
+<li>The official <em>UI client</em></li>
+<li>Headless clients for automation pipelines</li>
+</ul>
+</li>
+<li><strong>Plugins</strong> (aka <em>back-end modules</em>):<ul>
+<li><strong><em>Processor plugins</em></strong> such as disassemblers, decompilers, debuggers, or any other type of analyzer<ul>
+<li>Many processor plugins fall in the category of <em>parsers</em> and are sometimes referred as such</li>
+</ul>
+</li>
+<li><strong><em>Engines plugins</em></strong> such as second-pass code analyzers, working on results produced by other plugins, or helpers</li>
+</ul>
+</li>
+<li><strong>Scripts</strong>:<ul>
+<li>Python scripts for automating simple tasks</li>
+<li>Python scripts that can interact with graphical clients that implement the UI-API (the UI client does)</li>
+</ul>
+</li>
+</ul>
+<h2 id="capabilities">Capabilities<a class="headerlink" href="#capabilities" title="Permanent link">#</a></h2>
+<p>Only professional licenses offer full API access. However, all licenses allow script execution from within the UI client:</p>
+<table>
+<thead>
+<tr>
+<th>Licenses Type</th>
+<th>UI client</th>
+<th>Other Clients (e.g. command-line)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Non-Pro</strong></td>
+<td>UI scripts</td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>Pro</strong></td>
+<td>UI scripts + plugins</td>
+<td>scripts + plugins</td>
+</tr>
+</tbody>
+</table>
+<h2 id="high-level-architecture">High-level Architecture<a class="headerlink" href="#high-level-architecture" title="Permanent link">#</a></h2>
+<p>Grasping the high-level concepts of how pieces fit together within JEB will make you a more efficient extensions developer.</p>
+<p>At the highest-level, JEB is separated into back-end and front-end components:</p>
+<ul>
+<li>The back-end components are responsible for processing input artifacts. They provide an execution environment for native and third-party plugins, including input artifact processor plugins, such as file parsers.</li>
+<li>The front-end components are responsible for processing input commands and rendering back-end results. A variety of front-ends may be created using the API exposed by the back-end.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note<p>All JEB distributions ship with the UI client front-end that runs on all major desktop operating systems.</p>
+</p>
+</div>
+<p>The diagram below shows the relationship between back-end and front-end components:</p>
+<p><a href="../img/d86ecb8e.png"><figure><img src="../img/d86ecb8e-small.png" srcset="../img/d86ecb8e-small.png 2x" /><figcaption>High-level architecture diagram</figcaption></figure></a></p>
+<p>Depending on their license type, users may be able to develop third-party plugins and instruct the back-end to load them. This enables power users to craft input processors that cater to their specific needs (e.g., a disassembler for an exotic or virtual CPU).</p>
+<p>You may verify your API usage capabilities by starting JEB with the <code>-c --license</code> command line flag.</p>
+<h2 id="application-programming-interfaces">Application Programming Interfaces<a class="headerlink" href="#application-programming-interfaces" title="Permanent link">#</a></h2>
+<p>The JEB API offers power-users ways to:</p>
+<ul>
+<li>write clients such as command-line processors (headless)</li>
+<li>write extensions, from simple scripts in <em>Python</em> to advanced analysis modules in <em>Java</em></li>
+</ul>
+<p>The JEB API reference documentation is <a href="https://www.pnfsoftware.com/jeb/apidoc">available online</a> as well as offline, within your JEB software package (file <code>doc/apidoc.zip</code>).</p>
+<p><a href="https://www.pnfsoftware.com/jeb/apidoc"><img src="../img/jeb-portal-apidoc.png" srcset="../img/jeb-portal-apidoc.png 2x" /></a></p>
+<h2 id="scripts-vs-plugins">Scripts vs Plugins<a class="headerlink" href="#scripts-vs-plugins" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>Scripts</strong>...<ul>
+<li>Implement <code>IScript</code></li>
+<li>Are called by users to achieve small tasks<ul>
+<li>Example: modify some code, navigate somewhere, display some info, etc.</li>
+</ul>
+</li>
+<li>Have to to be written in Python (and are run within a Jython VM)<ul>
+<li>Ideal for rapid development and prototyping</li>
+</ul>
+</li>
+<li>Are executed by JEB on-demand<ul>
+<li>In UI client, can be executed via the <em>File</em> menu</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Plugins</strong>...<ul>
+<li>Implement <code>IPlugin</code> (<code>IUnitIdentifier</code> for processor plugins, <code>IEnginesPlugin</code> for engines plugins)</li>
+<li>Are designed to process input (for processor plugins) or do other tasks (for engines plugins)<ul>
+<li>Example: disassemble or decompile code, do complex file parsing, etc.</li>
+</ul>
+</li>
+<li>Must be written in Java<ul>
+<li>Ideal for complex, large code bases</li>
+</ul>
+</li>
+<li>Are loaded by JEB at start-up time<ul>
+<li>List of loaded plugins can be seen in the <em>File</em> menu</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="executing-scripts">Executing Scripts<a class="headerlink" href="#executing-scripts" title="Permanent link">#</a></h2>
+<p>All versions of JEB can execute <em>client scripts</em> within the UI client.</p>
+<p>Scripts should be dropped in your <code>scripts/</code> directory (or any other directory specified in your <code>.ScriptsFolder</code> <a href="../client-configuration.html">client option</a>).
+Use the <em>File, Script, Run Script...</em> menu command to execute a script. The last run script can be executed again by pressing the <em>F2</em> key.</p>
+<p><a href="../img/jeb-menu-scripts.png"><img src="../img/jeb-menu-scripts.png" srcset="../img/jeb-menu-scripts.png 2x" /></a></p>
+<ul>
+<li>Client scripts are written in Python, and are executed within a 2.7 <a href="https://www.jython.org/download">Jython VM</a> (a Java implementation of the Python VM)</li>
+<li>Scripts, like any extension, use the JEB API.</li>
+<li>Client scripts executed inside the UI client also have access to the <strong>UI-API</strong>, located in the package <code>com.pnfsoftware.jeb.client.ui</code>. Classes of the UI-API allow graphical manipulation of views, fragments, items, etc. (This API is optionally implemented by clients; the desktop client implements it.)</li>
+</ul>
+<p>You will find a large collection of sample scripts on our <a href="https://github.com/pnfsoftware/jeb2-samplecode/tree/master/scripts">public GitHub repository</a>.</p>
+<h2 id="executing-engines-plugins">Executing Engines Plugins<a class="headerlink" href="#executing-engines-plugins" title="Permanent link">#</a></h2>
+<p>All third-party plugins must be dropped in your <code>coreplugins/</code> directory (or any other directory specified in your <code>.PluginsFolder</code> <a href="../engines-configuration.html">back-end option</a>). Use the <em>File, Engines, Execute, ...</em> menu command to execute an engines plugin.</p>
+<div class="admonition note">
+<p class="admonition-title">Note<p><em>Engines plugins</em> are JEB plugins that implement the <a href="https://www.pnfsoftware.com/jeb/apidoc/reference/com/pnfsoftware/jeb/core/IEnginesPlugin.html">IEnginesPlugin</a> interface.</p>
+</p>
+</div>
+<p>The full list of <em>engines plugins</em> loaded within your JEB instance context can be seen by running the <em>File, Engines, Plugins</em> command. You may double-click a plugin to execute it.</p>
+<p><a href="../img/jeb-list-plugins.png"><img src="../img/jeb-list-plugins.png" srcset="../img/jeb-list-plugins.png 2x" /></a></p>
+<p>A collection of open-source plugins can be found on our <a href="https://github.com/pnfsoftware/">public GitHub repository</a>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../misc.html" title="Miscellaneous" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Miscellaneous
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="writing-client-scripts.html" title="Writing Client Scripts" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Writing Client Scripts
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2015 - 2020 PNF Software
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

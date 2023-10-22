@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pops>
+    <pop>
+        <type>3</type>
+        <rgb>#f53434</rgb>
+        <img>live_barrage_pop01_bg</img>
+        <name>爱心</name>
+        <tagId>live_barrage_pop01_bg</tagId>
+    </pop>
+
+    <pop>
+        <type>3</type>
+        <rgb>#277091</rgb>
+        <img>live_barrage_pop02_bg</img>
+        <name>星空</name>
+        <tagId>live_barrage_pop02_bg</tagId>
+    </pop>
+
+    <pop>
+        <type>3</type>
+        <rgb>#d29e29</rgb>
+        <img>live_barrage_pop03_bg</img>
+        <name>糖果</name>
+        <tagId>live_barrage_pop03_bg</tagId>
+    </pop>
+
+</pops>

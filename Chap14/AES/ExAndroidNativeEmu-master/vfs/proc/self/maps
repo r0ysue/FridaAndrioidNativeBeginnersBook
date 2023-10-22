@@ -1,0 +1,22 @@
+00000000-00001000 rw-p 00000000 00:00 0 		 
+01000000-01201000 rwxp 00000000 00:00 0 		 
+10000000-10101000 rw-p 00000000 00:00 0 		 
+30000000-30041000 rw-p 00000000 00:00 0 		 
+30041000-30043000 r--p 00000000 00:00 0 		 
+30043000-30045000 rw-p 00000000 00:00 0 		 
+ab006000-ab00c000 rw-p 00000000 00:00 0 		 /system/bin/app_process32
+cbbcb000-cbca9000 r-xp 00000000 00:00 0 		 /..\tests\bin\libcms.so
+cbca9000-cbcb4000 rw-p 000dd000 00:00 0 		 /..\tests\bin\libcms.so
+cbcb4000-cbcbb000 rw-p 00000000 00:00 0 		 
+cbcbb000-cbd02000 r-xp 00000000 00:00 0 		 /system\lib\libc.so
+cbd02000-cbd03000 r-xp 00000000 00:00 0 		 
+cbd03000-cbd08000 rw-p 00047000 00:00 0 		 /system\lib\libc.so
+cbd08000-cbd16000 rw-p 00000000 00:00 0 		 
+cbd16000-cbd18000 r-xp 00000000 00:00 0 		 /system\lib\libdl.so
+cbd18000-cbd1a000 rw-p 00001000 00:00 0 		 /system\lib\libdl.so
+cbd1a000-cbd32000 r-xp 00000000 00:00 0 		 /system\lib\libm.so
+cbd32000-cbd34000 rw-p 00017000 00:00 0 		 /system\lib\libm.so
+cbd34000-cbd35000 r-xp 00000000 00:00 0 		 /system\lib\libstdc++.so
+cbd35000-cbd37000 rw-p 00000000 00:00 0 		 /system\lib\libstdc++.so
+cbd37000-cbd38000 rw-p 00000000 00:00 0 		 
+ffff0000-ffff2000 r-xp 00000000 00:00 0 		 [vectors]

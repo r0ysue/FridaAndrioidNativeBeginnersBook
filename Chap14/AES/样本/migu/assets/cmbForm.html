@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/x-www-form-urlencoded"/>
+    <title>跳转中....</title>
+    <script language="javascript">
+        function submit(path,data) {
+            <!--alert("path=="+path + "," +"data=="+ data);-->
+            setData(data);
+            <!--alert("setData");-->
+            var form = document.getElementById('redirectForm');
+            form.setAttribute("action", path);
+            <!--alert("setAttribute");-->
+            form.submit();
+            <!--alert("submit");-->
+        }
+        function setData(data){
+            document.getElementById('jsonRequestData').value=data;
+        }
+    </script>
+</head>
+<body>
+<form id="redirectForm" action="" target="_self" method="post" autocomplete="off">
+    <input type="hidden" name="jsonRequestData" id="jsonRequestData" value="" />
+    <input type="hidden" name="charset" value="UTF-8" />
+</form>
+</body>
+</html>

@@ -1,0 +1,1402 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for JEB Decompiler">
+      
+      
+        <link rel="canonical" href="https://www.pnfsoftware.com/jeb/manual/client-configuration.html">
+      
+      
+        <meta name="author" content="PNF Software">
+      
+      <link rel="shortcut icon" href="img/jeb-icon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Client Configuration - JEB Decompiler</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#checkupdates" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-header-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            JEB Decompiler
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Client Configuration
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    JEB Decompiler
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Using JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Using JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Using JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="workspace.html" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="actions.html" title="Common Actions" class="md-nav__link">
+      Common Actions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="views.html" title="Common Views" class="md-nav__link">
+      Common Views
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="decompiling.html" title="Decompiling" class="md-nav__link">
+      Decompiling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="debugging.html" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android.html" title="Android Analysis" class="md-nav__link">
+      Android Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android-debugging.html" title="Android Debugging" class="md-nav__link">
+      Android Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="native.html" title="Native Code Analysis" class="md-nav__link">
+      Native Code Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="webassembly.html" title="WebAssembly Analysis" class="md-nav__link">
+      WebAssembly Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ethereum.html" title="Ethereum Analysis" class="md-nav__link">
+      Ethereum Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="misc.html" title="Miscellaneous" class="md-nav__link">
+      Miscellaneous
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Extending JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Extending JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Extending JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/introducing-jeb-extensions.html" title="Introducing JEB Extensions" class="md-nav__link">
+      Introducing JEB Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-client-scripts.html" title="Writing Client Scripts" class="md-nav__link">
+      Writing Client Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/android-scripting.html" title="Scripting for Android Reversing" class="md-nav__link">
+      Scripting for Android Reversing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Writing Parsers (Tutorial)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Writing Parsers (Tutorial)" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Writing Parsers (Tutorial)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/1-getting-started-with-parsers.html" title="Part 1: Getting Started with Parsers" class="md-nav__link">
+      Part 1: Getting Started with Parsers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-nav__link">
+      Part 2: Creating a Simple Parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/3-documents-delegation.html" title="Part 3: Documents and Delegation" class="md-nav__link">
+      Part 3: Documents and Delegation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/4-tables-trees.html" title="Part 4: Tables and Trees" class="md-nav__link">
+      Part 4: Tables and Trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/5-development-tips.html" title="Part 5: Development Tips" class="md-nav__link">
+      Part 5: Development Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/6-releasing-plugin.html" title="Part 6: Releasing a Plugin" class="md-nav__link">
+      Part 6: Releasing a Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/7-unit-interactivity.html" title="Part 7: Interactivity" class="md-nav__link">
+      Part 7: Interactivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/8-more-interactivity.html" title="Part 8: More on Interactivity" class="md-nav__link">
+      Part 8: More on Interactivity
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-engines-plugins.html" title="Writing Engines Plugins" class="md-nav__link">
+      Writing Engines Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-front-ends.html" title="Writing Front-Ends" class="md-nav__link">
+      Writing Front-Ends
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/other-resources.html" title="Additional Resources" class="md-nav__link">
+      Additional Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="settings.html" title="Settings" class="md-nav__link">
+      Settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Client Configuration
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="client-configuration.html" title="Client Configuration" class="md-nav__link md-nav__link--active">
+      Client Configuration
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#checkupdates" class="md-nav__link">
+    .CheckUpdates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developmentmode" class="md-nav__link">
+    .DevelopmentMode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networkproxy" class="md-nav__link">
+    .NetworkProxy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scriptsfolder" class="md-nav__link">
+    .ScriptsFolder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updatechannel" class="md-nav__link">
+    .UpdateChannel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploaderrorlogs" class="md-nav__link">
+    .UploadErrorLogs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uialwaysloadfragments" class="md-nav__link">
+    .ui.AlwaysLoadFragments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiautoopendefaultunit" class="md-nav__link">
+    .ui.AutoOpenDefaultUnit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uidonotreplaceviews" class="md-nav__link">
+    .ui.DoNotReplaceViews
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiexpandtreenodesonfiltering" class="md-nav__link">
+    .ui.ExpandTreeNodesOnFiltering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uikeyboardshortcutsfile" class="md-nav__link">
+    .ui.KeyboardShortcutsFile
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiloggermaxlength" class="md-nav__link">
+    .ui.LoggerMaxLength
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uipreferrealaddressesindialogs" class="md-nav__link">
+    .ui.PreferRealAddressesInDialogs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiprojectunitsync" class="md-nav__link">
+    .ui.ProjectUnitSync
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uishowwarningnotificationsinstatus" class="md-nav__link">
+    .ui.ShowWarningNotificationsInStatus
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uigraphsautogenerate" class="md-nav__link">
+    .ui.graphs.AutoGenerate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uigraphskeepinmaindock" class="md-nav__link">
+    .ui.graphs.KeepInMainDock
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uigraphslockview" class="md-nav__link">
+    .ui.graphs.LockView
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uinativedisabletypepreparsing" class="md-nav__link">
+    .ui.native.DisableTypePreparsing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uistatemainshellbounds" class="md-nav__link">
+    .ui.state.MainShellBounds
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextallowlinewrapping" class="md-nav__link">
+    .ui.text.AllowLineWrapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextcharactersperlinemax" class="md-nav__link">
+    .ui.text.CharactersPerLineMax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextcharacterswrap" class="md-nav__link">
+    .ui.text.CharactersWrap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextdisplayeolateod" class="md-nav__link">
+    .ui.text.DisplayEolAtEod
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextnavigationbarposition" class="md-nav__link">
+    .ui.text.NavigationBarPosition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextscrolllinesize" class="md-nav__link">
+    .ui.text.ScrollLineSize
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextcfgshowaddresses" class="md-nav__link">
+    .ui.text.cfg.ShowAddresses
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextcfgshowbytescount" class="md-nav__link">
+    .ui.text.cfg.ShowBytesCount
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreebucketflatmaxelements" class="md-nav__link">
+    .ui.tree.BucketFlatMaxElements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreebucketflatthreshold" class="md-nav__link">
+    .ui.tree.BucketFlatThreshold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreebuckettreemaxelements" class="md-nav__link">
+    .ui.tree.BucketTreeMaxElements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreebuckettreethreshold" class="md-nav__link">
+    .ui.tree.BucketTreeThreshold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreeuseexplicitdefaultpackage" class="md-nav__link">
+    .ui.tree.UseExplicitDefaultPackage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreecodealwaysshowextracolumns" class="md-nav__link">
+    .ui.tree.code.AlwaysShowExtraColumns
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="engines-configuration.html" title="Engines Configuration" class="md-nav__link">
+      Engines Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="floating.html" title="Floating Controller" class="md-nav__link">
+      Floating Controller
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="faq.html" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#checkupdates" class="md-nav__link">
+    .CheckUpdates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developmentmode" class="md-nav__link">
+    .DevelopmentMode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networkproxy" class="md-nav__link">
+    .NetworkProxy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scriptsfolder" class="md-nav__link">
+    .ScriptsFolder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updatechannel" class="md-nav__link">
+    .UpdateChannel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploaderrorlogs" class="md-nav__link">
+    .UploadErrorLogs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uialwaysloadfragments" class="md-nav__link">
+    .ui.AlwaysLoadFragments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiautoopendefaultunit" class="md-nav__link">
+    .ui.AutoOpenDefaultUnit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uidonotreplaceviews" class="md-nav__link">
+    .ui.DoNotReplaceViews
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiexpandtreenodesonfiltering" class="md-nav__link">
+    .ui.ExpandTreeNodesOnFiltering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uikeyboardshortcutsfile" class="md-nav__link">
+    .ui.KeyboardShortcutsFile
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiloggermaxlength" class="md-nav__link">
+    .ui.LoggerMaxLength
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uipreferrealaddressesindialogs" class="md-nav__link">
+    .ui.PreferRealAddressesInDialogs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiprojectunitsync" class="md-nav__link">
+    .ui.ProjectUnitSync
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uishowwarningnotificationsinstatus" class="md-nav__link">
+    .ui.ShowWarningNotificationsInStatus
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uigraphsautogenerate" class="md-nav__link">
+    .ui.graphs.AutoGenerate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uigraphskeepinmaindock" class="md-nav__link">
+    .ui.graphs.KeepInMainDock
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uigraphslockview" class="md-nav__link">
+    .ui.graphs.LockView
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uinativedisabletypepreparsing" class="md-nav__link">
+    .ui.native.DisableTypePreparsing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uistatemainshellbounds" class="md-nav__link">
+    .ui.state.MainShellBounds
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextallowlinewrapping" class="md-nav__link">
+    .ui.text.AllowLineWrapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextcharactersperlinemax" class="md-nav__link">
+    .ui.text.CharactersPerLineMax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextcharacterswrap" class="md-nav__link">
+    .ui.text.CharactersWrap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextdisplayeolateod" class="md-nav__link">
+    .ui.text.DisplayEolAtEod
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextnavigationbarposition" class="md-nav__link">
+    .ui.text.NavigationBarPosition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextscrolllinesize" class="md-nav__link">
+    .ui.text.ScrollLineSize
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextcfgshowaddresses" class="md-nav__link">
+    .ui.text.cfg.ShowAddresses
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitextcfgshowbytescount" class="md-nav__link">
+    .ui.text.cfg.ShowBytesCount
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreebucketflatmaxelements" class="md-nav__link">
+    .ui.tree.BucketFlatMaxElements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreebucketflatthreshold" class="md-nav__link">
+    .ui.tree.BucketFlatThreshold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreebuckettreemaxelements" class="md-nav__link">
+    .ui.tree.BucketTreeMaxElements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreebuckettreethreshold" class="md-nav__link">
+    .ui.tree.BucketTreeThreshold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreeuseexplicitdefaultpackage" class="md-nav__link">
+    .ui.tree.UseExplicitDefaultPackage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uitreecodealwaysshowextracolumns" class="md-nav__link">
+    .ui.tree.code.AlwaysShowExtraColumns
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Client Configuration</h1>
+                
+                <p>The UI client stores its <em>client configuration</em>, also known as the front-end configuration, in <code>bin/jeb-client.cfg</code>. The configuration file is a key-value store where keys are fully-qualified identifiers that start with a leading dot.</p>
+<p>The public keys can safely be changed by a user. They are accessible in the <em>Options</em> dialog, <em>Advanced</em> mode, panel <em>Client</em>.</p>
+<p><a href="img/jeb-options-advanced-client.png"><img src="img/jeb-options-advanced-client.png" srcset="img/jeb-options-advanced-client.png 2x" /></a></p>
+<h4 id="checkupdates"><code>.CheckUpdates</code><a class="headerlink" href="#checkupdates" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Let JEB automatically check for software updates (requires an Internet connection)</p>
+<p><strong>Type and Default</strong>: Boolean(true)</p>
+<h4 id="developmentmode"><code>.DevelopmentMode</code><a class="headerlink" href="#developmentmode" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Increase verbosity and error messages. Recommended when developing JEB Extensions (plugins or scripts).</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+<h4 id="networkproxy"><code>.NetworkProxy</code><a class="headerlink" href="#networkproxy" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Network proxy settings for JEB client components. The format of this property is: 'type|hostname|port|user|pass|whitelist'.</p>
+<ul>
+<li>
+<p>type can be direct (no proxy), http, or socks</p>
+</li>
+<li>
+<p>hostname and port are mandatory for non-direct proxy types</p>
+</li>
+<li>
+<p>user and password are optional (needed only if your proxy requires authentication)</p>
+</li>
+<li>
+<p>whitelist is an optional list of domains/IPs (with support for the wildcard character *) for which no proxy connection should be used (always direct connect)</p>
+</li>
+</ul>
+<p><strong>Type and Default</strong>: String("")</p>
+<h4 id="scriptsfolder"><code>.ScriptsFolder</code><a class="headerlink" href="#scriptsfolder" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Folder containing JEB client scripts written in Python</p>
+<p><strong>Type and Default</strong>: Path("$JEB_HOME/scripts")</p>
+<h4 id="updatechannel"><code>.UpdateChannel</code><a class="headerlink" href="#updatechannel" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Most unstable channel on which software updates are downloaded:</p>
+<p>0= RELEASE (default value, i.e. stable updates only)</p>
+<p>1= RELEASE, BETA</p>
+<p>2= RELEASE, BETA, ALPHA (all channels)</p>
+<p><strong>Type and Default</strong>: Integer(0){0+}</p>
+<h4 id="uploaderrorlogs"><code>.UploadErrorLogs</code><a class="headerlink" href="#uploaderrorlogs" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Securely upload error logs to PNF Software error server</p>
+<p><strong>Type and Default</strong>: Boolean(true)</p>
+<h4 id="uialwaysloadfragments"><code>.ui.AlwaysLoadFragments</code><a class="headerlink" href="#uialwaysloadfragments" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Always load view fragments (leave to false to let lazy fragments load their data only they are visualized by the user)</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+<h4 id="uiautoopendefaultunit"><code>.ui.AutoOpenDefaultUnit</code><a class="headerlink" href="#uiautoopendefaultunit" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Upon processing a new file artifact, the default unit (internal rule set) will be opened - and the default fragment potentially opened as well</p>
+<p><strong>Type and Default</strong>: Boolean(true)</p>
+<h4 id="uidonotreplaceviews"><code>.ui.DoNotReplaceViews</code><a class="headerlink" href="#uidonotreplaceviews" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Create a new fragment when visualizing a type of document already opened in the workspace (instead of replacing it)</p>
+<p><strong>Type and Default</strong>: Boolean(true)</p>
+<h4 id="uiexpandtreenodesonfiltering"><code>.ui.ExpandTreeNodesOnFiltering</code><a class="headerlink" href="#uiexpandtreenodesonfiltering" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Expand matching tree nodes when applying a string filter</p>
+<p><strong>Type and Default</strong>: Boolean(true)</p>
+<h4 id="uikeyboardshortcutsfile"><code>.ui.KeyboardShortcutsFile</code><a class="headerlink" href="#uikeyboardshortcutsfile" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Location of the custom keyboard shortcuts file</p>
+<p><strong>Type and Default</strong>: Path("jeb-shortcuts.cfg")</p>
+<h4 id="uiloggermaxlength"><code>.ui.LoggerMaxLength</code><a class="headerlink" href="#uiloggermaxlength" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Maximum log buffer size in characters (older logger lines get discarded)</p>
+<p><strong>Type and Default</strong>: Integer(524288){0+}</p>
+<h4 id="uipreferrealaddressesindialogs"><code>.ui.PreferRealAddressesInDialogs</code><a class="headerlink" href="#uipreferrealaddressesindialogs" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: In dialogs displaying addresses (eg, cross-references), always display real (internal) addresses over user-friendly addresses that may be provided by plugins</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+<h4 id="uiprojectunitsync"><code>.ui.ProjectUnitSync</code><a class="headerlink" href="#uiprojectunitsync" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Keep the unit that generated the currently visualized item visible in the Project tree</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+<h4 id="uishowwarningnotificationsinstatus"><code>.ui.ShowWarningNotificationsInStatus</code><a class="headerlink" href="#uishowwarningnotificationsinstatus" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Show important notifications by flashing a Warning sign in the status bar</p>
+<p><strong>Type and Default</strong>: Boolean(true)</p>
+<h4 id="uigraphsautogenerate"><code>.ui.graphs.AutoGenerate</code><a class="headerlink" href="#uigraphsautogenerate" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Auto-generate the global graph upon processing a binary file</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+<h4 id="uigraphskeepinmaindock"><code>.ui.graphs.KeepInMainDock</code><a class="headerlink" href="#uigraphskeepinmaindock" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Keep the global graph docked in the main shell instead of being in a floating modeless dialog</p>
+<p><strong>Type and Default</strong>: Boolean(true)</p>
+<h4 id="uigraphslockview"><code>.ui.graphs.LockView</code><a class="headerlink" href="#uigraphslockview" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Lock the global graph: prevent auto-moving/sync'ing with the currently active method or code item</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+<h4 id="uinativedisabletypepreparsing"><code>.ui.native.DisableTypePreparsing</code><a class="headerlink" href="#uinativedisabletypepreparsing" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Disable native type pre-parsing (syntax validation) in type edition dialogs</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+<h4 id="uistatemainshellbounds"><code>.ui.state.MainShellBounds</code><a class="headerlink" href="#uistatemainshellbounds" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Bounds of the main shell. Leave blank for default; else: -1=maximized, or a set of "x,y,w,h" to remember position and size)</p>
+<p><strong>Type and Default</strong>: String("")</p>
+<h4 id="uitextallowlinewrapping"><code>.ui.text.AllowLineWrapping</code><a class="headerlink" href="#uitextallowlinewrapping" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Wrap overly long lines</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+<h4 id="uitextcharactersperlinemax"><code>.ui.text.CharactersPerLineMax</code><a class="headerlink" href="#uitextcharactersperlinemax" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Maximum number of characters per line before forcing a line-wrap (whether or not line wrapping is enabled)</p>
+<p><strong>Type and Default</strong>: Integer(4000){0+}</p>
+<h4 id="uitextcharacterswrap"><code>.ui.text.CharactersWrap</code><a class="headerlink" href="#uitextcharacterswrap" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Limit of a line before wrapping, if line wrap is enabled</p>
+<p><strong>Type and Default</strong>: Integer(-1)</p>
+<h4 id="uitextdisplayeolateod"><code>.ui.text.DisplayEolAtEod</code><a class="headerlink" href="#uitextdisplayeolateod" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Display an extra line at the end of a text document</p>
+<p><strong>Type and Default</strong>: Boolean(true)</p>
+<h4 id="uitextnavigationbarposition"><code>.ui.text.NavigationBarPosition</code><a class="headerlink" href="#uitextnavigationbarposition" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Position of the navigation bar: 1=top, 2=right (default), 3=bottom, 4=left</p>
+<p><strong>Type and Default</strong>: Integer(2){0-4}</p>
+<h4 id="uitextscrolllinesize"><code>.ui.text.ScrollLineSize</code><a class="headerlink" href="#uitextscrolllinesize" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Number of lines scrolled on a mouse-whell scroll action</p>
+<p><strong>Type and Default</strong>: Integer(2)</p>
+<h4 id="uitextcfgshowaddresses"><code>.ui.text.cfg.ShowAddresses</code><a class="headerlink" href="#uitextcfgshowaddresses" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Show addresses in control flow graph views</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+<h4 id="uitextcfgshowbytescount"><code>.ui.text.cfg.ShowBytesCount</code><a class="headerlink" href="#uitextcfgshowbytescount" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Show bytes in control flow graph views</p>
+<p><strong>Type and Default</strong>: Integer(0)</p>
+<h4 id="uitreebucketflatmaxelements"><code>.ui.tree.BucketFlatMaxElements</code><a class="headerlink" href="#uitreebucketflatmaxelements" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Maximum number of elements in a single artificial bucket</p>
+<p><strong>Type and Default</strong>: Integer(500){0+}</p>
+<h4 id="uitreebucketflatthreshold"><code>.ui.tree.BucketFlatThreshold</code><a class="headerlink" href="#uitreebucketflatthreshold" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Element count threshold that will trigger the creation of buckets in tree viewers with flat structures (eg, native code hierarchies)</p>
+<p><strong>Type and Default</strong>: Integer(2000){0+}</p>
+<h4 id="uitreebuckettreemaxelements"><code>.ui.tree.BucketTreeMaxElements</code><a class="headerlink" href="#uitreebuckettreemaxelements" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Maximum number of elements in a single artificial bucket</p>
+<p><strong>Type and Default</strong>: Integer(200){0+}</p>
+<h4 id="uitreebuckettreethreshold"><code>.ui.tree.BucketTreeThreshold</code><a class="headerlink" href="#uitreebuckettreethreshold" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Element count threshold that will trigger the creation of buckets in tree viewers with hierarchical structures (eg, Dalvik hierarchies)</p>
+<p><strong>Type and Default</strong>: Integer(200){0+}</p>
+<h4 id="uitreeuseexplicitdefaultpackage"><code>.ui.tree.UseExplicitDefaultPackage</code><a class="headerlink" href="#uitreeuseexplicitdefaultpackage" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Use a default package when artificial buckets in tree viewers are created</p>
+<p><strong>Type and Default</strong>: Boolean(true)</p>
+<h4 id="uitreecodealwaysshowextracolumns"><code>.ui.tree.code.AlwaysShowExtraColumns</code><a class="headerlink" href="#uitreecodealwaysshowextracolumns" title="Permanent link">#</a></h4>
+<p><strong>Description</strong>: Always show additional columns in code hierarchies, to display sizes, addresses, etc. (if available)</p>
+<p><strong>Type and Default</strong>: Boolean(false)</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="settings.html" title="Settings" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Settings
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="engines-configuration.html" title="Engines Configuration" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Engines Configuration
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2015 - 2020 PNF Software
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

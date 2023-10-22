@@ -1,0 +1,939 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for JEB Decompiler">
+      
+      
+        <link rel="canonical" href="https://www.pnfsoftware.com/jeb/manual/dev/writing-front-ends.html">
+      
+      
+        <meta name="author" content="PNF Software">
+      
+      <link rel="shortcut icon" href="../img/jeb-icon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Writing Front-Ends - JEB Decompiler</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#high-level-instructions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-header-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="../assets/jeb_128px_white.png" srcset="../assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            JEB Decompiler
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Writing Front-Ends
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="../assets/jeb_128px_white.png" srcset="../assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    JEB Decompiler
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Using JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Using JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Using JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../workspace.html" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../actions.html" title="Common Actions" class="md-nav__link">
+      Common Actions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../views.html" title="Common Views" class="md-nav__link">
+      Common Views
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../decompiling.html" title="Decompiling" class="md-nav__link">
+      Decompiling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../debugging.html" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android.html" title="Android Analysis" class="md-nav__link">
+      Android Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android-debugging.html" title="Android Debugging" class="md-nav__link">
+      Android Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../native.html" title="Native Code Analysis" class="md-nav__link">
+      Native Code Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../webassembly.html" title="WebAssembly Analysis" class="md-nav__link">
+      WebAssembly Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ethereum.html" title="Ethereum Analysis" class="md-nav__link">
+      Ethereum Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../misc.html" title="Miscellaneous" class="md-nav__link">
+      Miscellaneous
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Extending JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Extending JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Extending JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="introducing-jeb-extensions.html" title="Introducing JEB Extensions" class="md-nav__link">
+      Introducing JEB Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-client-scripts.html" title="Writing Client Scripts" class="md-nav__link">
+      Writing Client Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android-scripting.html" title="Scripting for Android Reversing" class="md-nav__link">
+      Scripting for Android Reversing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Writing Parsers (Tutorial)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Writing Parsers (Tutorial)" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Writing Parsers (Tutorial)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="1-getting-started-with-parsers.html" title="Part 1: Getting Started with Parsers" class="md-nav__link">
+      Part 1: Getting Started with Parsers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-nav__link">
+      Part 2: Creating a Simple Parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="3-documents-delegation.html" title="Part 3: Documents and Delegation" class="md-nav__link">
+      Part 3: Documents and Delegation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="4-tables-trees.html" title="Part 4: Tables and Trees" class="md-nav__link">
+      Part 4: Tables and Trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="5-development-tips.html" title="Part 5: Development Tips" class="md-nav__link">
+      Part 5: Development Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="6-releasing-plugin.html" title="Part 6: Releasing a Plugin" class="md-nav__link">
+      Part 6: Releasing a Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="7-unit-interactivity.html" title="Part 7: Interactivity" class="md-nav__link">
+      Part 7: Interactivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="8-more-interactivity.html" title="Part 8: More on Interactivity" class="md-nav__link">
+      Part 8: More on Interactivity
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-engines-plugins.html" title="Writing Engines Plugins" class="md-nav__link">
+      Writing Engines Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Writing Front-Ends
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="writing-front-ends.html" title="Writing Front-Ends" class="md-nav__link md-nav__link--active">
+      Writing Front-Ends
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#high-level-instructions" class="md-nav__link">
+    High-level Instructions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-template" class="md-nav__link">
+    Source Template
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="other-resources.html" title="Additional Resources" class="md-nav__link">
+      Additional Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../settings.html" title="Settings" class="md-nav__link">
+      Settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client-configuration.html" title="Client Configuration" class="md-nav__link">
+      Client Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../engines-configuration.html" title="Engines Configuration" class="md-nav__link">
+      Engines Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../floating.html" title="Floating Controller" class="md-nav__link">
+      Floating Controller
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../faq.html" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#high-level-instructions" class="md-nav__link">
+    High-level Instructions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-template" class="md-nav__link">
+    Source Template
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Writing Front-Ends</h1>
+                
+                <p><em>JEB front-end are also referred to as "JEB clients" (or "JEB third-party clients", to contrast with the "official UI desktop client").</em></p>
+<p>JEB back-end API makes writing new clients (aka, front-ends) an easy task. A client can be:</p>
+<ul>
+<li>An automated client (for testing, for an automation pipeline)</li>
+<li>A command-line client</li>
+<li>A graphical front-end (e.g., the official UI desktop client)</li>
+<li>...</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Not all JEB licenses allow the creation of third-party clients. Verify this by checking your license information in the About dialog box. It should show <em>any-client</em>. Typically, <em>JEB Pro</em> licenses allow the execution of third-party clients.</p>
+</div>
+<h2 id="high-level-instructions">High-level Instructions<a class="headerlink" href="#high-level-instructions" title="Permanent link">#</a></h2>
+<p>Use the provided source code template (see below) as a base for your client. The basic steps any client should take are the following:</p>
+<ul>
+<li>Use <a href="https://www.pnfsoftware.com/jeb/apidoc/reference/com/pnfsoftware/jeb/core/JebCoreService.html">JebCoreService</a> to retrieve an instance to <a href="https://www.pnfsoftware.com/jeb/apidoc/reference/com/pnfsoftware/jeb/core/ICoreContext.html">ICoreContext</a></li>
+<li>Create an <a href="https://www.pnfsoftware.com/jeb/apidoc/reference/com/pnfsoftware/jeb/core/IEnginesContext.html">IEnginesContext</a></li>
+<li>Load a project within that context (<a href="https://www.pnfsoftware.com/jeb/apidoc/reference/com/pnfsoftware/jeb/core/IRuntimeProject.html">IRuntimeProject</a>)</li>
+<li>Add artifacts and process them (<a href="https://www.pnfsoftware.com/jeb/apidoc/reference/com/pnfsoftware/jeb/core/ILiveArtifact.html">ILiveArtifact</a>)</li>
+<li>Retrieve the products (<a href="https://www.pnfsoftware.com/jeb/apidoc/reference/com/pnfsoftware/jeb/core/units/IUnit.html">IUnit</a>)</li>
+<li>Proceed as usual with the units<ul>
+<li>We recommend developers to read <a href="1-getting-started-with-parsers.html">our tutorial series</a> on parser development to get familiar with units</li>
+</ul>
+</li>
+</ul>
+<p>Refer to the our <a href="https://docs.google.com/presentation/d/1kU_ko8e8WlUH4dkXZguJ0Ke2ZfwUZV4JV01D7cChgIc/pub">simplified architecture diagrams</a> to better visualize how those components are connected to one another.</p>
+<h2 id="source-template">Source Template<a class="headerlink" href="#source-template" title="Permanent link">#</a></h2>
+<p>Full source code: <a href="https://github.com/pnfsoftware/jeb2-samplecode/blob/master/src/com/pnf/jebauto/AutoClient.java">Command-line client skeleton on GitHub</a></p>
+<div class="codehilite"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AutoClient</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="n">ILogger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">GlobalLog</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">AutoClient</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+    <span class="kd">static</span> <span class="p">{</span>
+        <span class="n">GlobalLog</span><span class="p">.</span><span class="na">addDestinationStream</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// TODO: customize (should be replaced by the LicenseKey entry in your bin/jeb-client.cfg file)</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">licenseKey</span> <span class="o">=</span> <span class="s">&quot;...&quot;</span><span class="p">;</span>
+
+    <span class="c1">// TODO: customize</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">baseDir</span> <span class="o">=</span> <span class="s">&quot;...&quot;</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">argv</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">argv</span><span class="p">.</span><span class="na">length</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">long</span> <span class="n">t0</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="n">String</span> <span class="n">location</span> <span class="o">=</span> <span class="n">argv</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span> <span class="n">files</span> <span class="o">=</span> <span class="n">AutoUtil</span><span class="p">.</span><span class="na">retrieveFiles</span><span class="p">(</span><span class="n">location</span><span class="p">);</span>
+        <span class="n">test</span><span class="p">(</span><span class="n">files</span><span class="p">);</span>
+        <span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Done in %ds&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Initialize a core. Create a context within that core. Then, for each input artifact, a</span>
+<span class="cm">     * project is created and the artifact is loaded within that project.</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span> <span class="n">files</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+        <span class="c1">// create or retrieve a core context (engines container)</span>
+        <span class="n">ICoreContext</span> <span class="n">core</span> <span class="o">=</span> <span class="n">JebCoreService</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">licenseKey</span><span class="p">);</span>
+
+        <span class="c1">// create an engines context (project container)</span>
+        <span class="n">IFileDatabase</span> <span class="n">projectdb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JEB2FileDatabase</span><span class="p">(</span><span class="n">baseDir</span><span class="p">);</span>
+        <span class="n">IFileStore</span> <span class="n">filestore</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleFSFileStore</span><span class="p">(</span><span class="n">baseDir</span><span class="p">);</span>
+        <span class="n">BaseConfiguration</span> <span class="n">cfg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BaseConfiguration</span><span class="p">();</span>
+
+        <span class="c1">// TODO: customize (alternative is to read your configuration from .cfg file)</span>
+        <span class="n">cfg</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">&quot;.DevPluginClasspath&quot;</span><span class="p">,</span> <span class="s">&quot;...&quot;</span><span class="p">);</span>
+
+        <span class="c1">// TODO: customize</span>
+        <span class="n">cfg</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">&quot;.DevPluginClassnames&quot;</span><span class="p">,</span> <span class="s">&quot;...&quot;</span><span class="p">);</span>
+
+        <span class="n">IConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CommonsConfigurationWrapper</span><span class="p">(</span><span class="n">cfg</span><span class="p">);</span>
+        <span class="n">IDataProvider</span> <span class="n">dataProvider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataProvider</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="n">projectdb</span><span class="p">,</span> <span class="n">filestore</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+        <span class="n">IEnginesContext</span> <span class="n">engctx</span> <span class="o">=</span> <span class="n">core</span><span class="p">.</span><span class="na">createEnginesContext</span><span class="p">(</span><span class="n">dataProvider</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">File</span> <span class="n">file</span><span class="p">:</span> <span class="n">files</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Testing file %d/%d : %s ...&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">files</span><span class="p">.</span><span class="na">size</span><span class="p">(),</span> <span class="n">file</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+
+            <span class="c1">// create or load a project (artifact container)</span>
+            <span class="n">IRuntimeProject</span> <span class="n">prj</span> <span class="o">=</span> <span class="n">engctx</span><span class="p">.</span><span class="na">loadProject</span><span class="p">(</span><span class="s">&quot;ProjectTest&quot;</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+
+            <span class="c1">// process the artifact, get units</span>
+            <span class="n">ILiveArtifact</span> <span class="n">art</span> <span class="o">=</span> <span class="n">prj</span><span class="p">.</span><span class="na">processArtifact</span><span class="p">(</span><span class="k">new</span> <span class="n">Artifact</span><span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">getName</span><span class="p">(),</span> <span class="k">new</span> <span class="n">FileInput</span><span class="p">(</span><span class="n">file</span><span class="p">)));</span>
+
+            <span class="c1">// proceed with the units</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">IUnit</span><span class="o">&gt;</span> <span class="n">units</span> <span class="o">=</span> <span class="n">art</span><span class="p">.</span><span class="na">getUnits</span><span class="p">();</span>
+
+            <span class="c1">// TODO: CUSTOMIZE -- this is the important part</span>
+            <span class="c1">// Basic tests go here</span>
+            <span class="c1">// example:</span>
+            <span class="k">for</span><span class="p">(</span><span class="n">IUnit</span> <span class="n">unit</span><span class="p">:</span> <span class="n">units</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Unit: %s&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="p">);</span>
+                <span class="c1">//if(unit instanceof Xyz) {</span>
+                <span class="c1">// ...</span>
+                <span class="c1">//}</span>
+            <span class="p">}</span>
+
+            <span class="n">engctx</span><span class="p">.</span><span class="na">unloadProject</span><span class="p">(</span><span class="n">prj</span><span class="p">.</span><span class="na">getKey</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="c1">// close the engines</span>
+        <span class="n">JebCoreService</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">closeEnginesContext</span><span class="p">(</span><span class="n">engctx</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="writing-engines-plugins.html" title="Writing Engines Plugins" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Writing Engines Plugins
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="other-resources.html" title="Additional Resources" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Additional Resources
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2015 - 2020 PNF Software
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_md5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="md5"
+            />
+
+        <Button
+            android:id="@+id/btn_md5_half"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="md5_half"
+            />
+
+        <Button
+            android:id="@+id/btn_sha1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sha1" />
+
+        <Button
+            android:id="@+id/btn_sha256"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sha256" />
+
+        <Button
+            android:id="@+id/btn_sha512"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sha512" />
+
+        <Button
+            android:id="@+id/btn_hmacMd5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hmacMd5" />
+
+        <Button
+            android:id="@+id/btn_hmacSha1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hmacSha1" />
+
+        <Button
+            android:id="@+id/btn_saltMd5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="saltMd5" />
+
+        <TextView
+            android:id="@+id/sample_text"
+            android:layout_width="281dp"
+            android:layout_height="273dp"
+            android:text="Hello World!" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,613 @@
+# Copyright (c) 2017 Wind River Systems, Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software  distributed
+# under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+# OR CONDITIONS OF ANY KIND, either express or implied.
+
+#
+# List of keywords
+#
+# \b is a special symbol that matches beginning or end of a token (word)
+#
+# Use \bword\b to search for whole-words
+#
+# "language" can be one of:
+# 	"all" \(any text file),
+# 	"source" \(any source code file),
+# 	"c" \(C or C++),
+# 	"python",
+# 	"java",
+# 	"shell",
+# 	"perl",
+# 	"javascript",
+# 	"scala",
+# 	"haskell",
+# 	"pascal"
+
+[keyword_list_version]
+	6
+
+[{"evidence_type": "algorithm/asymmetric/DiffieHellman", "language": "all"}]
+	"Diffie Hellman"
+	"Diffie-Hellman"
+	"Diffie_Hellman"
+	"Diffie.Hellman"
+	"DiffieHellman"
+	"DHParameterSpec"
+	"0xFFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD1"
+	"DHPublicKey"
+	"DHPubKey"
+	"DHPrivateKey"
+	"DHPrivKey"
+	"DH_generate_key"
+	"DH_compute_key"
+
+[{"evidence_type": "algorithm/asymmetric/DSA", "language": "all"}]
+	"Digital Signature Algorithm"
+	"\bDSA_"
+	"_DSA\b"
+	"_DSA_"
+	"\bdsa\b"
+	"\bDSAPrivateKey"
+	"\bDSAPublicKey"
+	"\bDSA_new"
+
+[{"evidence_type": "algorithm/asymmetric/ECC", "language": "all"}]
+	"Elliptic Curve"
+	"Elliptic_Curve"
+	"Elliptic-Curve"
+	"Elliptic.Curve"
+	"EllipticCurve"
+	"ECDSA"
+	"ECDH"
+	"\bECIES"
+	"ECMQV"
+	"\bECNR"
+	"\bCkDh\b"
+	"CkCrypt2"
+	"\becc_make_key"
+	"1.2.840.10045.3.1.1"
+	"secp192r1"
+	"secp256r1"
+	"secp521r1"
+	"\bEC2NP"
+	"_EC2NP_"
+	"_EC2NP\b"
+
+[{"evidence_type": "algorithm/asymmetric/ElGamal", "language": "all"}]
+	"El Gamal"
+	"El_Gamal"
+	"El-Gamal"
+	"El.Gamal"
+	"ElGamal"
+	"\bELG_secret_key"
+	"\bELG_public_key"
+	"\belg_generate"
+	"\belg_encrypt"
+	"\belg_decrypt"
+	"\belg_sign"
+	"\belg_verify"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/GOST", "language": "all"}]
+	"\bGOST 28147"
+	"\bGOST_28147"
+	"\bGOST-28147"
+	"\bGOST28147"
+	"1.2.643.2.2.30."
+	"1.2.643.2.2.31."
+
+[{"evidence_type": "algorithm/asymmetric/RSA", "language": "all"}]
+	"\bRSA_"
+	"_RSA\b"
+	"_RSA_"
+	"\brsa\b"
+	"RSASignature"
+	"\bX931"
+	"\bX9_31"
+	"\bX9-31"
+	"\bX9.31"
+	"\bOAEP"
+	"\bSecurID\b"
+	"RSAPrivateKey"
+	"RSAPublicKey"
+	"RSAPrivKey"
+	"RSAPubKey"
+	"RSAKey"
+
+[{"evidence_type": "algorithm/hash/Hash", "language": "all"}]
+	"\blhash"
+	"\brhash"
+	"\bhexdigest"
+
+[{"evidence_type": "algorithm/hash/BLAKE", "language": "all"}]
+	"\bBLAKE256"
+	"\bBLAKE_256"
+	"\bBLAKE 256"
+	"\bBLAKE-256"
+	"\bBLAKE2b"
+
+[{"evidence_type": "algorithm/hash/HMAC", "language": "all"}]
+	"\bHMAC"
+	"\bHKDF"
+	"HMAX_MD5_Context"
+	"HMAC_SHA"
+	"HMAC_MD5"
+	"HMAC_MD4"
+	"HMAC_CTX"
+
+
+[{"evidence_type": "protocol/MAC", "language": "all"}]
+	"\bCMAC\b"
+	"\bCMAC_"
+	"\bTTMAC\b"
+	"\bVMAC"
+
+[{"evidence_type": "algorithm/hash/MD2", "language": "all"}]
+	"_MD2_"
+	"_MD2\b"
+	"\bMD2\b"
+	"\bMD2_"
+	"\bmd2sum\b"
+
+[{"evidence_type": "algorithm/hash/MD4", "language": "all"}]
+	"\bmd4sum\b"
+	"\bMD4\b"
+	"_MD4\b"
+	"\bMD4_"
+	"_MD4_"
+
+[{"evidence_type": "algorithm/hash/MD5", "language": "all"}]
+	"\bmd5sum\b"
+	"\bMD5\b"
+	"_MD5\b"
+	"\bMD5_"
+	"_MD5_"
+	"\bdgstsum\b"
+	"\bmdString"
+	"0xd76aa478"
+	"0xe8c7b756"
+	"0x5A827999"
+
+[{"evidence_type": "algorithm/hash/MDC-2", "language": "all"}]
+	"\bmdc2sum\b"
+	"\bMDC2\b"
+
+[{"evidence_type": "algorithm/hash/RIPEMD", "language": "all"}]
+	"\bripemd160sum\b"
+	"\bRIPEMD"
+	"RIPEMD128"
+	"RIPEMD160"
+	"RIPEMD256"
+	"RIPEMD320"
+	"50A28BE6"
+
+[{"evidence_type": "algorithm/hash/SHA1", "language": "all"}]
+	"\bsha1sum\b"
+	"\bshasum\b"
+	"\bSHA1"
+	"\bSHA-1"
+	"\bSHA_Init"
+	"\bSHA_Update"
+	"\bSHA_End"
+	"_SHA1"
+	"_SHA-1"
+	"0x67452301"
+
+[{"evidence_type": "algorithm/hash/SHA2", "language": "all"}]
+	"\bSHA224"
+	"\bSHA-224"
+	"\bSHA_224"
+	"\bSHA256"
+	"\bSHA-256"
+	"\bSHA_256"
+	"\bSHA384"
+	"\bSHA-384"
+	"\bSHA_384"
+	"\bSHA512"
+	"\bSHA-512"
+	"\bSHA_512"
+	"\bSHA2"
+	"\bSHA-2"
+	"_SHA224"
+	"_SHA-224"
+	"_SHA_224"
+	"_SHA256"
+	"_SHA-256"
+	"_SHA_256"
+	"_SHA384"
+	"_SHA-384"
+	"_SHA_384"
+	"_SHA512"
+	"_SHA-512"
+	"_SHA_512"
+	"_SHA2"
+	"_SHA-2"
+	"0x428a2f98"
+
+[{"evidence_type": "algorithm/hash/SHA3", "language": "all"}]
+	"\bSHA3"
+	"\bSHA-3"
+	"\bkeccak"
+	"_keccak"
+	"8000000000008089"
+
+[{"evidence_type": "algorithm/hash/Tiger", "language": "all"}]
+	"0x02aab17cf7e90c5e"
+	"\btiger_init"
+	"\btiger_final"
+	"\btiger_context"
+
+[{"evidence_type": "algorithm/hash/Whirlpool", "language": "all"}]
+	"0x1823c6e887b8014f"
+	"\bwhirlpool"
+
+[{"evidence_type": "algorithm/hybrid/PGP", "language": "all"}]
+	"\bGnuPG\b"
+	"\bPGP\b"
+	"\bPGP_"
+	"_PGP_"
+	"_PGP\b"
+	"\bGPG\b"
+	"\bGPG_"
+	"_GPG_"
+	"_GPG\b"
+	"libpgp"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/AES", "language": "all"}]
+	"Advanced Encryption Standard"
+	"\bAES_"
+	"_AES\b"
+	"_AES_"
+	"\baes\b"
+	"AES128"
+	"AES256"
+	"\brijndael"
+	"\bBMGL"
+	"\baesKey\b"
+	"99, 124, 119, 123, 242, 107, 111, 197"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/Blowfish", "language": "all"}]
+	"blowfish"
+	"0xD1310BA6"
+	"0x8979FB1B"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/Camellia", "language": "all"}]
+	"Camellia"
+	"0xA09E667F"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/IntelCascade", "language": "all"}]
+	"cascade_cipher"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/CAST5", "language": "all"}]
+	"\bCAST5"
+	"\bCAST128"
+	"\bCAST-128"
+	"\bCAST_128"
+	"0x30fb40d4"
+	"0x7EC90C04"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/CAST6", "language": "all"}]
+	"\bCAST6"
+	"\bCAST256"
+	"\bCAST-256"
+	"\bCAST_256"
+	"0x0F1946B8"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/DES", "language": "all"}]
+	"Data Encryption Standard"
+	"DES algorithm"
+	"\bDES_key"
+	"\bDES_"
+	"_DES\b"
+	"_DES_"
+	"tripledes"
+	"triple_des"
+	"\b3DES"
+	"_3DES"
+	"DES-EDE"
+	"DES-XEX"
+	"DES3-KD"
+	"\bDESX"
+	"0x01010400"
+	"58, 50, 42, 34, 26, 18, 10"
+	"\bRawDES"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/Feistel", "language": "all"}]
+	"\bfeistel"
+	"Luby Rackoff"
+	"LubyRackoff"
+	"Luby-Rackoff"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/KASUMI", "language": "all"}]
+	"\bKASUMI"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/BEARLION", "language": "all"}]
+	"\bbearlion"
+	"\bbear-lion"
+	"\bbear_lion"
+	"\bbear lion"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/IDEA", "language": "all"}]
+	"\bideainit"
+	"\bidea_encrypt"
+	"\bidea_decrypt"
+	"\bideaEncrypt"
+	"\bideaDecrypt"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/SAFER", "language": "all"}]
+	"\bSAFERSK\b"
+	"\bSAFERSK_"
+	"\bSAFER_SK\b"
+	"\bSAFER-SK\b"
+	"\bSAFERK"
+	"\bSAFER-K\b"
+	"\bSAFER_K\b"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/SHACAL", "language": "all"}]
+	"\bSHACAL"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/CSCipher", "language": "all"}]
+	"\bCS_Cipher"
+	"\bCS Cipher"
+	"\bCS-Cipher"
+	"\bCSCipher"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/DFC", "language": "all"}]
+	"\bDFCv2"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/Serpent", "language": "all"}]
+	"\bSerpent\b"
+	"\bserpent_"
+	"_serpent"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/Twofish", "language": "all"}]
+	"twofish"
+	"0xA9, 0x67, 0xB3, 0xE8"
+	"0xBCBC3275"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/Threefish", "language": "all"}]
+	"ThreeFish"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/XTEA", "language": "all"}]
+	"\bXTEA"
+
+[{"evidence_type": "algorithm/symmetric/stream-cipher/ChaCha20", "language": "all"}]
+	"\bChaCha20"
+
+[{"evidence_type": "algorithm/symmetric/stream-cipher/Salsa20", "language": "all"}]
+	"Salsa20"
+	"Salsa_20"
+	"Salsa-20"
+
+[{"evidence_type": "algorithm/symmetric/stream-cipher/XSalsa20", "language": "all"}]
+	"\bXSalsa20"
+
+[{"evidence_type": "algorithm/symmetric/stream-cipher/SOSEMANUK", "language": "all"}]
+	"\bSosemanuk"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/MISTY1", "language": "all"}]
+	"\bMISTY1"
+	"0x1B, 0x32, 0x33, 0x5A"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/NOEKEON", "language": "all"}]
+	"\bnoekeon"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/RC2", "language": "all"}]
+	"\bRC2_128"
+	"RC2_encrypt"
+	"RC2_decrypt"
+	"\bRC2Context"
+	"RC2_set_key"
+	"\brc2_cbc"
+	"\brc2_cfb"
+	"\brc2_ecb"
+	"\brc2_ofb"
+	"\brc2-cbc"
+	"\brc2-cfb"
+	"\brc2-ecb"
+	"\brc2-ofb"
+	"\bRC2_BLOCK_SIZE"
+	"\bRC2_KEY"
+	"RC2 algorithm"
+
+[{"evidence_type": "algorithm/symmetric/stream-cipher/RC4", "language": "all"}]
+	"\bArcfour"
+	"\barcfour_"
+	"\bRC4_128"
+	"RC4_encrypt"
+	"RC4_decrypt"
+	"\bRC4Context"
+	"\brc4_cbc"
+	"\brc4_cfb"
+	"\brc4_ecb"
+	"\brc4_ofb"
+	"\brc4-cbc"
+	"\brc4-cfb"
+	"\brc4-ecb"
+	"\brc4-ofb"
+	"_rc4_cbc"
+	"_rc4_cfb"
+	"_rc4_ecb"
+	"_rc4_ofb"
+	"_rc4-cbc"
+	"_rc4-cfb"
+	"_rc4-ecb"
+	"_rc4-ofb"
+	"\bRC4_KEY"
+	"RC4 algorithm"
+	"\bRC4_HMAC"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/RC5", "language": "all"}]
+	"0xb7e15163"
+	"RC5_encrypt"
+	"RC5_decrypt"
+	"\bRC5Context"
+	"\brc5_cbc"
+	"\brc5_cfb"
+	"\brc5_ecb"
+	"\brc5_ofb"
+	"\brc5-cbc"
+	"\brc5-cfb"
+	"\brc5-ecb"
+	"\brc5-ofb"
+	"\bRC5_KEY"
+	"RC5 algorithm"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/RC6", "language": "all"}]
+	"RC6_encrypt"
+	"RC6_decrypt"
+	"\brc6_cbc"
+	"\brc6_cfb"
+	"\brc6_ecb"
+	"\brc6_ofb"
+	"\brc6-cbc"
+	"\brc6-cfb"
+	"\brc6-ecb"
+	"\brc6-ofb"
+	"\bRC6_KEY"
+	"RC6 algorithm"
+
+[{"evidence_type": "algorithm/symmetric/block-cipher/SEED", "language": "all"}]
+	"0x16c6d2d4"
+	"0x3c6ef373"
+	"\bseed_encrypt"
+	"\bseed_decrypt"
+	"\bseed_setkey"
+
+[{"evidence_type": "library/BeeCrypt", "language": "all"}]
+	"\bBeeCrypt"
+
+[{"evidence_type": "library/BouncyCastle", "language": "source"}]
+	"bouncycastle"
+	"spongycastle"
+
+[{"evidence_type": "library/Botan", "language": "all"}]
+	"\bbotan\b"
+	"\bBOTAN_"
+
+[{"evidence_type": "library/libgcrypt", "language": "all"}]
+	"\bLibgcrypt"
+	"\bGCRY_"
+
+[{"evidence_type": "library/Crypto++", "language": "all"}]
+	"\bCRYPTOPP"
+	"ProcessAndXorBlock"
+	"BlockCipherFinal"
+
+[{"evidence_type": "library/cryptlib", "language": "all"}]
+	"\bcryptlib"
+	"\bcryptCreate"
+	"\bcryptEncrypt"
+	"\bcryptDecrypt"
+
+[{"evidence_type": "library/OpenSSH", "language": "all"}]
+	"\blibssh"
+	"\bOpenSSH"
+
+[{"evidence_type": "library/OpenSSL", "language": "all"}]
+	"\blibssl"
+	"\bOpenSSL"
+	"_OpenSSL"
+
+[{"evidence_type": "protocol/kerberos", "language": "all"}]
+	"kerberos"
+	"\bKRB5_"
+	"\bkrb5\b"
+
+[{"evidence_type": "protocol/PKI", "language": "all"}]
+	"PublicKey"
+	"Public_Key"
+	"PrivateKey"
+	"Private_Key"
+	"\bpubkey"
+	"\bpub_key"
+	"_pubkey"
+	"priv_key"
+	"\bkeysym"
+
+[{"evidence_type": "protocol/PKCS", "language": "all"}]
+	"pkcs"
+	"\bx509"
+	"\bx.509"
+	"\bx-509"
+	"\bpkcs12.h\b"
+	"_X509_"
+	"_X509\b"
+	"\bX509_digest"
+
+[{"evidence_type":"protocol/ASN1", "language":"all"}]
+	"\bpkcs8_asn1.h\b"
+	"\bpkcs9_asn1.h\b"
+	"\bpkcs12_asn1.h\b"
+	"\bocsp_asn1.h\b"
+	"\basn1_err"
+	"\bpkinit_asn1.h\b"
+
+[{"evidence_type": "protocol/SSH", "language": "all"}]
+	"\bssh2"
+	"\bssh_"
+	"_ssh\b"
+	"\bssh\b"
+	"_ssh_"
+
+[{"evidence_type": "protocol/SSL", "language": "all"}]
+	"\bSSL_"
+	"_SSL_"
+	"_SSL\b"
+	"\bssl\b"
+	"\bossl_"
+	"SSLSocket"
+	"\bssl.h\b"
+
+[{"evidence_type": "protocol/TLS", "language": "all"}]
+	"TLSv1"
+	"mbedtls"
+	"\bgnutls"
+	"\btls_cipher"
+	"\btls_server"
+	"\btls_client"
+	"Transport Layer Security"
+	"SSL/TLS"
+
+[{"evidence_type": "protocol/MQV", "language": "all"}]
+	"\bMQV\b"
+	"_MQV_"
+	"\bMQV_Domain"
+
+[{"evidence_type":"algorithm/symmetric/substitution-cipher/ROT13", "language": "all"}]
+	"\bROT13\b"
+	"\bROT13_"
+
+[{"evidence_type": "library/glibC", "language": "all"}]
+	"glibc/crypt"
+
+[{"evidence_type": "protocol/MSCHAP", "language": "all"}]
+	"\bMS-CHAP"
+	"\bMSCHAP"
+
+[{"evidence_type": "algorithm/hash/Adler32", "language": "all"}]
+	"\bAdler-32"
+	"\bAdler32"
+
+[{"evidence_type": "generic", "language": "all"}]
+	"crypt"
+	"krypt"
+	"\bcipher"
+	"_cipher"
+	"base64Cipher"
+	"\bgenerateWorkingKey"
+	"\bBlockCipher"
+	"Block Cipher"
+	"\bStreamCipher"
+	"Stream Cipher"
+	"\bkey_schedule"
+	"secret_key"
+	"secretKey"
+	"MERSENNE"
+	"\bcerts"

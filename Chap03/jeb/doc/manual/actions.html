@@ -1,0 +1,1063 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for JEB Decompiler">
+      
+      
+        <link rel="canonical" href="https://www.pnfsoftware.com/jeb/manual/actions.html">
+      
+      
+        <meta name="author" content="PNF Software">
+      
+      <link rel="shortcut icon" href="img/jeb-icon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Common Actions - JEB Decompiler</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#decompiling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-header-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            JEB Decompiler
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Common Actions
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    JEB Decompiler
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Using JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Using JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Using JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="workspace.html" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Common Actions
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="actions.html" title="Common Actions" class="md-nav__link md-nav__link--active">
+      Common Actions
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decompiling" class="md-nav__link">
+    Decompiling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphing" class="md-nav__link">
+    Graphing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renaming" class="md-nav__link">
+    Renaming
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commenting" class="md-nav__link">
+    Commenting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigating" class="md-nav__link">
+    Navigating
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-references" class="md-nav__link">
+    Cross-references
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-hierarchies" class="md-nav__link">
+    Type Hierarchies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restructuring" class="md-nav__link">
+    Restructuring
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-hierarchies_1" class="md-nav__link">
+    Type Hierarchies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-overrides" class="md-nav__link">
+    Object Overrides
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rebasing-constants" class="md-nav__link">
+    Rebasing Constants
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-rename-all" class="md-nav__link">
+    Auto-Rename All
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="views.html" title="Common Views" class="md-nav__link">
+      Common Views
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="decompiling.html" title="Decompiling" class="md-nav__link">
+      Decompiling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="debugging.html" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android.html" title="Android Analysis" class="md-nav__link">
+      Android Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android-debugging.html" title="Android Debugging" class="md-nav__link">
+      Android Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="native.html" title="Native Code Analysis" class="md-nav__link">
+      Native Code Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="webassembly.html" title="WebAssembly Analysis" class="md-nav__link">
+      WebAssembly Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ethereum.html" title="Ethereum Analysis" class="md-nav__link">
+      Ethereum Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="misc.html" title="Miscellaneous" class="md-nav__link">
+      Miscellaneous
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Extending JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Extending JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Extending JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/introducing-jeb-extensions.html" title="Introducing JEB Extensions" class="md-nav__link">
+      Introducing JEB Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-client-scripts.html" title="Writing Client Scripts" class="md-nav__link">
+      Writing Client Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/android-scripting.html" title="Scripting for Android Reversing" class="md-nav__link">
+      Scripting for Android Reversing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Writing Parsers (Tutorial)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Writing Parsers (Tutorial)" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Writing Parsers (Tutorial)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/1-getting-started-with-parsers.html" title="Part 1: Getting Started with Parsers" class="md-nav__link">
+      Part 1: Getting Started with Parsers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-nav__link">
+      Part 2: Creating a Simple Parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/3-documents-delegation.html" title="Part 3: Documents and Delegation" class="md-nav__link">
+      Part 3: Documents and Delegation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/4-tables-trees.html" title="Part 4: Tables and Trees" class="md-nav__link">
+      Part 4: Tables and Trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/5-development-tips.html" title="Part 5: Development Tips" class="md-nav__link">
+      Part 5: Development Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/6-releasing-plugin.html" title="Part 6: Releasing a Plugin" class="md-nav__link">
+      Part 6: Releasing a Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/7-unit-interactivity.html" title="Part 7: Interactivity" class="md-nav__link">
+      Part 7: Interactivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/8-more-interactivity.html" title="Part 8: More on Interactivity" class="md-nav__link">
+      Part 8: More on Interactivity
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-engines-plugins.html" title="Writing Engines Plugins" class="md-nav__link">
+      Writing Engines Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-front-ends.html" title="Writing Front-Ends" class="md-nav__link">
+      Writing Front-Ends
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/other-resources.html" title="Additional Resources" class="md-nav__link">
+      Additional Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="settings.html" title="Settings" class="md-nav__link">
+      Settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="client-configuration.html" title="Client Configuration" class="md-nav__link">
+      Client Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="engines-configuration.html" title="Engines Configuration" class="md-nav__link">
+      Engines Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="floating.html" title="Floating Controller" class="md-nav__link">
+      Floating Controller
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="faq.html" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decompiling" class="md-nav__link">
+    Decompiling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphing" class="md-nav__link">
+    Graphing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renaming" class="md-nav__link">
+    Renaming
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commenting" class="md-nav__link">
+    Commenting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigating" class="md-nav__link">
+    Navigating
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-references" class="md-nav__link">
+    Cross-references
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-hierarchies" class="md-nav__link">
+    Type Hierarchies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restructuring" class="md-nav__link">
+    Restructuring
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-hierarchies_1" class="md-nav__link">
+    Type Hierarchies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-overrides" class="md-nav__link">
+    Object Overrides
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rebasing-constants" class="md-nav__link">
+    Rebasing Constants
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-rename-all" class="md-nav__link">
+    Auto-Rename All
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Common Actions</h1>
+                
+                <p>The primary use case for JEB is the analysis of binary code. This section focuses on the basics of code analysis and refactoring:</p>
+<ul>
+<li>Renaming items such as methods or fields</li>
+<li>Changing the code structure by moving items to packages </li>
+<li>Commenting</li>
+<li>Navigating a code base via cross-references</li>
+<li>Viewing type hierarchies</li>
+<li>Viewing method overrides</li>
+<li>Graphing routines (CFG) </li>
+<li>Replacing items or rebasing immediates </li>
+<li>Auto-renaming all items</li>
+</ul>
+<p>In the UI client, many fundamental interactions can be achieved via the <em>Action</em> and <em>Navigation</em> menus. Those actions are implemented by most JEB analysis modules that perform code disassembly.</p>
+<p><a href="img/6b741d63.png"><img src="img/6b741d63-small.png" srcset="img/6b741d63-small.png 2x" /></a></p>
+<blockquote>
+<p>Other action groups such as <a href="native.html"><em>Native code actions</em></a> and <a href="debugging.html"><em>Debugging actions</em></a> are detailed in separate sections of this manual.</p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The examples in this section are based on the analysis of <a href="https://www.pnfsoftware.com/other/raasta.apk">a sample Android app</a> using the Android DEX parser. <strong>Keep in mind that features and behaviors of <em>Actions</em> depend on the module implementing and performing them.</strong></p>
+</div>
+<h2 id="decompiling">Decompiling<a class="headerlink" href="#decompiling" title="Permanent link">#</a></h2>
+<p>The next section covers <a href="decompiling.html">decompiling code</a> in depth.</p>
+<h2 id="graphing">Graphing<a class="headerlink" href="#graphing" title="Permanent link">#</a></h2>
+<p>Users can alternate between the default interactive <strong>full disassembly view</strong> and the <strong>interactive control flow graph</strong> of the currently examined method/routine.</p>
+<p>Press the Space key to go back and forth. In some circumstances, users may prefer graph navigation.</p>
+<p><a href="img/376ce484.png"><figure><img src="img/376ce484-small.png" srcset="img/376ce484-small.png 2x" /><figcaption>CFG fragment of a routine</figcaption></figure></a></p>
+<h2 id="renaming">Renaming<a class="headerlink" href="#renaming" title="Permanent link">#</a></h2>
+<p>An important requirement for analysts is the ability to rename code items such as types, methods and routines, fields and data items, packages, etc. consistently across a code base.</p>
+<ul>
+<li>Position the caret on the item to be renamed</li>
+<li>Hit the <em>N</em> key or select <em>Action, Rename</em></li>
+<li>Enter the new name and press Enter</li>
+</ul>
+<p><a href="img/jeb-action-rename.png"><img src="img/jeb-action-rename.png" srcset="img/jeb-action-rename.png 2x" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Within the Rename dialog box, press Ctrl+Space (Command+Space on macOS) to bring up your renaming history.</p>
+</div>
+<h2 id="commenting">Commenting<a class="headerlink" href="#commenting" title="Permanent link">#</a></h2>
+<p>When in a code view, press the <em>/</em> (slash) key to add a comment.</p>
+<p><a href="img/jeb-action-comment.png"><img src="img/jeb-action-comment.png" srcset="img/jeb-action-comment.png 2x" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Comments are attached to addresses or items, therefore make sure to be on a valid address - else no comment can be attached. The caret address is always displayed in the status bar:</p>
+</div>
+<p><a href="img/ee625e39.png"><img src="img/ee625e39-small.png" srcset="img/ee625e39-small.png 2x" /></a></p>
+<h2 id="navigating">Navigating<a class="headerlink" href="#navigating" title="Permanent link">#</a></h2>
+<p>Pressing the <em>Enter</em> key on an item or double-clicking it will bring the caret to the definition of the item.</p>
+<p>You can navigate backward and forward using the traditional <em>Alt + Arrow Left</em> (or <em>Escape</em>) and <em>Alt + Arrow Right</em> key combos, or via the Navigation menu.</p>
+<p><a href="img/9c824d69.png"><img src="img/9c824d69-small.png" srcset="img/9c824d69-small.png 2x" /></a></p>
+<p>The <em>Next Item</em> and <em>Previous Item</em> command allow you to jump to the similar item after or before the currently selected item.</p>
+<h2 id="cross-references">Cross-references<a class="headerlink" href="#cross-references" title="Permanent link">#</a></h2>
+<p>Cross-references on an item allow the examination of items referencing it. Press the <em>X</em> key to visualize them.</p>
+<p>You can jump to a cross-reference by double-clicking it.</p>
+<p><a href="img/jeb-action-xrefs.png"><img src="img/jeb-action-xrefs.png" srcset="img/jeb-action-xrefs.png 2x" /></a></p>
+<p>The cross-reference dialog generally includes additional information attached to the referenced location. That information is plugin-dependent. Below, the <em>Details</em> column provides the kind of reference (on a field item, in that case), e.g. a GET (read), or something else.</p>
+<p><a href="img/84bc5028.png"><img src="img/84bc5028-small.png" srcset="img/84bc5028-small.png 2x" /></a></p>
+<h2 id="type-hierarchies">Type Hierarchies<a class="headerlink" href="#type-hierarchies" title="Permanent link">#</a></h2>
+<p>Use the <em>T</em> key on a type item (such as a class or an interface) to visualize its ancestors and children. Double-click on a type item to jump to the item definition.</p>
+<p><a href="img/jeb-action-typehier.png"><img src="img/jeb-action-typehier.png" srcset="img/jeb-action-typehier.png 2x" /></a></p>
+<h2 id="restructuring">Restructuring<a class="headerlink" href="#restructuring" title="Permanent link">#</a></h2>
+<p>The <em>Create Package</em> and <em>Move to Package</em> actions offer powerful refactoring possibilities, especially useful in the case of large obfuscated binary files.</p>
+<p>If the module supports it, users are able to:</p>
+<ul>
+<li>Create artificial packages (aka, namespaces) using the <em>K</em> key.</li>
+<li>Move items, such as types, to existing or artificial packages using the <em>L</em> key.</li>
+</ul>
+<p><a href="img/273d77b2.png"><figure><img src="img/273d77b2-small.png" srcset="img/273d77b2-small.png 2x" /><figcaption>Workflow</figcaption></figure></a></p>
+<p>The following screenshot is an example where the class <code>AppHelp</code> was moved from the <code>com.pnfsoftware.raasta</code> package to a newly created package named <code>com.abc</code>.</p>
+<p><a href="img/jeb-action-packages.png"><img src="img/jeb-action-packages.png" srcset="img/jeb-action-packages.png 2x" /></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Have a look at <a href="https://www.youtube.com/watch?v=xDRf8aG3ynk">our YouTube demo video</a> that demonstrates advanced refactoring and automatic restructuring of a heavily obfuscated Android malware application.</p>
+</div>
+<h2 id="type-hierarchies_1">Type Hierarchies<a class="headerlink" href="#type-hierarchies_1" title="Permanent link">#</a></h2>
+<p>The <em>H</em> key allows the examination of type hierarchy, such as parent classes, descendant classes, implemented interfaces, etc.</p>
+<p><a href="img/229417b4.png"><img src="img/229417b4-small.png" srcset="img/229417b4-small.png 2x" /></a></p>
+<h2 id="object-overrides">Object Overrides<a class="headerlink" href="#object-overrides" title="Permanent link">#</a></h2>
+<p>The <em>O</em> key allows the examination of overrides, such as virtual method redefinitions in the case of object-oriented bytecode files.</p>
+<p><a href="img/jeb-action-overrides.png"><img src="img/jeb-action-overrides.png" srcset="img/jeb-action-overrides.png 2x" /></a></p>
+<h2 id="rebasing-constants">Rebasing Constants<a class="headerlink" href="#rebasing-constants" title="Permanent link">#</a></h2>
+<p>This feature allows the selection of the radix used to render immediate constant integers. Press the <em>B</em> key repeatedly to cycle through the bases offered by the plugin.</p>
+<p>Typically, bases 8, 10, 16 are offered. Some plugins may offer additional bases such as base 2, or non-conventional representation modes, such as character-based immediate rendering.</p>
+<p><a href="img/jeb-action-rebase.gif"><img src="img/jeb-action-rebase.gif" srcset="img/jeb-action-rebase.gif 2x" /></a></p>
+<h2 id="auto-rename-all">Auto-Rename All<a class="headerlink" href="#auto-rename-all" title="Permanent link">#</a></h2>
+<p>This action may be offered by plugins to allow blanket renaming of all items to automatically-generated names.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The DEX plugin provides this option to auto-rename types, fields, and methods to better names if they have been obfuscated to unreadable or compressed strings. Have a look at the <a href="android.html#auto-rename">Android</a> section to learn more.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="workspace.html" title="Workspace" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Workspace
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="views.html" title="Common Views" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Common Views
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2015 - 2020 PNF Software
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

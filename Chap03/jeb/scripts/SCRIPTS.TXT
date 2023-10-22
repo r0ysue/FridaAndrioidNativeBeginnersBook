@@ -1,0 +1,28 @@
+JEB Decompiler (c) PNF Software, Inc. 
+https://www.pnfsoftware.com
+
+> SCRIPTS
+
+This directory contains scripts for JEB clients. It comes with a set of sample
+scripts publicly available on our GitHub repository, here:
+https://github.com/pnfsoftware/jeb2-samplecode/tree/master/scripts
+
+Scripts should not be confused with plugins, although they use the same JEB API.
+
+JEB scripts are run using Jython, a 2.7 implementation of Python in Java.
+Refer to https://www.jython.org/ for additional information about Jython,
+as well as its limitations.
+
+The JEB UI desktop client as well as command-line clients can run JEB scripts.
+
+How to use:
+- Within the UI client: scripts can be executed via the 'File/Scripts/...'
+  menu command.
+- On the command-line: full clients may execute scripts using command lines like:
+  $ jeb_macos.sh -c --srv2 --script=<path> ...
+  Refer to your start-up script (eg, jeb_wincon.bat) help page for more details.
+- Scripts should not be used for heavy-lifting operations. They are meant to
+  execute small tasks within a the context of a JEB client. 
+- Note that current JEB scripts significantly differ from JEB1 scripts. Refer to
+  JEB Developer Portal for tutorials and API documentation:
+  https://www.pnfsoftware.com/jeb/devportal

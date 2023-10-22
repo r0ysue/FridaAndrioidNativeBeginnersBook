@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- 依赖于Frida的批量Hook验证功能，应收尽收，放宽搜索标准 -->
+<pattern>
+    <!-- 初始化常量/常量表/PADDING表查找 -->
+    <!-- HASH 函数 -->
+    <!-- HASH 通用padding，由MD结构本身规定 -->
+    <p a="HASH_padding.8">8000000000000000</p>
+    <!-- MD5 函数 -->
+    <!-- MD5 函数初始化链接变量，误报率低，因为特征非常突出且明显，但遗漏率也较高，和代码中的正则匹配init函数形成互补 -->
+	<p a="MD5_init_constant.16]">0123456789ABCDEFFEDCBA9876543210</p>
+    <!-- MD5 K表，误报率低，遗漏率较高，很多SO中并不规规矩矩弄那么一块地儿存放64个数，可能是断成几部分，也可能是离散的，也可能拼接。 -->
+    <!-- 一是只搜索前三个值，避免无法检索不完整K表，二是和正则匹配运算函数相结合（频频位运算/重复出现某函数）-->
+    <p a="MD5_K_table.12]">78A46AD756B7C7E8DB702024</p>
+
+
+
+
+    <!-- 库字符串查找 -->
+    <!-- OPENSSL -->
+<!--    cleanse_ctr-->
+    <b c="OPENSSL">OPENSSL</b>
+    <b c="OPENSSL">cleanse_ctr</b>
+    <b c="OPENSSL">EVP</b>
+    <b c="OPENSSL">EVP</b>
+
+    <!-- 加密算法相关字符串查找 -->
+    <!-- HASH 函数 -->
+    <p c="HASH">md</p>
+    <p c="HASH">dgst</p>
+    <p c="HASH">digest</p>
+    <p c="HASH">final</p>
+    <p c="HASH">init</p>
+    <p c="HASH">update</p>
+    <p c="HASH">end</p>
+
+
+    <!-- 伪C代码中加密算法相关常量/字符查找 -->
+    <!-- MD5 函数 -->
+    <p d="MD5_init">1732584193</p>
+    <p d="MD5_init">271733879</p>
+
+    <p d="MD5_transform">680876936</p>
+    <p d="MD5_transform">606105819</p>
+
+
+</pattern>

@@ -1,0 +1,2765 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for JEB Decompiler">
+      
+      
+        <link rel="canonical" href="https://www.pnfsoftware.com/jeb/manual/android.html">
+      
+      
+        <meta name="author" content="PNF Software">
+      
+      <link rel="shortcut icon" href="img/jeb-icon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Android Analysis - JEB Decompiler</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plugins" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-header-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            JEB Decompiler
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Android Analysis
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    JEB Decompiler
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Using JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Using JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Using JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="workspace.html" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="actions.html" title="Common Actions" class="md-nav__link">
+      Common Actions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="views.html" title="Common Views" class="md-nav__link">
+      Common Views
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="decompiling.html" title="Decompiling" class="md-nav__link">
+      Decompiling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="debugging.html" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Android Analysis
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="android.html" title="Android Analysis" class="md-nav__link md-nav__link--active">
+      Android Analysis
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-blogs" class="md-nav__link">
+    Technical Blogs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-levels" class="md-nav__link">
+    API Levels
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apk-structure" class="md-nav__link">
+    APK Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="APK Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificates" class="md-nav__link">
+    Certificates
+  </a>
+  
+    <nav class="md-nav" aria-label="Certificates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-1" class="md-nav__link">
+    Version 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versions-23" class="md-nav__link">
+    Versions 2/3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-4" class="md-nav__link">
+    Version 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manifest" class="md-nav__link">
+    Manifest
+  </a>
+  
+    <nav class="md-nav" aria-label="Manifest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-permissions" class="md-nav__link">
+    About Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structured-resources" class="md-nav__link">
+    Structured Resources
+  </a>
+  
+    <nav class="md-nav" aria-label="Structured Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oddities-and-obfuscation" class="md-nav__link">
+    Oddities and Obfuscation
+  </a>
+  
+    <nav class="md-nav" aria-label="Oddities and Obfuscation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name-removal" class="md-nav__link">
+    Name removal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flattened-hierarchy" class="md-nav__link">
+    Flattened hierarchy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decoding-problems" class="md-nav__link">
+    Decoding problems
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assets" class="md-nav__link">
+    Assets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#native-code" class="md-nav__link">
+    Native Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bytecode" class="md-nav__link">
+    Bytecode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dex-bytecode" class="md-nav__link">
+    Dex Bytecode
+  </a>
+  
+    <nav class="md-nav" aria-label="Dex Bytecode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dex-splitting" class="md-nav__link">
+    DEX splitting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dex-execution" class="md-nav__link">
+    DEX execution
+  </a>
+  
+    <nav class="md-nav" aria-label="DEX execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimized-dex-odex" class="md-nav__link">
+    Optimized dex (odex)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dex-format" class="md-nav__link">
+    DEX format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dalvik" class="md-nav__link">
+    Dalvik
+  </a>
+  
+    <nav class="md-nav" aria-label="Dalvik">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calling-convention" class="md-nav__link">
+    Calling convention
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smali-and-variants" class="md-nav__link">
+    Smali and variants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-components" class="md-nav__link">
+    Application components
+  </a>
+  
+    <nav class="md-nav" aria-label="Application components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-points" class="md-nav__link">
+    Entry points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    Activities
+  </a>
+  
+    <nav class="md-nav" aria-label="Activities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pseudo-activities" class="md-nav__link">
+    Pseudo activities
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-receivers" class="md-nav__link">
+    Broadcast Receivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-providers" class="md-nav__link">
+    Content Providers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intents" class="md-nav__link">
+    Intents
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dalvik-and-disassembly" class="md-nav__link">
+    Dalvik and Disassembly
+  </a>
+  
+    <nav class="md-nav" aria-label="Dalvik and Disassembly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto-dex-merging" class="md-nav__link">
+    Auto dex merging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dex-parsing-options" class="md-nav__link">
+    DEX parsing options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addressing" class="md-nav__link">
+    Addressing
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-naming-conventions" class="md-nav__link">
+    Types Naming Conventions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disassembly" class="md-nav__link">
+    Disassembly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renaming-and-refactoring" class="md-nav__link">
+    Renaming and Refactoring
+  </a>
+  
+    <nav class="md-nav" aria-label="Renaming and Refactoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renaming-methods" class="md-nav__link">
+    Renaming Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-fields" class="md-nav__link">
+    Renaming Fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reorganizing-code" class="md-nav__link">
+    Reorganizing code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-rename" class="md-nav__link">
+    Auto-rename
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-references-in-dalvik" class="md-nav__link">
+    Cross-references in Dalvik
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decompilation-to-java" class="md-nav__link">
+    Decompilation to Java
+  </a>
+  
+    <nav class="md-nav" aria-label="Decompilation to Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decompiling-classes" class="md-nav__link">
+    Decompiling classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generic-decryption-and-deobfuscation" class="md-nav__link">
+    Generic decryption and deobfuscation
+  </a>
+  
+    <nav class="md-nav" aria-label="Generic decryption and deobfuscation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-support" class="md-nav__link">
+    Known support
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptional-control-flow" class="md-nav__link">
+    Exceptional control flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovering-enums" class="md-nav__link">
+    Recovering enums
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovering-switches" class="md-nav__link">
+    Recovering switches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#member-classes-and-arguments-capturing" class="md-nav__link">
+    Member classes and arguments capturing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambdas-generation" class="md-nav__link">
+    Lambdas generation
+  </a>
+  
+    <nav class="md-nav" aria-label="Lambdas generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desugared-lambdas" class="md-nav__link">
+    Desugared Lambdas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-lambdas" class="md-nav__link">
+    Real Lambdas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-invocation-opcodes" class="md-nav__link">
+    Dynamic invocation opcodes
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic invocation opcodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artificial-classes-in-jebsynthetic" class="md-nav__link">
+    Artificial classes in jeb.synthetic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decompiling-java-bytecode" class="md-nav__link">
+    Decompiling Java Bytecode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-apps" class="md-nav__link">
+    Debugging Apps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    Miscellaneous
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bulk-decompilation-and-export" class="md-nav__link">
+    Bulk decompilation and Export
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callgraph-fragment" class="md-nav__link">
+    Callgraph fragment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaying-synthetic-items" class="md-nav__link">
+    Displaying synthetic items
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#third-party-frameworks" class="md-nav__link">
+    Third-party Frameworks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android-debugging.html" title="Android Debugging" class="md-nav__link">
+      Android Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="native.html" title="Native Code Analysis" class="md-nav__link">
+      Native Code Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="webassembly.html" title="WebAssembly Analysis" class="md-nav__link">
+      WebAssembly Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ethereum.html" title="Ethereum Analysis" class="md-nav__link">
+      Ethereum Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="misc.html" title="Miscellaneous" class="md-nav__link">
+      Miscellaneous
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Extending JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Extending JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Extending JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/introducing-jeb-extensions.html" title="Introducing JEB Extensions" class="md-nav__link">
+      Introducing JEB Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-client-scripts.html" title="Writing Client Scripts" class="md-nav__link">
+      Writing Client Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/android-scripting.html" title="Scripting for Android Reversing" class="md-nav__link">
+      Scripting for Android Reversing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Writing Parsers (Tutorial)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Writing Parsers (Tutorial)" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Writing Parsers (Tutorial)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/1-getting-started-with-parsers.html" title="Part 1: Getting Started with Parsers" class="md-nav__link">
+      Part 1: Getting Started with Parsers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-nav__link">
+      Part 2: Creating a Simple Parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/3-documents-delegation.html" title="Part 3: Documents and Delegation" class="md-nav__link">
+      Part 3: Documents and Delegation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/4-tables-trees.html" title="Part 4: Tables and Trees" class="md-nav__link">
+      Part 4: Tables and Trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/5-development-tips.html" title="Part 5: Development Tips" class="md-nav__link">
+      Part 5: Development Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/6-releasing-plugin.html" title="Part 6: Releasing a Plugin" class="md-nav__link">
+      Part 6: Releasing a Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/7-unit-interactivity.html" title="Part 7: Interactivity" class="md-nav__link">
+      Part 7: Interactivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/8-more-interactivity.html" title="Part 8: More on Interactivity" class="md-nav__link">
+      Part 8: More on Interactivity
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-engines-plugins.html" title="Writing Engines Plugins" class="md-nav__link">
+      Writing Engines Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-front-ends.html" title="Writing Front-Ends" class="md-nav__link">
+      Writing Front-Ends
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/other-resources.html" title="Additional Resources" class="md-nav__link">
+      Additional Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="settings.html" title="Settings" class="md-nav__link">
+      Settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="client-configuration.html" title="Client Configuration" class="md-nav__link">
+      Client Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="engines-configuration.html" title="Engines Configuration" class="md-nav__link">
+      Engines Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="floating.html" title="Floating Controller" class="md-nav__link">
+      Floating Controller
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="faq.html" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-blogs" class="md-nav__link">
+    Technical Blogs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-levels" class="md-nav__link">
+    API Levels
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apk-structure" class="md-nav__link">
+    APK Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="APK Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificates" class="md-nav__link">
+    Certificates
+  </a>
+  
+    <nav class="md-nav" aria-label="Certificates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-1" class="md-nav__link">
+    Version 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versions-23" class="md-nav__link">
+    Versions 2/3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-4" class="md-nav__link">
+    Version 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manifest" class="md-nav__link">
+    Manifest
+  </a>
+  
+    <nav class="md-nav" aria-label="Manifest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-permissions" class="md-nav__link">
+    About Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structured-resources" class="md-nav__link">
+    Structured Resources
+  </a>
+  
+    <nav class="md-nav" aria-label="Structured Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oddities-and-obfuscation" class="md-nav__link">
+    Oddities and Obfuscation
+  </a>
+  
+    <nav class="md-nav" aria-label="Oddities and Obfuscation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name-removal" class="md-nav__link">
+    Name removal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flattened-hierarchy" class="md-nav__link">
+    Flattened hierarchy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decoding-problems" class="md-nav__link">
+    Decoding problems
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assets" class="md-nav__link">
+    Assets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#native-code" class="md-nav__link">
+    Native Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bytecode" class="md-nav__link">
+    Bytecode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dex-bytecode" class="md-nav__link">
+    Dex Bytecode
+  </a>
+  
+    <nav class="md-nav" aria-label="Dex Bytecode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dex-splitting" class="md-nav__link">
+    DEX splitting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dex-execution" class="md-nav__link">
+    DEX execution
+  </a>
+  
+    <nav class="md-nav" aria-label="DEX execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimized-dex-odex" class="md-nav__link">
+    Optimized dex (odex)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dex-format" class="md-nav__link">
+    DEX format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dalvik" class="md-nav__link">
+    Dalvik
+  </a>
+  
+    <nav class="md-nav" aria-label="Dalvik">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calling-convention" class="md-nav__link">
+    Calling convention
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smali-and-variants" class="md-nav__link">
+    Smali and variants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-components" class="md-nav__link">
+    Application components
+  </a>
+  
+    <nav class="md-nav" aria-label="Application components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-points" class="md-nav__link">
+    Entry points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    Activities
+  </a>
+  
+    <nav class="md-nav" aria-label="Activities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pseudo-activities" class="md-nav__link">
+    Pseudo activities
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-receivers" class="md-nav__link">
+    Broadcast Receivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-providers" class="md-nav__link">
+    Content Providers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intents" class="md-nav__link">
+    Intents
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dalvik-and-disassembly" class="md-nav__link">
+    Dalvik and Disassembly
+  </a>
+  
+    <nav class="md-nav" aria-label="Dalvik and Disassembly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto-dex-merging" class="md-nav__link">
+    Auto dex merging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dex-parsing-options" class="md-nav__link">
+    DEX parsing options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addressing" class="md-nav__link">
+    Addressing
+  </a>
+  
+    <nav class="md-nav" aria-label="Addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-naming-conventions" class="md-nav__link">
+    Types Naming Conventions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disassembly" class="md-nav__link">
+    Disassembly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renaming-and-refactoring" class="md-nav__link">
+    Renaming and Refactoring
+  </a>
+  
+    <nav class="md-nav" aria-label="Renaming and Refactoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renaming-methods" class="md-nav__link">
+    Renaming Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-fields" class="md-nav__link">
+    Renaming Fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reorganizing-code" class="md-nav__link">
+    Reorganizing code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-rename" class="md-nav__link">
+    Auto-rename
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-references-in-dalvik" class="md-nav__link">
+    Cross-references in Dalvik
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decompilation-to-java" class="md-nav__link">
+    Decompilation to Java
+  </a>
+  
+    <nav class="md-nav" aria-label="Decompilation to Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decompiling-classes" class="md-nav__link">
+    Decompiling classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generic-decryption-and-deobfuscation" class="md-nav__link">
+    Generic decryption and deobfuscation
+  </a>
+  
+    <nav class="md-nav" aria-label="Generic decryption and deobfuscation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-support" class="md-nav__link">
+    Known support
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptional-control-flow" class="md-nav__link">
+    Exceptional control flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovering-enums" class="md-nav__link">
+    Recovering enums
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovering-switches" class="md-nav__link">
+    Recovering switches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#member-classes-and-arguments-capturing" class="md-nav__link">
+    Member classes and arguments capturing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambdas-generation" class="md-nav__link">
+    Lambdas generation
+  </a>
+  
+    <nav class="md-nav" aria-label="Lambdas generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desugared-lambdas" class="md-nav__link">
+    Desugared Lambdas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-lambdas" class="md-nav__link">
+    Real Lambdas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-invocation-opcodes" class="md-nav__link">
+    Dynamic invocation opcodes
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic invocation opcodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artificial-classes-in-jebsynthetic" class="md-nav__link">
+    Artificial classes in jeb.synthetic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decompiling-java-bytecode" class="md-nav__link">
+    Decompiling Java Bytecode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-apps" class="md-nav__link">
+    Debugging Apps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    Miscellaneous
+  </a>
+  
+    <nav class="md-nav" aria-label="Miscellaneous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bulk-decompilation-and-export" class="md-nav__link">
+    Bulk decompilation and Export
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callgraph-fragment" class="md-nav__link">
+    Callgraph fragment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaying-synthetic-items" class="md-nav__link">
+    Displaying synthetic items
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#third-party-frameworks" class="md-nav__link">
+    Third-party Frameworks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Android Analysis</h1>
+                
+                <div class="admonition info">
+<p class="admonition-title">Previous material</p>
+<p>We recommend the reader to be familiar with the platform-agnostic sections <a href="actions.html">Actions</a>, <a href="views.html">Views</a>, and <a href="decompiling.html">Decompiling</a> before proceeding with Android-specific contents.</p>
+</div>
+<p>JEB is a well-known industry tool used to reverse-engineer and audit Android applications. You will be able to:</p>
+<ul>
+<li>Analyze APK files and their contents, including DEX files, Certificates, Resources, Assets, Native Library code, etc.</li>
+<li>Examine encoded resource files and manifests, including resources with obfuscated names and locations.</li>
+<li>Examine app certificates (legacy, v2, and v3)</li>
+<li>Decompile DEX bytecode, with full-support for multi-DEX reconstruction.</li>
+<li>Analyze native library code: more on the <a href="native.html">Native code analysis section</a></li>
+<li>Debug Android applications (Dalvik and Native - x86, arm, mips - code) and transition seamlessly from Dalvik to Native, and vice-versa.</li>
+<li>Write your own extensions using the API (client scripts in Python, back-end plugins in Java).</li>
+</ul>
+<h3 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">#</a></h3>
+<p>The plugins used to analyze Android apps consist of:</p>
+<ul>
+<li>The APK plugin is responsible for processing APK files. Encoded resources (arsc) are decoded by this plugin. Other jobs, such as analyzing dex files, analyzing certificates, processing asset files, analyzing binary files, etc. are delegated to appropriate plugins.</li>
+<li>The DEX plugins: DEX analyzer (DEX parsing and merging, Dalvik disassembling, etc.), DEX decompiler, DEX debuggers.</li>
+<li>Native code analyzers: disassemblers, decompilers, etc.</li>
+<li>A handful of other plugins, such as Certificate parsers, XML/HTML/JSON/etc. parsers.</li>
+</ul>
+<p>This section mostly focuses on the APK plugin and the DEX analyzer. Other plugins are documented in separate sections of this manual.</p>
+<h3 id="technical-blogs">Technical Blogs<a class="headerlink" href="#technical-blogs" title="Permanent link">#</a></h3>
+<p>Our blog is filled with technical posts that will help you make the most of JEB. It is the ideal companion to this manual. Link: <a href="https://www.pnfsoftware.com/blog/category/android/">All PNF Software blog posts tagged Android.</a></p>
+<h3 id="api-levels">API Levels<a class="headerlink" href="#api-levels" title="Permanent link">#</a></h3>
+<p>API levels are regularly mentioned throughout this document. Here is a list of "recent" Android versions, their corresponding API levels, as well as notable changes regarding security.</p>
+<table>
+<thead>
+<tr>
+<th>Codename</th>
+<th>Version</th>
+<th>API level</th>
+<th>Date</th>
+<th>New security features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R (<a href="https://android-developers.googleblog.com/2020/04/android-11-developer-preview-3.html">DP3</a>)</td>
+<td>11</td>
+<td>30</td>
+<td>2020</td>
+<td>Privacy updates, APK Signature Scheme v4</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>10</td>
+<td>29</td>
+<td>2019</td>
+<td>Permissions for privacy, BiometricPrompt</td>
+</tr>
+<tr>
+<td>Pie</td>
+<td>9</td>
+<td>28</td>
+<td>2018</td>
+<td>ART: Vdex with Cdex, AS-FBE, biometric API, lockdown mode, APK Signature Scheme v3</td>
+</tr>
+<tr>
+<td>Oreo</td>
+<td>8, 8.1</td>
+<td>26, 27</td>
+<td>2017</td>
+<td>ART: OAT with Vdex (oat w/o dex, separate vdex with dex'es), Google Play Protect</td>
+</tr>
+<tr>
+<td>Nougat</td>
+<td>7, 7.1</td>
+<td>24, 25</td>
+<td>2016</td>
+<td>APK Signature Scheme v2, File Based Encryption (FBE - and consequently, DirectBoot), AS-FDE, Android Things</td>
+</tr>
+<tr>
+<td>Marshmallow</td>
+<td>6</td>
+<td>23</td>
+<td>2015</td>
+<td>Adoptable Storage (AS), granular permissions and permission levels (NORMAL, DANGEROUS), Doze &amp; App Standby, Android Wear</td>
+</tr>
+<tr>
+<td>Lollipop</td>
+<td>5, 5.1</td>
+<td>21, 22</td>
+<td>2014</td>
+<td>ART: OAT with dex'es in .rodata, 64-bit support (x86_64, arm64-v8a), Android Auto</td>
+</tr>
+<tr>
+<td>KitKat</td>
+<td>4.4, 4.4W</td>
+<td>19, 20</td>
+<td>2013</td>
+<td>ART (optional), VerifiedBoot, Full Disk Encryption (FDE)</td>
+</tr>
+<tr>
+<td>Jelly Bean</td>
+<td>4.1, 4.2, 4.3</td>
+<td>4.4, 4.4W</td>
+<td>2012</td>
+<td>SELinux introduction, multi-users</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><a href="https://source.android.com/setup/start/build-numbers">Android Versions Reference</a></p>
+</blockquote>
+<hr />
+<h2 id="apk-structure">APK Structure<a class="headerlink" href="#apk-structure" title="Permanent link">#</a></h2>
+<p><strong>This section is a short primer on the <em>Android Package</em> file (APK).</strong> It is assumed that the reader is already familiar with the structure of an APK. Good introduction material can be found on the official <a href="https://developer.android.com/guide/components/fundamentals">Android developer portal</a>.</p>
+<p>An Android app is a zip file containing application code, data, and metadata.</p>
+<ul>
+<li>Code: Dalvik (bytecode), Native (*.so libs)</li>
+<li>Data: resources (structured), assets (unstructured)</li>
+<li>Metadata= manifest (what), certificates (who)</li>
+</ul>
+<p>When JEB processes an APK, the resulting structure in the Project tree will differ from a raw ZIP tree view. The range of differences goes from slightly for regular apps, to significantly for obfuscated or complex apps.</p>
+<p>The picture below shows a side-by-side comparison of processing an app as a ZIP file vs processing it as an APK:</p>
+<p><a href="img/70489737.png"><img src="img/70489737-small.png" srcset="img/70489737-small.png 2x" /></a></p>
+<ul>
+<li>Manifest: encoded VS decoded</li>
+<li>Certificates: v1 (visible, in file MANIFEST.MF), v2/v3 (in ZIP) VS parsed certificates</li>
+<li>Bytecode: spread over classes.dex, classes1.dex, ..., classesN.dex VS virtual merged DEX unit</li>
+<li>Resources: encoded and scattered in resources.arsc, res/, elsewhere (anywhere) VS decoded and reorganized resources</li>
+<li>Native libs: 1-to-1</li>
+<li>Assets: 1-to-1</li>
+</ul>
+<h3 id="certificates">Certificates<a class="headerlink" href="#certificates" title="Permanent link">#</a></h3>
+<p>As of Android 11, four types of signatures are in place to sign APKs, versions 1 through 4.</p>
+<h4 id="version-1">Version 1<a class="headerlink" href="#version-1" title="Permanent link">#</a></h4>
+<p>Version 1 is the legacy scheme supported by all versions of Android:</p>
+<ul>
+<li>standard Jar signing (Oracle)</li>
+<li>signing data goes in META-INF/</li>
+<li>each individual file in the archive is signed<ul>
+<li>MANIFEST.MF: list of hashes of all files</li>
+<li>xxx.SF: hash of hash entries in MANIFEST.MF</li>
+<li>xxx.{RSA,DSA,...}: signature of xxx.SF + signer certificate (= what JEB displays)</li>
+<li>note that xxx='CERT', usually</li>
+</ul>
+</li>
+<li>The apk/zip itself is not signed: this scheme is both inefficient and incomplete when the goal is to verify the APK as a whole</li>
+</ul>
+<h4 id="versions-23">Versions 2/3<a class="headerlink" href="#versions-23" title="Permanent link">#</a></h4>
+<p>Versions 2 and 3 are specific to Android:</p>
+<ul>
+<li>What is signed is the APK as a whole</li>
+<li>Uses a twist in zip format specifications</li>
+<li>The global signing block is inserted just before the zip Central Directory (and can be located by looking for a magic number)</li>
+<li>V3 = V2 + support for key rotation</li>
+<li>What is displayed in the Certificate fragment is the signer's certificate, just like V1's</li>
+<li>review the <a href="https://source.android.com/security/apksigning">reference documentation</a> for additional details</li>
+</ul>
+<p><a href="img/80d16c57.png"><img src="img/80d16c57-small.png" srcset="img/80d16c57-small.png 2x" /></a></p>
+<h4 id="version-4">Version 4<a class="headerlink" href="#version-4" title="Permanent link">#</a></h4>
+<p>The APK signature scheme version 4 scheme is being introduced with Android 11 (R) to ease development of larger applications. The signature of the APK is done incrementally via a Merkle tree. The signing data is stored separately in an <code>&lt;APKNAME&gt;.idsig</code> file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Version 4 signatures do not seem to be designed for release purposes. At the moment, JEB does not parse <code>idsig</code> files.</p>
+</div>
+<p>JEB parses v1/v2/v3 signing data. The certificate is displayed as a tree in the UI client:</p>
+<p><a href="img/7ede162c.png"><img src="img/7ede162c-small.png" srcset="img/7ede162c-small.png 2x" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">API</p>
+<p>To retrieve this data programmatically: refer to <a href="https://www.pnfsoftware.com/jeb/apidoc/reference/com/pnfsoftware/jeb/core/units/code/android/IApkUnit.html">IApkUnit</a>, methods <code>getSignatureSchemeVersionFlags</code> and <code>getSignatureSchemeV{2,3}Block</code></p>
+</div>
+<h3 id="manifest">Manifest<a class="headerlink" href="#manifest" title="Permanent link">#</a></h3>
+<p>AndroidManifest.xml defines the Android application to whoever interacts with it, from building, to deployment, to execution.</p>
+<p>Important parts of the Manifest:</p>
+<ul>
+<li>Package name (fully qualified Java name)</li>
+<li>Requirements to run the app (API level, hardware configs)</li>
+<li>Permissions required by the app (not all may be granted by the system at t0)</li>
+<li>Components <a href="https://developer.android.com/guide/topics/manifest/manifest-intro#components">must be declared in apps</a> - except for Broadcast receivers, which can be registered dynamically<ul>
+<li>Activities (UI elements)</li>
+<li>Services (background execution)</li>
+<li>Broadcast Receivers (receive and process events from apps/system)</li>
+<li>Content Providers (offer data to other apps/system)</li>
+</ul>
+</li>
+<li>Declares whether the app is debuggable on a production device
+<code>&lt;application android:debuggable="false|true" ...</code></li>
+</ul>
+<p>For example, the simple manifest below...</p>
+<ul>
+<li>declares a app named (internal package name) com.xyz.appcheck</li>
+<li>requiring at least and ideally API 26 (Android P)</li>
+<li>wants read+write access to storage</li>
+<li>the App is debuggable</li>
+<li>it declares one main activity (visible on launcher)</li>
+<li>as well as one implicit broadcast receiver</li>
+</ul>
+<p><a href="img/72c99d23.png"><img src="img/72c99d23-small.png" srcset="img/72c99d23-small.png 2x" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Manifests can be very complex and lengthy. For example, the primary Facebook app (<code>com.facebook.katana</code>) manifest is well over 2000 lines, mostly Activity descriptions.</p>
+</div>
+<h4 id="about-permissions">About Permissions<a class="headerlink" href="#about-permissions" title="Permanent link">#</a></h4>
+<p>Permissions provide an indirect insight into what "functions" the app needs to perform. They are granted by the user at install and/or runtime:</p>
+<ul>
+<li>Before API 23, permissions were all granted at install time. A pop-up would display which dangerous permission groups are being requested.</li>
+<li>With API levels 23+, permissions are granular, and dangerous permissions are granted at run-time<ul>
+<li>unless the Manifest declares targetSdk&lt;23 !</li>
+<li>the user will be shown a system pop-up</li>
+<li>permissions can also be revoked in settings</li>
+</ul>
+</li>
+</ul>
+<p>Permissions - whether related code requiring them is used, whether they are granted explicitly or implicitly -, <a href="https://developer.android.com/guide/topics/permissions/overview">MUST all be declared in the Manifest</a>, i.e. an app cannot programmatically request a permission that was not declared in the Manifest in the first place. </p>
+<h3 id="structured-resources">Structured Resources<a class="headerlink" href="#structured-resources" title="Permanent link">#</a></h3>
+<p>Structured resources of an app consist of XML files (e.g., app layouts, strings, etc.), image files, icons, etc.</p>
+<ul>
+<li>XML resources are encoded using a binary format called <code>arsc</code>. The manifest, an XML resource, is encoded as well.</li>
+<li>Common resources’ information goes into the app <code>resources.arsc</code> file<ul>
+<li>Resources references resources.arsc items by id</li>
+<li>They can also reference Android Framework and other vendor-installed framework resources by id (refer to the section 'Third-party Frameworks')</li>
+</ul>
+</li>
+<li>JEB always ships with the latest official Android Framework</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For additional information on Resources:</p>
+<ul>
+<li>high-level information can be found in <a href="https://developer.android.com/guide/topics/resources/providing-resources">the official doc</a></li>
+<li>lower-level details of the arsc format can be found by going through the main implementation of the encoder and decoder, on the AOSP's <code>platform/frameworks/base</code> repository. The newest <code>ResourceTypes.h</code> is <a href="https://github.com/aosp-mirror/platform_frameworks_base/blob/master/libs/androidfw/include/androidfw/ResourceTypes.h">located here</a>.</li>
+</ul>
+</div>
+<h4 id="oddities-and-obfuscation">Oddities and Obfuscation<a class="headerlink" href="#oddities-and-obfuscation" title="Permanent link">#</a></h4>
+<p>Resources on Android can be mangled in several ways. JEB unmangles them to the best of its ability. Below, we briefly describe two commonly found obfuscation techniques.</p>
+<h5 id="name-removal">Name removal<a class="headerlink" href="#name-removal" title="Permanent link">#</a></h5>
+<p>Resource items are normally identified by a name as well as an id. Several application protectors remove resource names from the compiled <em>resources.arsc</em> file when they reference well-known framework resources.</p>
+<p>E.g., the manifest below had resource names removed. Note that most XML attribute names are missing.</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span> <span class="na">:=</span><span class="s">&quot;1.1&quot;</span> <span class="na">android:versionCode=</span><span class="s">&quot;2&quot;</span> <span class="na">platformBuildVersionName=</span><span class="s">&quot;6.0-5078647&quot;</span> <span class="na">platformBuildVersionCode=</span><span class="s">&quot;23&quot;</span> <span class="na">package=</span><span class="s">&quot;com.virginoff.player&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;uses-sdk</span> <span class="na">:=</span><span class="s">&quot;7&quot;</span> <span class="na">:=</span><span class="s">&quot;23&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">:=</span><span class="s">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">:=</span><span class="s">&quot;android.permission.SEND_SMS&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">:=</span><span class="s">&quot;android.permission.INTERNET&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">:=</span><span class="s">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">:=</span><span class="s">&quot;android.permission.WAKE_LOCK&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;application</span> <span class="na">:=</span><span class="s">&quot;@style/Theme.NoTitleBar.Fullscreen&quot;</span> <span class="na">:=</span><span class="s">&quot;Anal Sex Video&quot;</span> <span class="na">:=</span><span class="s">&quot;@drawable/ic_launcher&quot;</span> <span class="na">:=</span><span class="s">&quot;.Application&quot;</span> <span class="na">:=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;activity</span> <span class="na">:=</span><span class="s">&quot;.activity.WrapperActivity&quot;</span> <span class="na">:=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;intent-filter&gt;</span>
+                <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.action.MAIN&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.category.LAUNCHER&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/intent-filter&gt;</span>
+        <span class="nt">&lt;/activity&gt;</span>
+        <span class="nt">&lt;activity</span> <span class="na">:=</span><span class="s">&quot;o.ϟ&quot;</span> <span class="na">:=</span><span class="s">&quot;0&quot;</span> <span class="na">:=</span><span class="s">&quot;a0&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;activity</span> <span class="na">:=</span><span class="s">&quot;o.ȭ&quot;</span> <span class="na">:=</span><span class="s">&quot;0&quot;</span> <span class="na">:=</span><span class="s">&quot;a0&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;service</span> <span class="na">:=</span><span class="s">&quot;o.Ƃ&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/application&gt;</span>
+<span class="nt">&lt;/manifest&gt;</span>
+</code></pre></div>
+
+
+<p>Dump the manifest using <code>aapt</code> to see the actual ids:</p>
+<div class="codehilite"><pre><span></span><code>$ aapt dump xmltree <span class="m">1</span>.apk AndroidManifest.xml
+N: <span class="nv">android</span><span class="o">=</span>http://schemas.android.com/apk/res/android
+  E: manifest <span class="o">(</span><span class="nv">line</span><span class="o">=</span><span class="m">0</span><span class="o">)</span>
+    A: :<span class="o">(</span>0x0101021c<span class="o">)=</span><span class="s2">&quot;1.1&quot;</span> <span class="o">(</span>Raw: <span class="s2">&quot;1.1&quot;</span><span class="o">)</span>
+    A: android:versionCode<span class="o">(</span>0x0101021b<span class="o">)=(</span><span class="nb">type</span> 0x10<span class="o">)</span>0x2
+    A: <span class="nv">platformBuildVersionName</span><span class="o">=</span><span class="s2">&quot;6.0-5078647&quot;</span> <span class="o">(</span>Raw: <span class="s2">&quot;6.0-5078647&quot;</span><span class="o">)</span>
+    A: <span class="nv">platformBuildVersionCode</span><span class="o">=(</span><span class="nb">type</span> 0x10<span class="o">)</span>0x17
+    A: <span class="nv">package</span><span class="o">=</span><span class="s2">&quot;com.virginoff.player&quot;</span> <span class="o">(</span>Raw: <span class="s2">&quot;com.virginoff.player&quot;</span><span class="o">)</span>
+    E: uses-sdk <span class="o">(</span><span class="nv">line</span><span class="o">=</span><span class="m">0</span><span class="o">)</span>
+      A: :<span class="o">(</span>0x0101020c<span class="o">)=(</span><span class="nb">type</span> 0x10<span class="o">)</span>0x7
+      A: :<span class="o">(</span>0x01010270<span class="o">)=(</span><span class="nb">type</span> 0x10<span class="o">)</span>0x17
+    E: uses-permission <span class="o">(</span><span class="nv">line</span><span class="o">=</span><span class="m">0</span><span class="o">)</span>
+      A: :<span class="o">(</span>0x01010003<span class="o">)=</span><span class="s2">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span> <span class="o">(</span>Raw: <span class="s2">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span><span class="o">)</span>
+...
+</code></pre></div>
+
+
+<p>Above, we can see that the <code>uses-permission</code> tag, for example, specifies the use of an attribute whose id is 0x01010003.</p>
+<p>Attributes of an Android Manifest are well-known resources and stored as such in the Android framework. You can use <code>aapt</code> on the Android framework file to see them:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$ aapt dump --values resources ~/.jeb-android-frameworks/1.apk</span>
+<span class="err">Package Groups (1)</span>
+<span class="err">Package Group 0 id=0x01 packageCount=1 name=android</span>
+<span class="err">  Package 0 id=0x01 name=android</span>
+<span class="err">    type 0 configCount=1 entryCount=1543</span>
+<span class="err">      spec resource 0x01010000 android:attr/theme: flags=0x40000000</span>
+<span class="err">      spec resource 0x01010001 android:attr/label: flags=0x40000000</span>
+<span class="err">      spec resource 0x01010002 android:attr/icon: flags=0x40000000</span>
+<span class="err"> ---&gt; spec resource 0x01010003 android:attr/name: flags=0x40000000</span>
+<span class="err">      spec resource 0x01010004 android:attr/manageSpaceActivity: flags=0x40000000</span>
+<span class="err">      spec resource 0x01010005 android:attr/allowClearUserData: flags=0x40000000</span>
+<span class="err">...</span>
+</code></pre></div>
+
+
+<p>So, that tag could be restored to:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;uses-permission</span> <span class="na">name=</span><span class="s">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Android framework contains all base system resources for a given version of Android - it is located in the <code>/system/framework/framework-res.apk</code> (resources only) on a device, or the <code>platforms/&lt;APILEVEL&gt;/android.jar</code> in the Android SDK. JEB also drops the latest stable framework to your HOME folder's <code>jeb-android-frameworks/1.apk</code></p>
+</div>
+<p>The above process is automated by JEB to restore XML files to a human-readable states.</p>
+<h5 id="flattened-hierarchy">Flattened hierarchy<a class="headerlink" href="#flattened-hierarchy" title="Permanent link">#</a></h5>
+<p>Although most structured resources (with the notable exception of the Manifest) are typically stored hierarchically under the <code>res</code> folder, they do not have to be. Some application protectors take advantage of this fact to flatten the resources tree, and for example, store them in the APK's root folder.</p>
+<p>E.g., in the file below (a protected online banking app), most resource files were renamed to mangled names and stored alongside the Manifest; the res/ folder is present and contains only a handful of resources.</p>
+<p><a href="img/d09a3af3.png"><img src="img/d09a3af3-small.png" srcset="img/d09a3af3-small.png 2x" /></a></p>
+<p>JEB restores both the hierarchy and names of those resource files.</p>
+<p><a href="img/ddb208b8.png"><img src="img/ddb208b8-small.png" srcset="img/ddb208b8-small.png 2x" /></a></p>
+<h5 id="decoding-problems">Decoding problems<a class="headerlink" href="#decoding-problems" title="Permanent link">#</a></h5>
+<p>Other oddities exist, they can be found in apps stretching the limits of the arsc format specifications to their boundaries.</p>
+<p>They can be used, voluntarily or not, to thwart and crash various open-source tools. We won't detail them here, but you can find additional information here and there on our blog as well as the <a href="https://github.com/iBotPeaches/Apktool/issues">Apktool's GitHub issue tracker</a>, a prime source to find weird parsing cases.</p>
+<p>As an example, here is <code>aapt2</code> (version around spring 2019) failing on a version of the Facebook app:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$ aapt2 dump Facebook_v153.0.0.54.88.apk</span>
+<span class="err">error: trying to add resource &#39;com.facebook.katana:id/(name removed)&#39; with ID 0x7f090001 but resource already has ID 0x7f090000.</span>
+</code></pre></div>
+
+
+<h3 id="assets">Assets<a class="headerlink" href="#assets" title="Permanent link">#</a></h3>
+<p>Assets are unstructured resources. They can be of any type and stored anywhere in the APK archive. However, the <code>assets/</code> directory is standard, and used by the Android <em>AssetManager</em> object.</p>
+<p>Assets stored in the Resources folder <code>res/raw</code> are stored as-is (in particular, XML files are not encoded), and yet, are accessible in code by id, using the <code>R</code> class, just like any other standard resource.</p>
+<p><a href="img/62d8d53e.png"><figure><img src="img/62d8d53e-small.png" srcset="img/62d8d53e-small.png 2x" /><figcaption>The asset file below, <code>edd.bin</code>, is holding encrypted data</figcaption></figure></a></p>
+<h3 id="native-code">Native Code<a class="headerlink" href="#native-code" title="Permanent link">#</a></h3>
+<p>Android applications often contain native code, compiled as ELF library <code>.so</code> files. They can be located anywhere in the app. SO files can be loaded from bytecode via <em>System.loadLibrary(simpleName)</em> and <em>System.load(path)</em>.</p>
+<p>A common location for SO files is the app's <code>lib/</code> folder. Libraries stored in this folder and adhering to the JNI naming convention allow the Android system to unpack appropriate SO to the device folder <code>/data/data/&lt;app&gt;/lib</code>, and make it easier for high-level code to load them, i.e. there is no need to implement the logic of figuring out which underlying platform the device is running on.</p>
+<ul>
+<li>Location: <code>[APK]/lib/&lt;abi&gt;/lib&lt;name&gt;.so</code></li>
+<li>Example: high-level request <code>System.loadLibrary("native-lib")</code> on an aarch64 device =&gt; <code>lib/arm64-v8a/libnative-lib.so</code> on a Pixel phone with an Arm64 CPU</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>For more information on native code analysis, debugging and decompilation, refer to the manual pages relative to <a href="native.html">native code</a>.</p>
+</div>
+<h3 id="bytecode">Bytecode<a class="headerlink" href="#bytecode" title="Permanent link">#</a></h3>
+<p>Refer to the DEX sub-section <a href="#dex-code">below</a>.</p>
+<hr />
+<h2 id="dex-bytecode">Dex Bytecode<a class="headerlink" href="#dex-bytecode" title="Permanent link">#</a></h2>
+<p><em>Dex</em> (or <em>DEX</em>, throughout this section), short for <em>Dalvik Executable</em>, is an object container for Dalvik code. It is Android's equivalent of ELF, PE, COFF, etc. containers for native code.</p>
+<p>The primary dex file of an app is named <code>classes.dex</code>, located in the app's root folder. This file is present in the vast majority of apps, although it is optional: apps can be purely native.</p>
+<h3 id="dex-splitting">DEX splitting<a class="headerlink" href="#dex-splitting" title="Permanent link">#</a></h3>
+<p>Additional DEX files may be present: <code>classes2.dex</code>, <code>classes3.dex</code>, etc. The reason behind code splitting is a Dalvik VM legacy limitation called the "64K reference limit": many items present in a DEX file are referenced by an id stored on a 16-bit integer, e.g. it is the case for methods and fields references. To overcome the limitation, compilers such as <code>d8</code> (or its predecessor <code>dx</code>) split the code over additional DEX files <code>classesN.dex</code>, where N&gt;=2.</p>
+<p>Additional references are created to reference definitions located in other DEX files. JEB merges all <code>classesN.dex</code> in a single, virtual DEX unit. Note that in practice, such DEX units could not be converted back to a single DEX file. Also keep in mind that apps may artificially split their code over multiple DEX files; the 64Krefs limit is not a hard requirement.</p>
+<p>This app was split over 7 dex files:</p>
+<p><a href="img/d903a0a4.png"><img src="img/d903a0a4-small.png" srcset="img/d903a0a4-small.png 2x" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>On pre-API 21 (Android 5) systems, it is the responsibility of the app to load additional files - i.e., the DEX splitting mechanism is not something baked into the Dalvik VM itself. Apps can extend the support class <a href="https://developer.android.com/reference/androidx/multidex/MultiDexApplication">MultiDexApplication</a> to avoid implementing their own DEX loader, as the vast majority of the apps do. However, keep in mind that this is in no way mandatory. Malware files or protected files can implement multi-dex loading facility however they see fit.</p>
+<p>On API 21 and above, with the advent of the new Android ART runtime, files names <code>classesN.dex</code> are scanned and pre-compiled along with <code>classes.dex</code>. However, this mechanism does not preclude apps to use additional DEX loading facility as well.</p>
+</div>
+<h3 id="dex-execution">DEX execution<a class="headerlink" href="#dex-execution" title="Permanent link">#</a></h3>
+<p>There are two general types of dex files:</p>
+<ul>
+<li>regular dex files contain generic code, use standard Dalvik instructions, meant to run on all Android devices</li>
+<li><em>odex</em> files, on the other hand - a generic term for "optimized DEX" - contain device specific instructions.</li>
+</ul>
+<h5 id="optimized-dex-odex">Optimized dex (odex)<a class="headerlink" href="#optimized-dex-odex" title="Permanent link">#</a></h5>
+<p>The DEX file(s) located in your app is not the code executed on device - except when debugging. DEX code is executed by a runtime:</p>
+<ul>
+<li>The legacy runtime (pre-API 21 Lollipop) uses a JIT (just-in-time) compiler and generate odex files on first run.</li>
+<li>The current runtime is named <em>ART</em> (short for <em>Android Runtime</em>) and makes use of AOT (ahead-of-time) compilation of Dalvik to native (x86 or ARM) at install time</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The format of optimized DEX files has evolved over time ("dey" magic, OAT files with DEX or DEX-like entries, VDEX and CDEX, etc.). The process of reconstructing a DEX from an optimized-DEX is systematic and implemented in several tools, such as <code>baksmali deodex</code> or <code>vdexExtractor</code>. Refer to additional references, such as <a href="https://lief.quarkslab.com/doc/latest/tutorials/10_android_formats.html#">Lief's notes on OAT and ART</a>, for more information on odex.</p>
+</div>
+<p>Link: <a href="https://docs.google.com/spreadsheets/d/1TNDVE57PtosvRw7gvPosdHXRu5PPFTt22YWKdJu-nV4/view#gid=0">List of odex instructions</a>.</p>
+<h3 id="dex-format">DEX format<a class="headerlink" href="#dex-format" title="Permanent link">#</a></h3>
+<p>This section quickly summarizes important facts about the DEX format. Refer to the official specifications for additional details:</p>
+<ul>
+<li><a href="https://source.android.com/devices/tech/dalvik/dex-format">DEX format</a></li>
+<li><a href="https://source.android.com/devices/tech/dalvik/dalvik-bytecode">Bytecode format</a></li>
+<li><a href="https://source.android.com/devices/tech/dalvik/instruction-formats">List of instructions</a>.</li>
+</ul>
+<p><a href="img/8a7297c6.png"><figure><img src="img/8a7297c6-small.png" srcset="img/8a7297c6-small.png 2x" /><figcaption>Structure of a DEX file</figcaption></figure></a></p>
+<p>The format can be linearly represented as:</p>
+<ul>
+<li>In Header: DEX magic, DEX version: <code>dex\n0NN\0</code> where NN=<ul>
+<li>35: up to Android 7-</li>
+<li>37: Android 7, <code>invoke-virtual</code> and <code>invoke-super</code> accept interface methods ids (support for Java 8's <code>default</code> methods)</li>
+<li>38: Android 8, added <code>invoke-polymorphic</code>, <code>invoke-custom</code>, call sites and method handles entries (<a href="https://www.pnfsoftware.com/blog/android-o-and-dex-version-38-new-dalvik-opcodes-to-support-dynamic-invocation/">details</a>)</li>
+<li>39: Android 9, added <code>const-method-handle</code>, <code>const-method-type</code> (<a href="https://www.pnfsoftware.com/blog/dex-version-39-new-dalvik-opcodes/">details</a>)</li>
+</ul>
+</li>
+<li>Tables are ordered alphabetically and do not allow duplicates</li>
+<li>Note that the map section was purely redundant until DEX 38 and the introduction of method handles and call sites.</li>
+</ul>
+<p>The three links above cannot be overlooked: any Android reverser should strive for Dex and Dalvik proficiency. That being said, below is a list of lesser-known or overlooked details about about Dalvik:</p>
+<ul>
+<li>Strings are encoded using a variant of CESU-8 called MUTF-8 (modified UTF-8)<ul>
+<li>1- 2- 3-byte encoding (whereas UTF-8 allows up to 4-byte)</li>
+<li>Surrogates: 2x3-byte for chars \u010000 to \u10FFFF (whereas canonical representations of UTF-8 does not use surrogates; UTF-16 does)</li>
+<li>\u0000 is encoded as \x00\x00 (whereas UTF-8 uses \x00)</li>
+<li>Special byte \x00 indicates string end (there is no EOS concept with UTF-X)</li>
+</ul>
+</li>
+<li>Some 32-bit integers are encoded using the variable encoding scheme LEB128 and its variants</li>
+<li>Types use Strings: type definition= index into string pool</li>
+<li>Prototypes use Strings and Types<ul>
+<li>Shorty definition= index into string pool</li>
+<li>Full prototype definition = list of indices into type pool</li>
+</ul>
+</li>
+<li>The Dalvik bytecode is stored in Code items</li>
+<li>Call Sites and Method Handles were introduced in DEX 38<ul>
+<li>The DEX header remained unchanged and does not directly reference those pools; instead, they are referenced in the Map area (which largely remained unused until those items were introduced)</li>
+<li>Learn more about <a href="https://www.pnfsoftware.com/blog/android-o-and-dex-version-38-new-dalvik-opcodes-to-support-dynamic-invocation/">DEX 38 on our blog</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="dalvik">Dalvik<a class="headerlink" href="#dalvik" title="Permanent link">#</a></h3>
+<p>Dalvik is the name of the low-level bytecode stored in DEX files. Dalvik bytecode is interpreted by a Virtual Machine (DVM).</p>
+<p>Generation:</p>
+<ul>
+<li>Source language: smali (low-level), Java (high-level), Kotlin (very high-level)</li>
+<li>Java -&gt; javac -&gt; classfiles (Java bytecode) -&gt; dx/d8 -&gt; classes.dex (Dalvik bc)</li>
+</ul>
+<p>Characteristics:</p>
+<ul>
+<li>Register-based machine:<ul>
+<li>65,536 32-bit registers, numbered <code>v0</code> to <code>v65535</code></li>
+<li>65,535 64-bit registers, "emulated" by using consecutive 32-bit registers [v0,v1], [v1,v2], ..., [vN,vN+1]</li>
+<li>No "special" register is accessible: no flag register, no PC register, no current-frame register, etc.</li>
+<li>Fixed frames (stack is N/A, no stack pointer), size declared in Code items</li>
+<li>Pointer= object reference ~= fits on a single register (32-bit)</li>
+</ul>
+</li>
+<li>Regular instructions range from 2 to 10 bytes (=1 to 5 words)<ul>
+<li>Instruction opcode encoded on a single byte; the second byte of the first word is generally used to encode register indices</li>
+<li><code>nop</code> (1w), <code>const-wide v1, 0x1122334455667788L</code> (5w)</li>
+</ul>
+</li>
+</ul>
+<p>The generally accepted convention is to represent Dalvik disassembly in smali or a variant of smali. By default, JEB uses a variant of Smali, slightly less verbose (more readable and better suited to be displayed and manipulated in an interactive fragment).</p>
+<ul>
+<li>Method bodies live in isolation, the concept of "jump far" (unstructured dispatch) is irrelevant. Dispatching execution to other methods is done via invoke-xxx instructions only</li>
+<li>Jumps are always relative to the current PC</li>
+<li>Retrieving the returned value of a function is done via a move-result-xxx instruction, located right after the invoke-xxx instruction</li>
+<li>Arithmetic instructions have no side-effects / there is no flag register</li>
+<li>Data in bytecode is legal:<ul>
+<li>Immediates: Some instructions store literals inline (i.e., within the instruction code), e.g. <code>const-xxx</code></li>
+<li>N-way branching instruction: <code>switch-xxx</code>: the jump table is stored within the bytecode</li>
+<li>Small array initialization: <code>fill-array-data-payload</code>: array data is stored within the bytecode</li>
+</ul>
+</li>
+</ul>
+<h4 id="calling-convention">Calling convention<a class="headerlink" href="#calling-convention" title="Permanent link">#</a></h4>
+<p>The DVM runs managed code and uses <strong>a no-side effect, no cleaning calling convention</strong>: every function gets a clean register slate upon execution; the parameters are stored at the bottom of the declared frame.</p>
+<p>Registers are 32-bit wide and noted <code>vX</code>, 0-indexed. The alternate notation <code>pX</code> is used to address registers used to store input method parameters: its indexing start from <code>frame_size - input_slot_counts</code>.</p>
+<p>Example 1:</p>
+<ul>
+<li>Method: <code>void foo(int a, char b, bool c, Object d)</code></li>
+<li>The CodeItem declares a frame of size 5</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">v0</span>
+<span class="err">v1 &lt;- parameter 0: p0 (a)</span>
+<span class="err">v2 &lt;- parameter 1: p1 (b)</span>
+<span class="err">v3 &lt;- parameter 2: p2 (c)</span>
+<span class="err">v4 &lt;- parameter 3: p3 (d)</span>
+<span class="err">------- end of method frame</span>
+<span class="err">v5</span>
+<span class="err">v6</span>
+<span class="err">...</span>
+<span class="err">v65535</span>
+</code></pre></div>
+
+
+<p>Example 2:</p>
+<ul>
+<li>Method: <code>void bar(double a, long b, float c)</code></li>
+<li>The CodeItem declares a frame of size 8</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">v0</span>
+<span class="err">v1</span>
+<span class="err">v2</span>
+<span class="err">v3 &lt;- parameter 0: p0 (a)</span>
+<span class="err">v4 &lt;- parameter 1: p1 (b, lower part)</span>
+<span class="err">v5 &lt;- parameter 1: p2 (b, higher part)</span>
+<span class="err">v6 &lt;- parameter 2: p3 (c, lower part)</span>
+<span class="err">v7 &lt;- parameter 2: p4 (c, higher part)</span>
+<span class="err">------- end of method frame</span>
+<span class="err">v8</span>
+<span class="err">v9</span>
+<span class="err">...</span>
+<span class="err">v65535</span>
+</code></pre></div>
+
+
+<p>The default settings instruct JEB to use the <code>pX</code> notation when rendering parameter registers:</p>
+<p><a href="img/508588f1.png"><img src="img/508588f1-small.png" srcset="img/508588f1-small.png 2x" /></a></p>
+<p>It can be disabled (DEX plugin option, also controlled in the UI by right-clicking, <em>Rendering Properties</em>, untick 'Use p for parameters')</p>
+<h4 id="smali-and-variants">Smali and variants<a class="headerlink" href="#smali-and-variants" title="Permanent link">#</a></h4>
+<p>The JEB notation is made possible because of the interactivity layer (as opposed to deadcode listing). Two notable differences:</p>
+<ul>
+<li>For readability, the names are simple names, no longer fully-qualified</li>
+<li>Invoke opcodes place the arguments after the method: <code>invoke-xxx callsite, args</code> instead of <code>invoke-xxx {args}, fully_qualified_callsite</code></li>
+</ul>
+<p>Below, the default assembly code representation used by JEB (smali variant):</p>
+<p><a href="img/5f1ea880.png"><img src="img/5f1ea880-small.png" srcset="img/5f1ea880-small.png 2x" /></a></p>
+<p>Official smali code can be generated (it is useful if code needs to be exported, and later on compiled using smali.jar):</p>
+<p><a href="img/6d385731.png"><img src="img/6d385731-small.png" srcset="img/6d385731-small.png 2x" /></a> </p>
+<hr />
+<h2 id="application-components">Application components<a class="headerlink" href="#application-components" title="Permanent link">#</a></h2>
+<p>The application and its main components (activities, broadcast receivers, services, content providers) must be declared in the Manifest, even if they are not meant to be exported (i.e., the <code>external</code> attribute is set to false).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There is one exception: broadcast receivers can be registered dynamically, via one of the <code>Context.registerReceiver()</code> methods.</p>
+</div>
+<p>The name attribute of a component is the name of the corresponding class that will be instantiated and whose methods are to be called back by the Android system (for exported components).</p>
+<p>Example: the Manifest below declares an Activity class <code>com.xyz.appcheck.AppCheck</code>, among other components.</p>
+<p><a href="img/1f19f202.png"><img src="img/1f19f202-small.png" srcset="img/1f19f202-small.png 2x" /></a></p>
+<h3 id="entry-points">Entry points<a class="headerlink" href="#entry-points" title="Permanent link">#</a></h3>
+<p><strong>The exported components of an APK can be equated to the entry-points of the application.</strong> Therefore, unlike types of executable programs, an Android application can have multiple entry-points.</p>
+<p><strong>The true entry-point of a non-native application is the application's static initializer</strong> (<code>Application.&lt;clinit&gt;</code>). If the application being analyzed declares its own Application class in the manifest (instead of reusing android.app.Application), then that class's static initializer, if any, should be looked at first, followed by the constructors.</p>
+<p>Similarly, the static initializers and constructors of activities, receivers, services and providers are also entry-points.</p>
+<p>Finally, all API-defined callback methods of those five components can be called back by the system. Typically, the main activity's <code>onCreate()</code> method is the practical entry-point to an application, akin to a regular program's <code>main()</code> routine.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>JEB's disassembly view recaps the most important features of the APK at the top of the code listing. The important components, in particular any custom Application object, will be mentioned there:</p>
+<p><a href="img/c2d509e3.png"><img src="img/c2d509e3-small.png" srcset="img/c2d509e3-small.png 2x" /></a></p>
+</div>
+<h3 id="activities">Activities<a class="headerlink" href="#activities" title="Permanent link">#</a></h3>
+<p>Activities are activated by  <code>Intent</code>.</p>
+<p>Exported activities (by default, any unfiltered activity is exported) are first-class entry-points. The following methods should be carefully examined:</p>
+<ul>
+<li>constructor (although the object state is uncertain)</li>
+<li>well-known callbacks, e.g. <code>attachBaseContext</code> (used to set up a delegate Activity), <code>onCreate</code>, <code>onResume</code>, etc.</li>
+</ul>
+<h4 id="pseudo-activities">Pseudo activities<a class="headerlink" href="#pseudo-activities" title="Permanent link">#</a></h4>
+<p>Be mindful of activity aliases. They are not true components, however, they can and will override their target component's characteristics, such as intent filters. </p>
+<p><a href="img/9f85a27e.png"><img src="img/9f85a27e-small.png" srcset="img/9f85a27e-small.png 2x" /></a></p>
+<h3 id="services">Services<a class="headerlink" href="#services" title="Permanent link">#</a></h3>
+<p>Services are activated by  <code>Intent</code>.</p>
+<p>Services are started by Activity code or Receiver code (after receiving a particular event). Most won't be easily started by the user, except for a few of them, such as Input services. Therefore, they should not be considered first-class entry-points from the point of view of code analysis.</p>
+<h3 id="broadcast-receivers">Broadcast Receivers<a class="headerlink" href="#broadcast-receivers" title="Permanent link">#</a></h3>
+<p>Broadcast receivers are activated by  <code>Intent</code>.</p>
+<p>The intent handler for <code>ACTION_BOOT_COMPLETED</code> is a common entry-point, commonly used by malicious code as a way to automatically start after the phone has booted up. Many more exist though (e.g., battery plugged, message received, phone lifted, etc.)</p>
+<p>Caveats:</p>
+<ul>
+<li>API 21+ (Lollipop) - need a wake lock</li>
+<li>API 26+ (Oreo) - need a <code>JobIntentService</code></li>
+</ul>
+<h3 id="content-providers">Content Providers<a class="headerlink" href="#content-providers" title="Permanent link">#</a></h3>
+<p>Content providers are activated by  <code>ContentResolver</code>.</p>
+<h3 id="intents">Intents<a class="headerlink" href="#intents" title="Permanent link">#</a></h3>
+<p>Intents are the primary method for inter-process and inter-app communication. Other IPC means exist, e.g. sockets, files, etc.</p>
+<p>Intents are used to activate components, e.g. start an activity.</p>
+<p><a href="https://developer.android.com/guide/components/intents-filters">Reference</a></p>
+<hr />
+<h2 id="dalvik-and-disassembly">Dalvik and Disassembly<a class="headerlink" href="#dalvik-and-disassembly" title="Permanent link">#</a></h2>
+<p>Plugins generate <em>IUnit</em> objects. Units can generate documents abiding to a standard interface, making them easy to render by clients implementing the JEB API. The primary document generated by an IDexUnit is a text document representing the disassembly of the input DEX files - or merged DEX files.</p>
+<h3 id="auto-dex-merging">Auto dex merging<a class="headerlink" href="#auto-dex-merging" title="Permanent link">#</a></h3>
+<p><a href="#dex-splitting">Merging</a> is done automatically, regardless of index limitations in place that may have required dex-splitting in the first place.</p>
+<p>In rare cases, you may want to disable merging. Upon loading an APK, several APK plugin options will be presented to you. Untick <em>Merge multi-dex</em> to disable auto-merging:</p>
+<p><a href="img/adfc95d5.png"><img src="img/adfc95d5-small.png" srcset="img/adfc95d5-small.png 2x" /></a></p>
+<h3 id="dex-parsing-options">DEX parsing options<a class="headerlink" href="#dex-parsing-options" title="Permanent link">#</a></h3>
+<p>DEX plugin options are accessible in the Engines options UI panel. Filter on "dex." to list them.</p>
+<p>The user will also be presented a Processing Properties dialog box when opening a new file, giving the user a chance to adjust the default options stored in your <code>jeb-engines.cfg</code> files.</p>
+<p><a href="img/2fb3761c.png"><img src="img/2fb3761c-small.png" srcset="img/2fb3761c-small.png 2x" /></a></p>
+<h3 id="addressing">Addressing<a class="headerlink" href="#addressing" title="Permanent link">#</a></h3>
+<p>All addresses to types, methods and fields uses the canonical JVM notation, e.g.:</p>
+<ul>
+<li>type Blah in package com.abc: <code>Lcom/abc/Blah;</code></li>
+<li>method foo(int):void in the type com.abc.Blah: <code>Lcom/abc/Blah;-&gt;foo(I)V</code></li>
+<li>field name:String in the type com.abc.Blah: <code>Lcom/abc/Blah;-&gt;name:Ljava/lang/String</code></li>
+</ul>
+<p>JEB extends the method notation to reference code locations via a suffix <strong>+OFFSET</strong>.</p>
+<ul>
+<li>Reference the instruction at offset 0x20 in the internal method foo(): <code>Lcom/abc/Blah;-&gt;foo(I)V+20h</code> </li>
+</ul>
+<h4 id="types-naming-conventions">Types Naming Conventions<a class="headerlink" href="#types-naming-conventions" title="Permanent link">#</a></h4>
+<p>Historically, addressing in Java can be quite confusing. There exists three types of notations:</p>
+<ul>
+<li>The <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/types.html#wp276">JVM notation</a> (canonical representation) is the one used by <a href="https://source.android.com/devices/tech/dalvik/dex-format#typedescriptor">DEX's TypeDescriptors</a>, e.g. <code>Ljava/lang/Object;</code>. JEB's DEX plugins use and provide JVM canonical names.</li>
+<li>Two <a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.2.1">JLS notations</a>:<ul>
+<li>binary form, uses dots to separate package names, e.g.: <code>java.lang.Object</code></li>
+<li>internal binary (or just, 'internal') uses slashes, e.g.: <code>java/lang/Object</code></li>
+</ul>
+</li>
+<li>The <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getName--">java.lang.Class</a> API uses inconsistent representations, mostly the binary form.</li>
+</ul>
+<p>Android plugins use the JVM notation internally and externally (public API).</p>
+<p>Example: to reference a method <code>void foo(String)</code> in package <code>a.b.c</code>, its JVM address should be provided: <code>La/b/c;-&gt;foo(Ljava/lang/String;)V</code>. API methods using DEX addresses expect canonical addresses. The graphical client is less strict: although it expects canonical addresses by default as well, fall-back mechanisms are implemented to determine which address the user may have intended to use, and attempt to see if it's a match.</p>
+<p>See our <a href="https://docs.google.com/document/d/e/2PACX-1vRV5M0-JkzPzSqCAmeHHTFlGr3AzARtMSjA9fa0_-uvzwskd8T35DMwuO2V_sDUd0XRDeQH6XvPs9pn/pub">Reference Document.</a></p>
+<h3 id="disassembly">Disassembly<a class="headerlink" href="#disassembly" title="Permanent link">#</a></h3>
+<p>The default output uses modified smali (as explained in the previous section).</p>
+<div class="admonition danger">
+<p class="admonition-title">TODO</p>
+<p>This section is a work-in-progress.</p>
+</div>
+<hr />
+<h2 id="renaming-and-refactoring">Renaming and Refactoring<a class="headerlink" href="#renaming-and-refactoring" title="Permanent link">#</a></h2>
+<p>The DEX plugin provides <em>smart</em> renaming capabilities: renaming of items is done consistently throughout the code base.</p>
+<p>Most internal items can be renamed (internal items are those defined in the DEX, as opposed to external items, simply referenced in the DEX, but whose definition is located elsewhere). What can be renamed:</p>
+<ul>
+<li>class names (as well as interfaces and enums defined in the DEX)</li>
+<li>method names</li>
+<li>field names</li>
+<li>labels (addresses)</li>
+<li>package names</li>
+<li>variables (in decompiled units)</li>
+</ul>
+<p>In the UI client, Renaming can be done via the Action menu.</p>
+<p><a href="img/dc1ed1c4.png"><img src="img/dc1ed1c4-small.png" srcset="img/dc1ed1c4-small.png 2x" /></a></p>
+<h3 id="renaming-methods">Renaming Methods<a class="headerlink" href="#renaming-methods" title="Permanent link">#</a></h3>
+<p>Proper refactoring is especially important when renaming non-static methods (virtual methods, interface methods) which may be part of a hierarchy of other methods, overridden parents or overriding children.</p>
+<p>Example: renaming B:a() should also rename A.a() and C.a()</p>
+<div class="codehilite"><pre><span></span><code><span class="err">A.a():Object</span>
+<span class="err">|</span>
+<span class="err">B.a():String</span>
+<span class="err">|</span>
+<span class="err">C.a():String</span>
+</code></pre></div>
+
+
+<p>Renaming must also take into account indirect references to methods, something common when invoking virtual methods located in other classes, but which can be used to obfuscate a program further.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">A.a()</span>
+<span class="err">|</span>
+<span class="err">B.a() - within B: invoke-virtual A.a() -&gt; actually refers to B.a()</span>
+</code></pre></div>
+
+
+<blockquote>
+<p>Things can get relatively complicated when hierarchies involve multiple inheritance through one or more interfaces.</p>
+</blockquote>
+<h3 id="renaming-fields">Renaming Fields<a class="headerlink" href="#renaming-fields" title="Permanent link">#</a></h3>
+<p>To some degree, the same applies to fields. Unlike methods, fields cannot be overridden; they are always accessed in a direct way, i.e. resolution is entirely determined at compile-time. However, <em>field masking</em> adds complications.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">A.i:int public</span>
+<span class="err">|</span>
+<span class="err">B.i:int public - this field masks A.i</span>
+</code></pre></div>
+
+
+<p>Shall a rename action of A.i also rename B.i? Conversely, shall renaming B.i also rename A.i? Theoretically, no. Those two fields are not related. However, at the moment, the DEX plugin renames both fields to maintain some degree of visual consistency with the original binary, regardless of whether field masking was done voluntarily or not, with obfuscating intent or not.</p>
+<blockquote>
+<p>This is likely to change with the addition of an option to let users decide how they want to perform renaming.</p>
+</blockquote>
+<h3 id="reorganizing-code">Reorganizing code<a class="headerlink" href="#reorganizing-code" title="Permanent link">#</a></h3>
+<p>Packages can also be renamed. Users can also create additional packages and move packages and classes to other packages.</p>
+<p><a href="img/dcf3fe07.png"><img src="img/dcf3fe07-small.png" srcset="img/dcf3fe07-small.png 2x" /></a></p>
+<p>This feature can come in handy when dealing with obfuscated code for which entire type hierarchies were flattened out into a handful (sometimes single) set of packages. Most obfuscators, including the ubiquitous Proguard and its now equivalent r8, can do that.</p>
+<blockquote>
+<p>If you want to explore refactoring further, in particular hierarchy reconstruction, have a look at our sample script <a href="https://github.com/pnfsoftware/jeb2-samplecode/tree/master/scripts/cluster">DexCluster.py</a>.</p>
+</blockquote>
+<h3 id="auto-rename">Auto-rename<a class="headerlink" href="#auto-rename" title="Permanent link">#</a></h3>
+<p>Auto-renaming is an optional standard Action also implemented by the DEX plugin. As its name implies, it can perform automatic blanket renaming of all items of a unit. In the case of DEX units, they include types, methods, fields, etc.</p>
+<p>The action is semi-customizable by each plugin, as can be seen in the <a href="https://www.pnfsoftware.com/jeb/apidoc/reference/com/pnfsoftware/jeb/core/actions/ActionAutoRenameAllData.html">API</a>. In the case of the DEX plugin, three policies are implemented. Each policy defines a set of legal characters for items. The loosest policy permits all characters in the printable ascii range (something already relatively strict considering the actual legal character ranges for Java identifiers); the strictest considers all current names (except those that were already defined) invalid, and therefore, will rename everything.</p>
+<p><a href="img/c722284a.png"><img src="img/c722284a-small.png" srcset="img/c722284a-small.png 2x" /></a></p>
+<p>The obfuscation applied below is using right-to-left unicode characters to complicate rendering:</p>
+<p><a href="img/c7b6f74a.png"><img src="img/c7b6f74a-small.png" srcset="img/c7b6f74a-small.png 2x" /></a></p>
+<p>After auto-renaming (standard policy):</p>
+<p><a href="img/218e994a.png"><img src="img/218e994a-small.png" srcset="img/218e994a-small.png 2x" /></a></p>
+<hr />
+<h2 id="cross-references-in-dalvik">Cross-references in Dalvik<a class="headerlink" href="#cross-references-in-dalvik" title="Permanent link">#</a></h2>
+<p>Refer to the <a href="actions.html#cross-references">generic xrefs</a> section of the manual.</p>
+<div class="admonition danger">
+<p class="admonition-title">TODO</p>
+<p>The documentation of DEX specificities regarding xrefs are a WIP.</p>
+</div>
+<hr />
+<h2 id="decompilation-to-java">Decompilation to Java<a class="headerlink" href="#decompilation-to-java" title="Permanent link">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure to read the generic <a href="decompiling.html">Decompilation</a> section of the manual.</p>
+</div>
+<h3 id="decompiling-classes">Decompiling classes<a class="headerlink" href="#decompiling-classes" title="Permanent link">#</a></h3>
+<p>By default, the <em>Decompile</em> action in the UI menu triggers the decompilation of an entire class and its constituents (fields, methods, member classes, etc.).</p>
+<ul>
+<li>Fresh decompilation:<ul>
+<li>With the current options set up in your Engines context: Use <em>Action, Decompile</em> or press the <em>Tab key</em>.</li>
+<li>With custom options: use <em>Action, Decompile with Options</em> or press the <em>CMD1+Tab</em>.</li>
+</ul>
+</li>
+<li>Re-decompile (e.g., after changing options)<ul>
+<li>Execute a "Decompile with Options" action as described above. The current decompilation of the class, if it existed, will be discarded, and a new decompilation will take place.</li>
+</ul>
+</li>
+</ul>
+<h3 id="generic-decryption-and-deobfuscation">Generic decryption and deobfuscation<a class="headerlink" href="#generic-decryption-and-deobfuscation" title="Permanent link">#</a></h3>
+<p>The decompiler attempts to automatically performs data decryption and code unreflection. This process is done automatically by several method optimizers managed by the decompiler, with the help of code emulation in a built-in sandbox.</p>
+<p><a href="img/d1ea7350.png"><figure><img src="img/d1ea7350-small.png" srcset="img/d1ea7350-small.png 2x" /><figcaption>Sample malware code decompilation: light-blue methods have been unreflected; Purple strings are the result of generic decryptions</figcaption></figure></a></p>
+<p>While the emulator and sandbox are currently not available in the API, a few key parameters of the emulator can be customized via the <code>coreplugins/dexdec-emu.cfg</code> file.</p>
+<ul>
+<li>Copy the file <code>dexdec-emu.cfg.TEMPLATE</code> to <code>dexdec-emu.cfg</code></li>
+<li>Edit <code>dexdec-emu.cfg</code></li>
+<li>The changes will take effect at the next decompilation</li>
+</ul>
+<p>Currently, the configuration file allows users to specify:</p>
+<ul>
+<li>maximum emulation times</li>
+<li>emulation policy for external methods (by groups, restricted lists, whitelists, and blacklists - e.g., a user can forbid the emulation of any time/date-related method)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of April 2020, data decryption combined with unreflection yields very effective results against most classes of Dalvik obfuscators. You will find <a href="https://www.pnfsoftware.com/blog/jeb-lambda-recovery-and-generic-string-decryption/">examples of this on our blog</a>.</p>
+</div>
+<h4 id="known-support">Known support<a class="headerlink" href="#known-support" title="Permanent link">#</a></h4>
+<p>As of <strong>April 2020</strong>, the following well-known obfuscators were tested (*) and their output verified to be deobfuscated or partially deobfuscated:</p>
+<ul>
+<li>appguard</li>
+<li>arxan</li>
+<li>dash-o</li>
+<li>dexguard</li>
+<li>dexprotector</li>
+<li>several vendor-specific custom protectors</li>
+<li>several custom protectors used by malicious applications, e.g. Joker</li>
+<li>many java classfile (as opposed to targeting dex specifically) protectors, e.g. allatori</li>
+</ul>
+<p>(*) The "test process" is not well-defined or exhaustive. It is partly automated as well as user-guided (therefore, feel free to <a href="mailto:support@pnfsoftware.com">reach out to us</a> if you're seeing the generic decryptor chocking up on some obfuscation that you think should or could be supported.)</p>
+<h3 id="exceptional-control-flow">Exceptional control flow<a class="headerlink" href="#exceptional-control-flow" title="Permanent link">#</a></h3>
+<p>The decompilation of code protected in <em>try</em> blocks (<code>try/catch+/finally?</code>) is enabled by default.</p>
+<p>However, reconstruction of <em>try-with-resources</em> (also known as <em>ARM</em>, for <em>Automatic Resource Management</em>) is more limited. This very-high level Java construct translates into complicated, lengthy, compiler-generated optimized code.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Better support for try-with-resources reconstruction is a planned addition.</p>
+</div>
+<h3 id="recovering-enums">Recovering enums<a class="headerlink" href="#recovering-enums" title="Permanent link">#</a></h3>
+<p>Enumerations in Java are a high-level construct that translate into multiple classes and synthetic methods. JEB attempts to discover and re-sugar those enumeration artifacts into the original enum. On failure, regular classes extending <code>java.lang.Enum</code> will be generated.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Enum reconstruction can be disabled in the Options.</p>
+</div>
+<p>Enums are great candidates for obfuscation, and most Android protectors do obfuscate them. That process destroys important synthetic fields and structures that would allow simple recovery heuristics to work. However, support should function reasonably well, even on enumeration data that was intentionally shuffled to generate decompilation errors.</p>
+<p>Note that <strong>enumerated fields can be renamed</strong>. Renaming is done consistently over the code base, including over reconstructed switches making use of such enums.</p>
+<p><a href="img/4635bbfe.png"><figure><img src="img/4635bbfe-small.png" srcset="img/4635bbfe-small.png 2x" /><figcaption>Decompiled enums in <code>android.arch.lifecycle</code>. Renaming and cross-referencing enumerated constants is supported.</figcaption></figure></a></p>
+<p>Custom enumerated constants should also be properly reconstructed, including:</p>
+<ul>
+<li>Field annotations</li>
+<li>Custom initializers (see below)</li>
+<li>Additional methods and method overrides</li>
+</ul>
+<p><a href="img/73ebe227.png"><figure><img src="img/73ebe227-small.png" srcset="img/73ebe227-small.png 2x" /><figcaption>In this complex enumeration, the red block shows a custom initializer. Other interesting bits are the use of overrides and custom methods, annotations, as well as default and non-default constructors.</figcaption></figure></a></p>
+<h3 id="recovering-switches">Recovering switches<a class="headerlink" href="#recovering-switches" title="Permanent link">#</a></h3>
+<p>The detection and reconstruction on <em>switch-on-enum</em> and <em>switch-on-string</em> is supported.</p>
+<p>Reconstruction of switch-on-string can be very complicated depending on how the compiler has generated and optimized the code, and therefore, is limited to simple cases.</p>
+<p><a href="img/4c3bfefa.png"><figure><img src="img/4c3bfefa-small.png" srcset="img/4c3bfefa-small.png 2x" /><figcaption>This successfully reconstructed switch-on-string is implemented as a double-switch idiom by <em>dx</em> (a sparse switch on hashCode/equals to generate custom indices i, followed by a packed-switch on i). Not all switches are implemented like this. Regular if-conditional trees may be strategically generated by optimizing compilers.</figcaption></figure></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Better support for switch-on-string reconstruction is a planned addition.</p>
+</div>
+<h3 id="member-classes-and-arguments-capturing">Member classes and arguments capturing<a class="headerlink" href="#member-classes-and-arguments-capturing" title="Permanent link">#</a></h3>
+<p>Properly rendering non-trivial member classes (particularly non-static named classes or anonymous classes) is made difficult by the fact that some of their arguments are captured from the outer class(es). Properly rendering anonymous constructors, with exact argument types and position, is also challenging.</p>
+<p>In the example below, an anonymous class initializer is used to hide string decryption code:</p>
+<ul>
+<li>The anonymous class extends Android’s OnActivityResultListener, instantiates the object, and tosses it immediately.</li>
+<li>Decryption code takes place in the initializer. Note the captured arguments from the outer container method <code>__m</code>: <em>i</em>, <em>_b</em>. Access to other private class fields is made via synthetic accessor calls that were re-sugared into seemingly direct field access (<code>BA._b</code>).</li>
+</ul>
+<p><a href="img/052120d8.png"><figure><img src="img/052120d8-small.png" srcset="img/052120d8-small.png 2x" /><figcaption>Pseudo-moot anonymous class with an instance initializer attempting to conceal string decryption code.</figcaption></figure></a></p>
+<h3 id="lambdas-generation">Lambdas generation<a class="headerlink" href="#lambdas-generation" title="Permanent link">#</a></h3>
+<p>By default, JEB will try to recover and reconstruct <em>lambdas</em>.</p>
+<h4 id="desugared-lambdas">Desugared Lambdas<a class="headerlink" href="#desugared-lambdas" title="Permanent link">#</a></h4>
+<p>Recovery and reconstruction does not rely on any type of metadata 1, such as special prefixes <code>-$$Lambda$</code> for classes and methods implementing desugared lambdas in dex 37-.</p>
+<p>You may therefore see constructs like this:</p>
+<p><a href="img/75e5f7ad.png"><figure><img src="img/75e5f7ad-small.png" srcset="img/75e5f7ad-small.png 2x" /><figcaption>This DEX file contains desugared, non-obfuscated lambdas.</figcaption></figure></a></p>
+<p><a href="img/b230cbea.png"><figure><img src="img/b230cbea-small.png" srcset="img/b230cbea-small.png 2x" /><figcaption>This DEX file contained desugared, obfuscated lambdas</figcaption></figure></a></p>
+<div class="admonition example">
+<p class="admonition-title">API</p>
+<p>In the above cases, the underlying Java AST may be a <code>IJavaNew</code> or <code>IJavaStaticField</code> node. This is not the case for real (not desugared) lambdas. They will map to an <code>IJavaCall</code> node.</p>
+</div>
+<p>Lambda reconstruction can be disabled in the options. Lambda rendering can also be disabled in the options, as well as on-demand by right-clicking a decompiled view, <em>Rendering Options</em>.</p>
+<p><a href="img/47ce6e27.png"><figure><img src="img/47ce6e27-small.png" srcset="img/47ce6e27-small.png 2x" /><figcaption>Lambdas options</figcaption></figure></a></p>
+<h4 id="real-lambdas">Real Lambdas<a class="headerlink" href="#real-lambdas" title="Permanent link">#</a></h4>
+<p>Lambda reconstruction also takes place when the code has not been desugared (which is rare!), i.e. code relying on dex38’s <code>invoke-custom</code> and <code>invoke-polymorphic</code>.</p>
+<p><a href="img/af9abc7a.png"><figure><img src="img/af9abc7a-small.png" srcset="img/af9abc7a-small.png 2x" /><figcaption>This DEX file contains real lambdas implemented via invoke-custom</figcaption></figure></a></p>
+<div class="admonition example">
+<p class="admonition-title">API</p>
+<p>Such lambdas map to an <code>IJavaCall</code> node for which <code>isLambdaCall()</code> will return true.</p>
+</div>
+<h3 id="dynamic-invocation-opcodes">Dynamic invocation opcodes<a class="headerlink" href="#dynamic-invocation-opcodes" title="Permanent link">#</a></h3>
+<p>The translation of <code>invoke-custom</code> whose bootstrap method is <code>LambdaMetafactory.metafactory(...)</code> allows the decompiler to generate proper Java code with lambda constructs.</p>
+<p>However, this is just one (albeit one of the most important) cases of dynamic dispatch. <code>invoke-custom</code> and related opcodes (<code>const-method-handle</code>, <code>const-method-type</code>) cannot be as "easily" translated into intermediate representations - and later on, AST. For that reason, those opcodes are translated to regular invocation to artificial methods.</p>
+<h4 id="artificial-classes-in-jebsynthetic">Artificial classes in <code>jeb.synthetic</code><a class="headerlink" href="#artificial-classes-in-jebsynthetic" title="Permanent link">#</a></h4>
+<p>Classes in the <code>jeb.synthetic</code> package are generated automatically by the DEX decompiler:</p>
+<ul>
+<li>
+<p><code>InvokeCustoms</code> contains static methods representing dynamic dispatch to a method handle's callsite done via an <code>invoke-custom</code> opcode:
+<code>jeb.synthetic.InvokeCustoms.CallSite&lt;INDEX&gt;_&lt;DynamicName&gt;(DynamicPrototype)</code></p>
+</li>
+<li>
+<p><code>PooledMethodHandles</code> contains static getters of method handles stored in a DEX pool and retrieved via a <code>const-method-handle</code> opcode:
+<code>jeb.synthetic.PooledMethodHandles.Entry&lt;INDEX&gt;_&lt;MethodName|FieldName&gt;() : java.lang.invoke.MethodHandle</code></p>
+</li>
+<li>
+<p><code>PooledMethodTypes</code> contains static getters of method types stored in a DEX pool and retrieved via a <code>const-method-type</code> opcode:
+<code>jeb.synthetic.PooledMethodTypes.Entry&lt;INDEX&gt;() : java.lang.invoke.MethodType</code></p>
+</li>
+</ul>
+<h3 id="decompiling-java-bytecode">Decompiling Java Bytecode<a class="headerlink" href="#decompiling-java-bytecode" title="Permanent link">#</a></h3>
+<p>JEB supports JLS bytecode decompilation for <code>*.class</code> files and <code>*.jar</code>-like archives (<em>jar</em>, <em>war</em>, <em>ear</em>, etc.). The Java bytecode is converted to Dalvik using Android's <em>dx</em> by default. It falls-back to using <em>d8</em> if a problem occurred. Users may choose to use <em>d8</em> first instead by selecting so in the Options.</p>
+<p>The resulting DEX file(s) are processed as usual.</p>
+<p>You may use this to decompile Android Library files (<code>*.aar</code> files) in JEB.</p>
+<p><a href="img/138a5664.png"><figure><img src="img/138a5664-small.png" srcset="img/138a5664-small.png 2x" /><figcaption>Examining the android-arch-core-runtime library</figcaption></figure></a></p>
+<hr />
+<h2 id="debugging-apps">Debugging Apps<a class="headerlink" href="#debugging-apps" title="Permanent link">#</a></h2>
+<p>Refer to the next section, <a href="android-debugging.html">Android Debugging</a>.</p>
+<hr />
+<h2 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">#</a></h2>
+<h3 id="bulk-decompilation-and-export">Bulk decompilation and Export<a class="headerlink" href="#bulk-decompilation-and-export" title="Permanent link">#</a></h3>
+<p>Bulk decompilation and export to <code>*.java</code> files on disk can be done in the UI client via the menu command <em>File, Export, DEX Fast Decompilation</em>.</p>
+<p>You may also provide a regular expression filter if you'd like to restrict decompilation to a package and its sub-packages, e.g. <code>com\.xyz\..*</code> will decompile all classes in <code>com.xyz</code> and its sub-packages.</p>
+<p>Refer to <a href="misc.html#exporting-output">this note</a> for generic details on exporting output.</p>
+<h3 id="callgraph-fragment">Callgraph fragment<a class="headerlink" href="#callgraph-fragment" title="Permanent link">#</a></h3>
+<p>The callgraph fragment is not specific to Android (most code analysis can ask to generate one). <strong>It is an experimental feature designed to represent trimmed callgraphs of the most important routines and most important invocations between those routines.</strong> </p>
+<p>The fragment is located in the lower right-hand corner of a standard workspace. The callgraph is not generated by default:</p>
+<p><a href="img/cf080b62.png"><figure><img src="img/cf080b62-small.png" srcset="img/cf080b62-small.png 2x" /><figcaption>Empty callgraph</figcaption></figure></a></p>
+<p>Click on the fragment to generate it. The navigation shortcuts are similar to those used in the CFG fragment ('\' to center, '[' and ']' or zoom in and out, etc.). Click a node to set the focus on the associated routine and their connections. Double-click a node to jump to that routine in the disassembly listing. </p>
+<p><a href="img/c1c39fa0.png"><figure><img src="img/c1c39fa0-small.png" srcset="img/c1c39fa0-small.png 2x" /><figcaption>A generated callgraph</figcaption></figure></a></p>
+<h3 id="displaying-synthetic-items">Displaying synthetic items<a class="headerlink" href="#displaying-synthetic-items" title="Permanent link">#</a></h3>
+<p>How to always display synthetic fields and methods in decompiled views? In the vast majority of the cases, synthetic accessors used by inner classes need not be displayed as they are re-optimized into direct, seamless outer class field access or method invocation.</p>
+<p>However, if you wish to display them: In a decompiled view, right-click, "Rendering Options" and tick the boxes "Generate synthetic fields" and "Generate synthetic methods". You may also change this setting once and for all in the Engines option (Edit, Options, Engines).</p>
+<p><a href="img/6a0a9fe8.png"><figure><img src="img/6a0a9fe8-small.png" srcset="img/6a0a9fe8-small.png 2x" /><figcaption>Example: forcing rendering of Synthetic Fields</figcaption></figure></a></p>
+<h3 id="third-party-frameworks">Third-party Frameworks<a class="headerlink" href="#third-party-frameworks" title="Permanent link">#</a></h3>
+<p>When analyzing applications using resources located in other frameworks that the Android Framework (e.g. the Samsung framework), follow those steps:</p>
+<ul>
+<li>Retrieve the custom framework archive using <code>apt pull</code>. It is normally stored somewhere in the device's <code>/system/framework/</code> folder. Let's call it framework.zip.</li>
+<li>Run <code>aapt2 dump framework.zip</code> and retrieve the first line, which will be something like <code>Package name=xxxxxxx id=N</code>. Note the id, <strong>N</strong>.</li>
+<li>Navigate to the folder listed in your <code>.parsers.apk.FrameworksDirectory</code> engines property. Typically, it will be the <code>HOME_FOLDER/.jeb-android-frameworks</code> folder</li>
+<li>Copy framework.zip into this folder, and rename it to <strong>N.zip</strong></li>
+<li>JEB should now be able to pick up that framework and use its resources when needed</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1.zip in the <code>FrameworksDirectory</code> folder is the Android framework itself, which has id 1.</p>
+</div>
+<hr />
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="debugging.html" title="Debugging" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Debugging
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="android-debugging.html" title="Android Debugging" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Android Debugging
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2015 - 2020 PNF Software
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

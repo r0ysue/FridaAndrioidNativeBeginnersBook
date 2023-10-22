@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"  charset="UTF-8">
+            <title>出错！</title>
+            <style type="text/css">
+                
+			#title {
+				color: #383838;
+				text-align: center;
+				margin-top: 50px;
+			}
+            
+            #click {
+                width: 100%;
+                margin-top: 20px;
+            }
+			
+            #inClick {
+                border: 1px #565656 solid;
+                border-radius: 4px;
+                
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width: 160px;
+                text-align: center;
+                margin:0 auto;
+                
+            }
+			
+			#btn-close {
+                display:inline-block;
+				border-radius:5px; 
+				width: 60px;
+				padding: 5px; 
+				border: 1px solid #565656;
+                
+            }
+            
+            #span1 {
+                color: #929292;
+                font-size: 14px;
+                line-height: 1.75;/* 14/8=1.75*/
+                padding-bottom: 0px;
+                padding-top:5px;
+                padding-left:5px;
+                padding-right:5px;
+                text-align: center;
+                width: 100%;
+                margin-top: 30px;
+            }
+            
+            #span2 {
+                color: #ff8420;
+                font-size: 14px;
+                line-height: 1.75;/* 14/8=1.75*/
+                padding: 5px;
+                text-align: center;
+                width: 100%;
+                margin-top: 0px;
+            }
+            
+            #all{
+                width:80%;
+                margin:0 auto;
+            }
+            
+            input {
+                outline: none;
+                border: 0px;
+                background: #fff;
+                color: #565656;
+                font-size: 16px;
+            }
+            
+                </style>
+            </head>
+    <body onload="myfunction()">
+        
+        <script type="text/javascript">
+            
+        function refresh(){
+            CMBSDK.reload();
+        }
+		
+		function backToApp(){
+			CMBSDK.backToApp();
+		}
+
+		function myfunction(){
+		    document.getElementById("p1").innerHTML=CMBSDK.getErrorUrl();
+		}
+        </script>
+        
+        <div id="all">
+            <div id="title"><font face="PingFangSC-Regular"><span>发生异常,请重试</span></font></div>
+            <div id="click" >
+                <div id="inClick" onclick="refresh()" background-color= rgba(0,0,0,0.2)>
+                    <font face="PingFangSC-Regular" color="#565656">
+                        <span>重新加载</span>
+                    </font>
+                </div>
+            </div>
+			
+			<div style="margin-top: 20px; text-align: center" >
+                <div id="btn-close" onclick="backToApp()">
+                   关闭
+                </div>
+            </div>
+			
+            <div id="span1">
+                <font face="PingFangSC-Regular">
+                    <span>网络异常，网络可能中断</span></font>
+					<br/>
+                    <span>请检查您的网络链接是否正常</span></font>
+            </div>
+            
+            <div id="span2">
+                <font face="PingFangSC-Regular">
+                    <span>
+                        <p id="p1">已经断开与互联网的连接</p>
+                    </span>
+                </font>
+            </div>
+        </div>
+        
+        
+</body>
+</html>
+

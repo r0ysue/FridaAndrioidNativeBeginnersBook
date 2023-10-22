@@ -1,0 +1,2156 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for JEB Decompiler">
+      
+      
+        <link rel="canonical" href="https://www.pnfsoftware.com/jeb/manual/android-debugging.html">
+      
+      
+        <meta name="author" content="PNF Software">
+      
+      <link rel="shortcut icon" href="img/jeb-icon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Android Debugging - JEB Decompiler</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-header-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            JEB Decompiler
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Android Debugging
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    JEB Decompiler
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Using JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Using JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Using JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="workspace.html" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="actions.html" title="Common Actions" class="md-nav__link">
+      Common Actions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="views.html" title="Common Views" class="md-nav__link">
+      Common Views
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="decompiling.html" title="Decompiling" class="md-nav__link">
+      Decompiling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="debugging.html" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android.html" title="Android Analysis" class="md-nav__link">
+      Android Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Android Debugging
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="android-debugging.html" title="Android Debugging" class="md-nav__link md-nav__link--active">
+      Android Debugging
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamentals" class="md-nav__link">
+    Fundamentals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-non-debuggable-apps" class="md-nav__link">
+    Debugging non-debuggable apps
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging non-debuggable apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#native-code-in-non-debuggable-apps" class="md-nav__link">
+    Native code in non-debuggable apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-debuggable-apk" class="md-nav__link">
+    Generating a debuggable APK
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-a-debugging-session" class="md-nav__link">
+    Starting a debugging session
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting a debugging session">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-problems" class="md-nav__link">
+    Common problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugger-nodes" class="md-nav__link">
+    Debugger nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#native-threads" class="md-nav__link">
+    Native threads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dalvik-debugging" class="md-nav__link">
+    Dalvik debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="Dalvik debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-debugger" class="md-nav__link">
+    Active debugger
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controls" class="md-nav__link">
+    Controls
+  </a>
+  
+    <nav class="md-nav" aria-label="Controls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-breakpoints" class="md-nav__link">
+    Setting breakpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-additions" class="md-nav__link">
+    Registering additions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#views-and-fragments" class="md-nav__link">
+    Views and fragments
+  </a>
+  
+    <nav class="md-nav" aria-label="Views and fragments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#threads" class="md-nav__link">
+    Threads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#breakpoints" class="md-nav__link">
+    Breakpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locals" class="md-nav__link">
+    Locals
+  </a>
+  
+    <nav class="md-nav" aria-label="Locals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#live-overlays" class="md-nav__link">
+    Live overlays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-fragments" class="md-nav__link">
+    Other fragments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jdwp-caveats" class="md-nav__link">
+    JDWP caveats
+  </a>
+  
+    <nav class="md-nav" aria-label="JDWP caveats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    Capabilities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-typing" class="md-nav__link">
+    Variable typing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpreter-commands" class="md-nav__link">
+    Interpreter Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Interpreter Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#program-commands" class="md-nav__link">
+    Program commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-commands" class="md-nav__link">
+    Thread commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classobject-commands" class="md-nav__link">
+    Class/object commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#native-debugging" class="md-nav__link">
+    Native debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="Native debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-debugger_1" class="md-nav__link">
+    Active Debugger
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Debugger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#native-threads-vs-vm-threads" class="md-nav__link">
+    Native threads vs VM threads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-to-native-code-transitions" class="md-nav__link">
+    Java to Native code transitions
+  </a>
+  
+    <nav class="md-nav" aria-label="Java to Native code transitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jni-basics" class="md-nav__link">
+    JNI basics
+  </a>
+  
+    <nav class="md-nav" aria-label="JNI basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-linking" class="md-nav__link">
+    Dynamic linking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-linking" class="md-nav__link">
+    Static linking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-views" class="md-nav__link">
+    Additional views
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-code" class="md-nav__link">
+    Memory code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stack" class="md-nav__link">
+    Stack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-interpreter-commands" class="md-nav__link">
+    Additional interpreter commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-scripts-plugins" class="md-nav__link">
+    API, Scripts, Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="native.html" title="Native Code Analysis" class="md-nav__link">
+      Native Code Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="webassembly.html" title="WebAssembly Analysis" class="md-nav__link">
+      WebAssembly Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ethereum.html" title="Ethereum Analysis" class="md-nav__link">
+      Ethereum Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="misc.html" title="Miscellaneous" class="md-nav__link">
+      Miscellaneous
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Extending JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Extending JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Extending JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/introducing-jeb-extensions.html" title="Introducing JEB Extensions" class="md-nav__link">
+      Introducing JEB Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-client-scripts.html" title="Writing Client Scripts" class="md-nav__link">
+      Writing Client Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/android-scripting.html" title="Scripting for Android Reversing" class="md-nav__link">
+      Scripting for Android Reversing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Writing Parsers (Tutorial)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Writing Parsers (Tutorial)" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Writing Parsers (Tutorial)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/1-getting-started-with-parsers.html" title="Part 1: Getting Started with Parsers" class="md-nav__link">
+      Part 1: Getting Started with Parsers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-nav__link">
+      Part 2: Creating a Simple Parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/3-documents-delegation.html" title="Part 3: Documents and Delegation" class="md-nav__link">
+      Part 3: Documents and Delegation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/4-tables-trees.html" title="Part 4: Tables and Trees" class="md-nav__link">
+      Part 4: Tables and Trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/5-development-tips.html" title="Part 5: Development Tips" class="md-nav__link">
+      Part 5: Development Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/6-releasing-plugin.html" title="Part 6: Releasing a Plugin" class="md-nav__link">
+      Part 6: Releasing a Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/7-unit-interactivity.html" title="Part 7: Interactivity" class="md-nav__link">
+      Part 7: Interactivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/8-more-interactivity.html" title="Part 8: More on Interactivity" class="md-nav__link">
+      Part 8: More on Interactivity
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-engines-plugins.html" title="Writing Engines Plugins" class="md-nav__link">
+      Writing Engines Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-front-ends.html" title="Writing Front-Ends" class="md-nav__link">
+      Writing Front-Ends
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/other-resources.html" title="Additional Resources" class="md-nav__link">
+      Additional Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="settings.html" title="Settings" class="md-nav__link">
+      Settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="client-configuration.html" title="Client Configuration" class="md-nav__link">
+      Client Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="engines-configuration.html" title="Engines Configuration" class="md-nav__link">
+      Engines Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="floating.html" title="Floating Controller" class="md-nav__link">
+      Floating Controller
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="faq.html" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundamentals" class="md-nav__link">
+    Fundamentals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-non-debuggable-apps" class="md-nav__link">
+    Debugging non-debuggable apps
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging non-debuggable apps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#native-code-in-non-debuggable-apps" class="md-nav__link">
+    Native code in non-debuggable apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-debuggable-apk" class="md-nav__link">
+    Generating a debuggable APK
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-a-debugging-session" class="md-nav__link">
+    Starting a debugging session
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting a debugging session">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-problems" class="md-nav__link">
+    Common problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugger-nodes" class="md-nav__link">
+    Debugger nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#native-threads" class="md-nav__link">
+    Native threads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dalvik-debugging" class="md-nav__link">
+    Dalvik debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="Dalvik debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-debugger" class="md-nav__link">
+    Active debugger
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controls" class="md-nav__link">
+    Controls
+  </a>
+  
+    <nav class="md-nav" aria-label="Controls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-breakpoints" class="md-nav__link">
+    Setting breakpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-additions" class="md-nav__link">
+    Registering additions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#views-and-fragments" class="md-nav__link">
+    Views and fragments
+  </a>
+  
+    <nav class="md-nav" aria-label="Views and fragments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#threads" class="md-nav__link">
+    Threads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#breakpoints" class="md-nav__link">
+    Breakpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locals" class="md-nav__link">
+    Locals
+  </a>
+  
+    <nav class="md-nav" aria-label="Locals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#live-overlays" class="md-nav__link">
+    Live overlays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-fragments" class="md-nav__link">
+    Other fragments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jdwp-caveats" class="md-nav__link">
+    JDWP caveats
+  </a>
+  
+    <nav class="md-nav" aria-label="JDWP caveats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    Capabilities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-typing" class="md-nav__link">
+    Variable typing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpreter-commands" class="md-nav__link">
+    Interpreter Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Interpreter Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#program-commands" class="md-nav__link">
+    Program commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-commands" class="md-nav__link">
+    Thread commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classobject-commands" class="md-nav__link">
+    Class/object commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#native-debugging" class="md-nav__link">
+    Native debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="Native debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-debugger_1" class="md-nav__link">
+    Active Debugger
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Debugger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#native-threads-vs-vm-threads" class="md-nav__link">
+    Native threads vs VM threads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-to-native-code-transitions" class="md-nav__link">
+    Java to Native code transitions
+  </a>
+  
+    <nav class="md-nav" aria-label="Java to Native code transitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jni-basics" class="md-nav__link">
+    JNI basics
+  </a>
+  
+    <nav class="md-nav" aria-label="JNI basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-linking" class="md-nav__link">
+    Dynamic linking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-linking" class="md-nav__link">
+    Static linking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-views" class="md-nav__link">
+    Additional views
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-code" class="md-nav__link">
+    Memory code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stack" class="md-nav__link">
+    Stack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-interpreter-commands" class="md-nav__link">
+    Additional interpreter commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-scripts-plugins" class="md-nav__link">
+    API, Scripts, Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Android Debugging</h1>
+                
+                <p>JEB supports debugging Dalvik code via JDWP and Native *.so libraries via gdb/lldb. A debugging session allows seamless transition between debugging the Dalvik VM, jumping into native methods invoked via JNI, debugging native code (arm, x86, else), and switching back to Dalvik.</p>
+<div class="admonition info">
+<p class="admonition-title">Previous material</p>
+<p>It is recommended to read the <a href="debugging.html">generic debugging</a> page first.</p>
+</div>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<p>The Android debuggers run on all JEB-supported platforms (Windows, Linux, macOS). Verify the following before attempting to start a debugging session:</p>
+<ul>
+<li>Make sure to have the Android SDK installed. Ideally, you also want to have either <code>ANDROID_SDK_ROOT</code> or <code>ANDROID_SDK</code> environment variable pointing to the SDK folder.</li>
+<li>Enable <em>Developer options</em> and allow USB debugging on the intended physical target device. (Debugging is enabled by default on the emulators.) On physical devices running Android 4.2 and above, one way to make sure that USB debugging is enabled is to run the <code>adb devices</code> command. If the device is shown as <code>unauthorized</code>, a pop-up on your phone will appear to request authorization.</li>
+</ul>
+<h2 id="fundamentals">Fundamentals<a class="headerlink" href="#fundamentals" title="Permanent link">#</a></h2>
+<p>There are two types of debuggable entities on Android OS:</p>
+<ul>
+<li>Android/Linux processes </li>
+<li>Higher-level Dalvik virtual machines, running inside processes</li>
+</ul>
+<p>Debugging is generally performed remotely, on a separate computer. Nothing prevents you from debugging on the device itself though.</p>
+<ul>
+<li>Dalvik VM debugging is done over the <em>Java Debug Wire Protocol</em> (JDWP) protocol. The JDWP server runs inside the process hosting the DVM. JEB implements the JDWP client.</li>
+<li>Native code debugging is done via <code>ptrace(2)</code>. On device a debugger server process, generally gdb or lldb, runs alongside the target process and controls it via ptrace. JEB implements a gdb/lldb client.</li>
+</ul>
+<p><a href="img/7414a0fe.png"><figure><img src="img/7414a0fe-small.png" srcset="img/7414a0fe-small.png 2x" /><figcaption>The DVM runs inside a native process</figcaption></figure></a></p>
+<h2 id="debugging-non-debuggable-apps">Debugging non-debuggable apps<a class="headerlink" href="#debugging-non-debuggable-apps" title="Permanent link">#</a></h2>
+<p>Normally, only apps whose Android Manifest explicitly has a debuggable flag set to true are debuggable. However, this is rarely the case when analyzing in-the-wild malware or production applications. In such cases, you have several options:</p>
+<ul>
+<li><strong>Run the app in an emulator.</strong> Emulators have the <code>ro.debuggable</code> property set to 1 (with an exception, see note below). This means they will debug all apps, regardless of the debuggable flag in the Manifest. In several scenarios, this may not be enough since several components, in the OS or the app itself, may check for the Manifest's debuggable flag before or during the app execution.</li>
+<li><strong>Use a rooted phone.</strong> A rooted phone will allow you to modify the <code>ro.debuggable</code> property, and change it from 0 (standard on production devices) to 1. A rooted phone will also allow you to install additional low-level programs to ease debugging and potentially solve problems mentioned in the above bullet point. (The rooting process is out-of-scope here: it is device-specific and rooting instructions can easily be found online.)</li>
+<li><strong>Repackage your app.</strong> This may be the simplest option. Use JEB's built-in tool <code>makeapkdebug</code> to generate a debuggable app. You will have to sign the repacked app using your own key; be aware of the implications if you choose that option. See below for more details.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you choose to debug in a Google-provided emulator image, make sure to use a non "Google Play image". Those images are locked down production images. Instead, use a "Google APIs image" or a vanilla image (that doesn't ship with Google-specific libs).</p>
+</div>
+<h3 id="native-code-in-non-debuggable-apps">Native code in non-debuggable apps<a class="headerlink" href="#native-code-in-non-debuggable-apps" title="Permanent link">#</a></h3>
+<p>When it comes to debugging native code of non-debuggable apps on a rooted phone or emulator, other limitations apply. JEB tries its best at abstracting them away. However, things might be unstable depending on which phone and OS is being used. Do not hesitate to let us know if you encounter issues.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Some limitations stem from the trusted <code>run-as</code> Android utility, which verifies whether an app is marked debuggable, regardless of the system's overall debuggability. JEB ships with a modified version of the utility, named <code>ranod</code>, which does not perform such checks.</p>
+<p><a href="img/5bbd31fd.png"><figure><img src="img/5bbd31fd-small.png" srcset="img/5bbd31fd-small.png 2x" /><figcaption>Decompiling the x86 build of <code>run-as</code></figcaption></figure></a></p>
+</div>
+<p>Note that most of our tests are done on Pixel devices running vanilla Android Oreo. Using similar devices for debugging will likely reduce the chances of running into corner-case problematic situations.</p>
+<h3 id="generating-a-debuggable-apk">Generating a debuggable APK<a class="headerlink" href="#generating-a-debuggable-apk" title="Permanent link">#</a></h3>
+<p>It is generally easier to debug Android applications explicitly marked debuggable in their Manifest: <code>&lt;application android:debuggable="true" ...&gt;;</code></p>
+<p>JEB has built-in utility to rebuild a non-debuggable APK into a debuggable one, while maintaining the entire structure of the application intact, except for its signing data of course. Navigate to your JEB folder, and use the start-up script, e.g. on Windows:</p>
+<p><code>$ jeb_wincon.bat -c --makeapkdebug -- file.apk</code></p>
+<p>Upon success, <strong>file_debuggable.apk</strong> will be generated. Sign it using the Android SDK's <code>apksigner</code>, e.g. on Windows:</p>
+<p><code>$ apksigner.bat sign -ks SOME_KEYSTORE.JKS file_debuggable.apk</code></p>
+<p>Install it on your device, and start debugging.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Keep in mind that this solution has shortcomings: Anti-debugging code may check at runtime that the app is not debuggable, as would be expected. More elaborate protections may implement certificate pinning-style checks, where the code verifies that it is signed using a specific certificate.</p>
+</div>
+<h2 id="starting-a-debugging-session">Starting a debugging session<a class="headerlink" href="#starting-a-debugging-session" title="Permanent link">#</a></h2>
+<p>Android debugging sessions can be started when analyzing APK files. If your main artifact is an orphan DEX file, the client will refuse to start a debugging session.</p>
+<p>First, retrieve your target APK and get the app ready for debugging:</p>
+<ul>
+<li>Make sure the APK matches the one that will be executed on the target phone. You can download the APK using <code>adb</code>:<ul>
+<li><code>adb shell pm list packages -f</code> to retrieve a list of packages and the associated path to APK</li>
+<li><code>adb pull &lt;pathToAPK&gt;</code> to download the APK</li>
+</ul>
+</li>
+<li>Start the app on the phone<ul>
+<li>Via the App Launcher for instance, if attaching to an already running app is an acceptable scenario</li>
+<li>If you want the app to wait for the debuggers to attach to it before it starts executing any code, you can run something like: <code>adb shell am start -D -S -n &lt;packageName&gt;/&lt;activityName&gt;</code><ul>
+<li>A pop-up will be displayed on the phone, indicating it is waiting for a debugger to attach to the VM</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Second, in the UI client:</p>
+<ul>
+<li>Load the APK file</li>
+<li>Open a view of a primary DEX unit</li>
+<li>Once the focus is on the DEX view, open the <em>Debugger</em> menu, and click on <em>Start...</em></li>
+</ul>
+<p><a href="img/28fcfc50.png"><figure><img src="img/28fcfc50-small.png" srcset="img/28fcfc50-small.png 2x" /><figcaption>The <em>Debugger/Start</em> command, used to start or attach a debugger, is available once the code view of a supported code unit has the focus. Here, the focus was on Dalvik bytecode.</figcaption></figure></a></p>
+<p>In the <em>Attach</em> dialog window:</p>
+<ul>
+<li>Select the target phone and the target process that matches your app, and click Attach.</li>
+<li>Unless you tick the "Suspend all threads", The app will be immediately be run/resumed after attaching.</li>
+<li>The process filter is normally filled out with the APK package name. Simply press enter to filter out entries.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Heads-up</p>
+<p>Tick "Allow children debuggers" if you wish to debug native code as well.</p>
+</div>
+<p><a href="img/ae600736.png"><img src="img/ae600736-small.png" srcset="img/ae600736-small.png 2x" /></a></p>
+<h3 id="common-problems">Common problems<a class="headerlink" href="#common-problems" title="Permanent link">#</a></h3>
+<p><strong>Unable to debug native code of an Android app?</strong></p>
+<p>Make sure to tick the box "Allow children debuggers" before attaching.</p>
+<p><strong>Impossibility to read (most) local vars in Dalvik</strong></p>
+<p>The issue is very likely to be one affecting Android Pie and Q. We <a href="https://www.pnfsoftware.com/blog/debugging-android-apps-on-android-pie-and-above/">wrote a blog</a> explaining the details of the problem (unfortunately, not a fixable one). If possible, switch to something &lt;=Oreo or upgrade your test device to Android R, since it appears the issue was fixed on R DP1 and above.</p>
+<p><strong>Cannot attach to a non-debuggable app but the phone is rooted</strong></p>
+<p>Having a rooted phone is not enough. System components checks for the app's debuggability (i.e., the Manifest's <code>android:debuggable</code> flag) in various places, regardless of whether the image is a locked production image, rooted image, debug or dev build, etc.</p>
+<p>While it is relatively easy to do JDWP debugging, native debugging is generally more tricky.</p>
+<p>JEB does a few things to ease settings things up:
+- It attempts to set the system property <code>ro.debuggable</code> to 1
+- It attempts to replace the <code>run-as</code> utility by one that does not check the debuggable flag (more details later in this doc).</p>
+<p>In order to do any of the above, root privilege is required, and JEB assumes the <code>su</code> tool has been dropped in a standard location (<code>/bin/su, /sbin/su, /system/bin/su, system/xbin/su, /data/local/su, /data/local/bin/su, /data/local/xbin/su, /system/sd/xbin/su, /system/bin/failsafe/su, /su/bin/su</code>).</p>
+<p>Files may have to be dropped in the /system folder. That folder is read-only by default and needs to be remounted read-write. Root privileges may not suffice: if you are using an emulator, configuration may default to a read-only system image. You will need to explicitly specify that the system can be written to, e.g.:
+<code>$ &lt;SDK&gt;/emulator/emulator -avd [image_folder_name] -writable-system</code></p>
+<p>JEB also attempts to disable SEAndroid by issuing a <code>setenforce 0</code> command.</p>
+<p>The above may not suffice. Your mileage may vary. Whenever possible, we encourage debugging on the Lolipop-Oreo range (5.0 to 8.1) on vanilla images.</p>
+<p>Ideally, you'll want to have a debuggable app. Again, it may not be always possible or realistic (e.g., debugging a system app and a custom vendor's locked image), but in many cases (e.g., malware analysis), it is possible.</p>
+<h3 id="debugger-nodes">Debugger nodes<a class="headerlink" href="#debugger-nodes" title="Permanent link">#</a></h3>
+<p>After attaching, the app, you should see one or two additional nodes in the Project tree view. One debugger node for Dalvik, an optional debugger node for native code.</p>
+<p><a href="img/f44cd606.png"><figure><img src="img/f44cd606-small.png" srcset="img/f44cd606-small.png 2x" /><figcaption>Two debugger nodes (<em>VM</em>, <em>Process</em>) attached to the target</figcaption></figure></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a debugger is successfully attached, the corresponding node has a light green background.</p>
+</div>
+<p>Additional views and fragments displaying the debuggers' states and commands are added to the workspace:</p>
+<p><a href="img/23a59ca7.png"><img src="img/23a59ca7-small.png" srcset="img/23a59ca7-small.png 2x" /></a></p>
+<h3 id="native-threads">Native threads<a class="headerlink" href="#native-threads" title="Permanent link">#</a></h3>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Keep in mind that pausing the Process debugger (i.e., suspending the native threads) will freeze the higher-level Dalvik VM!</p>
+</div>
+<p>An app's Dalvik VM runs inside a Linux process. Therefore, any action taken using the native debugger (if native debugger was attached) may affect a VM debugging session as well.</p>
+<h2 id="dalvik-debugging">Dalvik debugging<a class="headerlink" href="#dalvik-debugging" title="Permanent link">#</a></h2>
+<h3 id="active-debugger">Active debugger<a class="headerlink" href="#active-debugger" title="Permanent link">#</a></h3>
+<p><strong>In the general case, the focused UI fragment will determine which debugger will receive input commands.</strong> Therefore, be mindful of which debugger is being controlled when invoking commands (via menu entries, toolbar or keyboard). E.g., if the focus is on a DEX view, the controls are connected to the VM (Dalvik) debugger; if the focus is within a code view connected to the Process debugger, the controls are connected to the Process debugger.</p>
+<h3 id="controls">Controls<a class="headerlink" href="#controls" title="Permanent link">#</a></h3>
+<p>Standard debugger controls can be accessed via the <em>Debugger</em> menu or the toolbar area. They allow:</p>
+<ul>
+<li>Attaching, detaching, terminating the process</li>
+<li>Pausing and resuming the process and, possibly, its individual threads</li>
+<li>Stepping (into, over, out of)</li>
+<li>Toggling execution breakpoints</li>
+</ul>
+<p><a href="img/e7bd3425.png"><img src="img/e7bd3425-small.png" srcset="img/e7bd3425-small.png 2x" /></a></p>
+<p>Not all controls can or are implemented for both debuggers. Currently for instance, pausing individual threads of the <em>Process</em> debugger is not possible. When a control is not available, depending on which control it is and the severity of the failed operation, the user may be unable to activate it (e.g., grayed button), receive an error in the logger, or receive a pop-up error in the client.</p>
+<h4 id="setting-breakpoints">Setting breakpoints<a class="headerlink" href="#setting-breakpoints" title="Permanent link">#</a></h4>
+<p>Breakpoints can be set/unset using the handy Control+B (Command+B on macOS) shortcut. An icon is displayed in the left vertical bar of a code view to represent enabled/disabled breakpoints.</p>
+<p><a href="img/10df49da.png"><figure><img src="img/10df49da-small.png" srcset="img/10df49da-small.png 2x" /><figcaption>Two breakpoints, one is enabled, the other one is disabled</figcaption></figure></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Toggling breakpoints on and off is currently not available in decompiled views.</p>
+</div>
+<h4 id="registering-additions">Registering additions<a class="headerlink" href="#registering-additions" title="Permanent link">#</a></h4>
+<p>When starting a debugging session, the debugger attaches to an APK's DEX unit as well as subsequent compatible code units dynamically added to your Project.</p>
+<p>However, in some cases, the debugger will not automatically pick up and attach to additional DEX units (e.g., nested DEX units). You may ask the debugger to register additional code units via the <em>Debugger, Register Addition</em> action:</p>
+<p><a href="img/f06dcf36.png"><figure><img src="img/f06dcf36-small.png" srcset="img/f06dcf36-small.png 2x" /><figcaption>The handler will be enabled and can be invoked when a debugger fragment has the focus</figcaption></figure></a></p>
+<p><a href="img/04af45c7.png"><figure><img src="img/04af45c7-small.png" srcset="img/04af45c7-small.png 2x" /><figcaption>We are attaching classes.jar to the current debugging</figcaption></figure></a></p>
+<h3 id="views-and-fragments">Views and fragments<a class="headerlink" href="#views-and-fragments" title="Permanent link">#</a></h3>
+<h4 id="threads">Threads<a class="headerlink" href="#threads" title="Permanent link">#</a></h4>
+<p>The Threads view displays thread identifiers, status (running, suspended, waiting, etc.) as well as the stackframes when a thread is paused. Depending on the target processor, there may be one or more stackframes, showing the location (program counter register or address) of the current thread.</p>
+<p><a href="img/1d0913fc.png"><img src="img/1d0913fc-small.png" srcset="img/1d0913fc-small.png 2x" /></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Full status list: CREATED, RUNNING, PAUSED (=SUSPENDED), SLEEPING, WAITING, ZOMBIE, MONITOR, TERMINATED. Not all status may be relevant to a given architecture.</p>
+</div>
+<p>The default thread can be selected by double-clicking or right-clicking, <em>Set as default thread</em>.</p>
+<p>By default, when a breakpoint is hit, <strong>only the active thread is suspended</strong>. The other threads are not. Other threads can be suspended with Terminal commands.</p>
+<p><a href="img/85fd4ddd.png"><figure><img src="img/85fd4ddd-small.png" srcset="img/85fd4ddd-small.png 2x" /><figcaption>A suspended thread after execution hit a breakpoint</figcaption></figure></a></p>
+<h4 id="breakpoints">Breakpoints<a class="headerlink" href="#breakpoints" title="Permanent link">#</a></h4>
+<p>The Breakpoints view displays active and inactive code breakpoints.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The JEB API allows settings breakpoints on instructions and breakpoint on methods (method entry, method exit). Other capabilities exist, not readily available in UI client, e.g. breakpoint on class load event, breakpoint on exception, etc.</p>
+</div>
+<p><a href="img/10df49da.png"><figure><img src="img/10df49da-small.png" srcset="img/10df49da-small.png 2x" /><figcaption>Two breakpoints, one is enabled, the other one is disabled</figcaption></figure></a></p>
+<h4 id="locals">Locals<a class="headerlink" href="#locals" title="Permanent link">#</a></h4>
+<p>The Locals view displays generic variables registers. They can be virtual slots of a VM, registers of a native process, complex variables inferred by the decompiler, etc.</p>
+<p>For JDWP, what is displayed is:</p>
+<ul>
+<li>the current <code>this</code></li>
+<li>locals of the selected (and paused) thread's top frame; variables for other frames can be examined via Terminal commands</li>
+</ul>
+<p>Primitives and String values can be updated.</p>
+<ul>
+<li>click on the cell of the value to be written, in the <em>Value</em> column</li>
+<li>set the new value and press Enter</li>
+</ul>
+<p><a href="img/fa458d3d.png"><figure><img src="img/fa458d3d-small.png" srcset="img/fa458d3d-small.png 2x" /><figcaption>Updating a String object</figcaption></figure></a></p>
+<p>Note that JEB attempts to maintain the state of this fragment across your debugging sessions, even though variables references, values (and subs) may change as you step through code, etc.</p>
+<p>JEB does its best at displaying very large arrays efficiently as well. However, keep in mind that <code>adb</code> is slow, and maintaining live variable views up-to-date across a stepping can be costly.</p>
+<div class="admonition note">
+<p class="admonition-title">Variable types</p>
+<p>For safety reasons, Dex metadata providing locals types and/or names information is entirely disregarded, since it cannot be trusted and using bad types can crash the DVM server. See the sub-section below about JDWPD caveats.</p>
+</div>
+<h5 id="live-overlays">Live overlays<a class="headerlink" href="#live-overlays" title="Permanent link">#</a></h5>
+<p>Hover over a variable, register, or field to see its contents. The thread must be paused.</p>
+<p><a href="img/53508952.png"><figure><img src="img/53508952-small.png" srcset="img/53508952-small.png 2x" /><figcaption>Hovering over <code>p0</code> (equivalent to <code>v7</code> in the examined method)</figcaption></figure></a></p>
+<h4 id="other-fragments">Other fragments<a class="headerlink" href="#other-fragments" title="Permanent link">#</a></h4>
+<p>The Stack and Memory fragments are irrelevant for JDWP debugging</p>
+<h3 id="jdwp-caveats">JDWP caveats<a class="headerlink" href="#jdwp-caveats" title="Permanent link">#</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This short section highlights limitations pertaining the Dalvik debugging via JDWP, both on the server (device) and the client (JEB) side.</p>
+</div>
+<p>JDWP was specified and designed by Oracle for the Java VM. The Dalvik VM implements parts of the <a href="https://docs.oracle.com/en/java/javase/11/docs/specs/jdwp/jdwp-spec.html">specifications</a> and the <a href="https://docs.oracle.com/en/java/javase/11/docs/specs/jdwp/jdwp-protocol.html">Binary Protocol</a>. </p>
+<h4 id="capabilities">Capabilities<a class="headerlink" href="#capabilities" title="Permanent link">#</a></h4>
+<p>The <code>Capabilities</code> and <code>CapabilitiesNew</code> commands of the <code>VirtualMachine</code> command set can be used to retrieve the list of features offered by a JDWP server. E.g., register watches are not supported by the Dalvik debugger server.</p>
+<p>Although the JEB Android debugging modules implement JDWP with regards to what the Dalvik JDWP server provides, not all JDWP are currently exposed through the UI client or even API. E.g., JDWP allows debugger clients to specify if one or all threads should be stopped when a breakpoint is hit; currently, JEB debugger API does not provide a method to control that setting.</p>
+<h4 id="variable-typing">Variable typing<a class="headerlink" href="#variable-typing" title="Permanent link">#</a></h4>
+<p>Why are most locals typed as 'int' by default? The general reason is safety.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The Dalvik VM will crash the JDWP server attempts to read a non-reference as a reference; most non-references are obvious (e.g., 1, 2, small ints -&gt; non refs.) but some ints may not be - relying on DEX metadata is also unsafe.</p>
+</div>
+<p>However, most variables can be retyped. Click on a <em>type</em> cell to edit contents:</p>
+<ul>
+<li>Changing the type of v0 to long: type <code>long</code>, press Enter. The resulting value is the long interpretation of {v0,v1}</li>
+<li>Changing the type of p0 to object: type <code>object</code>, press Enter. If the reference truly is an object, the correct type will be retrieved. <strong>If it is not, the VM may crash.</strong></li>
+</ul>
+<h3 id="interpreter-commands">Interpreter Commands<a class="headerlink" href="#interpreter-commands" title="Permanent link">#</a></h3>
+<p>The debugger units implement <code>IUnit.getCommandInterpreter</code> method to provide clients with command interpreters used to execute fine-grained debugger commands that may not be readily available in the UI client.</p>
+<p>All command interpreters are accessible via the <em>Console</em> tab. Once the Android debuggers are attached, switch over to the Console view, and type <code>list</code>. This command will list all command interpreters currently attached to the console:</p>
+<p><a href="img/01bb52f4.png"><figure><img src="img/01bb52f4-small.png" srcset="img/01bb52f4-small.png 2x" /><figcaption>A terminal that can be bound to 3 command interpreters, including two provided by active Debugger units</figcaption></figure></a></p>
+<p>An interpreter has a numeric id as well as the name of the unit that created it. Switch to an interpreter with the <code>use &lt;id|name&gt;</code> command. The special command <code>help</code>, available in all interpreter contexts, lists all commands made available by the interpreter currently in use.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">&gt; list</span>
+<span class="err">3 interpreters available</span>
+<span class="err">(0) py: Python Interpreter (built on Jython 2.7)</span>
+<span class="err">(1) VM: Debugger interpreter for VM</span>
+<span class="err">(2) Process: Debugger interpreter for Process</span>
+<span class="err">&gt; use 1</span>
+<span class="err">VM&gt; help</span>
+<span class="err">info                           : Display basic information about the debuggee</span>
+<span class="err">libs|modules [name-filter]     : Display information about the target modules</span>
+<span class="err">resume [tid]                   : Run or resume the target, a thread, or the default thread (tid 0)</span>
+<span class="err">pause                          : Pause the target</span>
+<span class="err">detach                         : Detach the target (if possible)</span>
+<span class="err">kill|terminate                 : Kill the target (unstable)</span>
+<span class="err">threads                        : List the process threads</span>
+<span class="err">thread [tid]                   : Set or get the default thread</span>
+<span class="err">step|stepi                     : Step &quot;into&quot; one instruction in the default thread</span>
+<span class="err">stepo                          : Step &quot;over&quot; one instruction in the default thread</span>
+<span class="err">stepu                          : Step &quot;up&quot;/&quot;out&quot; (run until return) in the default thread</span>
+<span class="err">b|bp [address]                 : Set or list breakpoints</span>
+<span class="err">bc [index]                     : Clear one or all breakpoints</span>
+<span class="err">frameSlotIndexMode mode        : Set the index type used to retrieve thread frames&#39; variables (AUTO, PAR, VAR)</span>
+<span class="err">classes                        : List the classes loaded by the VM</span>
+<span class="err">signature|sig [OPTION]... cid  : Information about a specific class</span>
+<span class="err">fields [OPTION]... cid         : List the fields of a type</span>
+<span class="err">methods [OPTION]... cid        : List the methods of a type</span>
+<span class="err">call|invoke [OPTION]... cid method : invoke a method.</span>
+<span class="err">read|get [OPTION]... objectId  : Read an object or array.</span>
+<span class="err">set [OPTION]... objectId new_value : Set a method variable or parameter as a typed-value</span>
+<span class="err">pull remotePath localPath      : adb-pull on steroid</span>
+<span class="err">VM&gt; </span>
+</code></pre></div>
+
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Many commands can only run when the target or target thread is suspended or paused.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Type <code>help &lt;command&gt;</code> to see specific help for that command.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Press Enter on a white-line to repeat the previously executed command.</p>
+</div>
+<p>There are three types of commands in the VM interpreter:</p>
+<ul>
+<li>program commands: <code>info, libs, detach, kill, pull</code></li>
+<li>thread commands: <code>thread, threads, pause, resume, step, stepo, stepu, b, bc</code></li>
+<li>object-interaction commands: <code>classes, sig, fields, methods, call, get, set</code></li>
+</ul>
+<h4 id="program-commands">Program commands<a class="headerlink" href="#program-commands" title="Permanent link">#</a></h4>
+<ul>
+<li><code>info</code> will provide information about JDWP. Below, Java 8 and JVM-DI 2.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">VM&gt; info</span>
+<span class="err">Debuggee is running on ?</span>
+<span class="err">VM information: JDWP:&quot;Java Debug Wire Protocol (Reference Implementation) version 1.8</span>
+<span class="err">JVM Debug Interface version 1.2</span>
+<span class="err">JVM version 8 (Dalvik, )&quot; v1.8 (VM:Dalvik v8)</span>
+<span class="err">VM identifier sizes: f=8,m=8,o=8,rt=8,fr=8</span>
+</code></pre></div>
+
+
+<ul>
+<li><code>libs</code> will always be empty for a JDWP debugger: libraries are not application to Dalvik bytecode running in a VM.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>A native debugger's <code>libs</code> command does provide information.</p>
+</div>
+<ul>
+<li>
+<p><code>detach</code> will attempt to detach the target without killing it</p>
+</li>
+<li>
+<p><code>kill</code> will terminate the target process (and therefore detach from it as well)</p>
+</li>
+<li>
+<p><code>pull</code> is similar to <code>adb pull ...</code> but will make use of the <code>su</code> binary to elevate privileges when necessary (assuming <code>su</code> be present and found on the target device).</p>
+</li>
+</ul>
+<h4 id="thread-commands">Thread commands<a class="headerlink" href="#thread-commands" title="Permanent link">#</a></h4>
+<ul>
+<li>
+<p><code>thread</code> is used to retrieve or set the <em>default</em> thread, i.e. the thread to which most commands will be applied to if no thread id is explicitly provided.</p>
+</li>
+<li>
+<p><code>threads</code> lists the threads and their states</p>
+</li>
+<li>
+<p><code>pause</code> suspends the target: <em>all</em> threads will be suspended</p>
+</li>
+<li>
+<p><code>resume</code> resumes the target: <em>all</em> threads will be resumed.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Keep in mind that pausing/resuming actions are stacked. E.g., a a thread X was already suspended, executing <code>pause</code>, then <code>resume</code>, will not resume thread X.</p>
+</div>
+<ul>
+<li>
+<p><code>step</code> or <code>stepi</code> is used to perform a single-step, and enter methods (Dalvik or Native) if necessary</p>
+</li>
+<li>
+<p><code>stepo</code> performs a single-step but does not enter methods.</p>
+</li>
+<li>
+<p><code>stepu</code> will step until the current method returns.</p>
+</li>
+<li>
+<p><code>b</code> is used to list or add breakpoints, e.g.:</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">VM&gt; b</span>
+<span class="err">0 - Lcom/xyz/appcheck/AppCheck;-&gt;runTest(Lcom/xyz/appcheck/TestId;)Z+23Ah [enabled: true]</span>
+<span class="err">1 - Lcom/xyz/appcheck/AppCheck;-&gt;runTest(Lcom/xyz/appcheck/TestId;)Z+246h [enabled: false]</span>
+<span class="err">2 - Lcom/xyz/appcheck/AppCheck;-&gt;runTest(Lcom/xyz/appcheck/TestId;)Z+240h [enabled: true]</span>
+<span class="err">VM&gt; b Lcom/xyz/appcheck/AppCheck;-&gt;runTest(Lcom/xyz/appcheck/TestId;)Z+218h</span>
+<span class="err">Lcom/xyz/appcheck/AppCheck;-&gt;runTest(Lcom/xyz/appcheck/TestId;)Z+218h (u={Unit:name={Bytecode},type={dex}},a={Lcom/xyz/appcheck/AppCheck;-&gt;runTest(Lcom/xyz/appcheck/TestId;)Z+218h}) [enabled=true]</span>
+</code></pre></div>
+
+
+<ul>
+<li><code>bc</code> is used to clear one or all breakpoints.</li>
+</ul>
+<h4 id="classobject-commands">Class/object commands<a class="headerlink" href="#classobject-commands" title="Permanent link">#</a></h4>
+<ul>
+<li><code>classes</code> lists all currently loaded classes. Not all classes of an app may be loaded when the command is executed.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Classes (and generally, types) are referenced by their <strong>canonical JVM name</strong> or their <code>cid</code> (internal id representing a type during for a given debugging session).</p>
+<p>A target class can also be inferred from an object reference:</p>
+<ul>
+<li><code>this</code> object</li>
+<li>the object id, prefixed with <code>@</code> character</li>
+<li>any object that can be referenced from these ones.</li>
+</ul>
+</div>
+<ul>
+<li>
+<p><code>sig</code> retrieves information about a particular class</p>
+</li>
+<li>
+<p><code>fields</code> and <code>methods</code> are used to list the fields of a type, e.g.:</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">VM&gt; methods Ljava/lang/String;</span>
+<span class="err">sig=Ljava/lang/String;,genSig=Ljava/lang/Object;Ljava/io/Serializable;Ljava/lang/Comparable&lt;Ljava/lang/String;&gt;;Ljava/lang/CharSequence;</span>
+<span class="err">98 methods:</span>
+<span class="err">- id=1876278024,name=&lt;clinit&gt;,sig=()V,genSig=,mod=8h</span>
+<span class="err">- id=1876278064,name=&lt;init&gt;,sig=()V,genSig=,mod=1h</span>
+<span class="err">- id=1876278104,name=&lt;init&gt;,sig=(II[C)V,genSig=,mod=0h</span>
+<span class="err">- id=1876278144,name=&lt;init&gt;,sig=(Ljava/lang/String;)V,genSig=,mod=1h</span>
+<span class="err">...</span>
+</code></pre></div>
+
+
+<div class="codehilite"><pre><span></span><code><span class="err">VM&gt; methods this.mActionBar</span>
+<span class="err">sig=Lcom/android/internal/app/WindowDecorActionBar;,genSig=</span>
+<span class="err">110 methods:</span>
+<span class="err">- id=494344081864,name=&lt;clinit&gt;,sig=()V,genSig=,mod=8h</span>
+<span class="err">- id=494344081904,name=&lt;init&gt;,sig=(Landroid/app/Activity;)V,genSig=,mod=1h</span>
+<span class="err">- id=494344081944,name=&lt;init&gt;,sig=(Landroid/app/Dialog;)V,genSig=,mod=1h</span>
+<span class="err">- id=494344081984,name=&lt;init&gt;,sig=(Landroid/view/View;)V,genSig=,mod=1h</span>
+<span class="err">- id=494344082024,name=access$000,sig=(Lcom/android/internal/app/WindowDecorActionBar;)Z,genSig=,mod=F0001008h</span>
+<span class="err">- id=494344082064,name=access$100,sig=(Lcom/android/internal/app/WindowDecorActionBar;)Landroid/view/View;,genSig=,mod=F0001008h</span>
+<span class="err">...</span>
+</code></pre></div>
+
+
+<ul>
+<li><code>call</code> is used to invoke any method on objects or classes. Arguments must be separated by commas, e.g.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">VM&gt; call this toString</span>
+<span class="err">string@9399:&quot;com.xyz.appcheck.AppCheck@7d6f5da&quot;</span>
+</code></pre></div>
+
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Code is executed on the target when using the <code>call</code> command. The target state may be modified.</p>
+</div>
+<ul>
+<li><code>get</code> and <code>set</code> are used to read and write stack-frame local variables (similar to what the Locals view provide), e.g.:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">VM&gt; set this.vArrayInt [I{1, 2, 3}</span>
+<span class="err">VM&gt; set this.mystring &quot;FOOBAR&quot;</span>
+<span class="err">VM&gt; get this.mystring</span>
+<span class="err">string@1234:&quot;FOOBAR&quot;</span>
+</code></pre></div>
+
+
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The interpreters support auto-completion with the Tab key.</p>
+</div>
+<h2 id="native-debugging">Native debugging<a class="headerlink" href="#native-debugging" title="Permanent link">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section assumes that the app has bytecode and native libraries stored in the standard APK's <code>lib/</code> folder. To debug native code only (Android or not), you will need to start <code>gdbserver</code> on the target manually, and connect remotely (<em>Debugger, Attach, Remote</em> tab).</p>
+</div>
+<p>Native debugging of Android apps is done remotely over the gdb protocol and the lldb extensions. JEB implements a gdb/lddb client and connects to the on-device gdb-server/lldb-server. By default, lldb-server is the preferred debugger server dropped on the target.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When attaching to the target app, remember to tick "Allow Children Debuggers".</p>
+</div>
+<p>Needless to say, it is worth getting familiar with x86 and arm assembly (preferably their 64-bit variants, for which getting acquainted with their 32-bit parent if necessary).</p>
+<h3 id="active-debugger_1">Active Debugger<a class="headerlink" href="#active-debugger_1" title="Permanent link">#</a></h3>
+<p>Focus a fragment related to native debugging to ensure debugging commands are issued to the native debugger.</p>
+<p>If the Terminal is opened, the prompt will change to <em>Process</em> to reflect the change as well: interpreter commands will be issued to the gdbserver. Issue an <code>info</code> command, you should see basic target information, e.g.:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Process&gt; info</span>
+<span class="err">Debuggee is running on ARM64 (LITTLE_ENDIAN)</span>
+<span class="err">Target process id: 19218</span>
+<span class="err">Target is being debugged by lldb-server</span>
+</code></pre></div>
+
+
+<p><a href="img/2a619665.png"><figure><img src="img/2a619665-small.png" srcset="img/2a619665-small.png 2x" /><figcaption>A breakpoint was hit in a SO file, and all native threads are paused</figcaption></figure></a></p>
+<h4 id="native-threads-vs-vm-threads">Native threads vs VM threads<a class="headerlink" href="#native-threads-vs-vm-threads" title="Permanent link">#</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always remember that the Dalvik VM runs within the Native process, and that VM threads are backed by Native threads. That includes the JDWP server thread as well! If you pause Native threads, the VM threads will freeze as well, despite what the Dalvik debugger fragments may indicate.</p>
+</div>
+<p>This "nested debuggers" situation, if not managed properly, can lead to strange situations, and in fine, the JDWP debugger may lose control of the target.</p>
+<p>Rules of thumb:</p>
+<ul>
+<li>when debugging native code, do not attempt to interact with the JDWP debugger</li>
+<li>make sure the Native process is not paused when issuing JDWP commands, e.g., unless necessary/wanted, you should disable Native breakpoints that may be hit and interrupt a VM debugging session abruptly</li>
+</ul>
+<h3 id="java-to-native-code-transitions">Java to Native code transitions<a class="headerlink" href="#java-to-native-code-transitions" title="Permanent link">#</a></h3>
+<p>Dalvik code can call into Native code by invoking methods with that have the Java modifier (attribute) <em>native</em>.</p>
+<ul>
+<li>Set a breakpoint on the dispatch instruction, not on the Java native method itself.</li>
+<li>When the breakpoint is hit, issue a <em>Step Into</em> command to auto-switch to Native code debugging<ul>
+<li>Be patient, native code analysis is taking place as you're switching code</li>
+<li>The native breakpoint was automatically created and will be automatically released upon returning to Dalvik</li>
+</ul>
+</li>
+<li>Resume native debugging to go back to Dalvik; the code will auto-break on return from <em>invoke-xxx</em></li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Source:</li>
+</ul>
+<p>Java code:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">package</span> <span class="nn">com.xyz.appcheck</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">AppCheck</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">loadLibrary</span><span class="p">(</span><span class="s">&quot;somelib&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+    <span class="n">String</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="p">...</span>
+        <span class="k">return</span> <span class="n">getPlatform</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">native</span> <span class="n">String</span> <span class="nf">getPlatform</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="p">...</span>
+</code></pre></div>
+
+
+<p>C code:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">jstring</span> <span class="nf">Java_com_xyz_appcheck_AppCheck_getPlatform</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span><span class="p">,</span> <span class="n">jobject</span> <span class="n">thiz</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<ul>
+<li>Transition in JEB:</li>
+</ul>
+<p><a href="img/2066de98.png"><img src="img/2066de98-small.png" srcset="img/2066de98-small.png 2x" /></a></p>
+<p>How was Java's <code>com.xyz.appcheck.AppCheck.getPlatform</code> linked to C's <code>Java_com_xyz_appcheck_AppCheck_getPlatform</code>? The process of binding Java methods to native methods (in the case above, binding was done automatically), as well as input and output object conversions and the library code to manipulate them while executing native code, is defined in the <em>Java Native Interfaces</em> specifications.</p>
+<h4 id="jni-basics">JNI basics<a class="headerlink" href="#jni-basics" title="Permanent link">#</a></h4>
+<p>Method linking and dispatching is an important aspect of JNI, which reverse-engineers should understand in order to work around difficult cases, including Java methods statically linked.</p>
+<h5 id="dynamic-linking">Dynamic linking<a class="headerlink" href="#dynamic-linking" title="Permanent link">#</a></h5>
+<p>When a native Java method is executed, the VM will look for a native method having:</p>
+<ul>
+<li>the following name:
+  Short_Form= <code>"Java_" + mangled_classname + "_" + mangled_methodname</code></li>
+<li>or, if the method is overloaded, the following name:
+  Long_Form = <code>Short_Form + "__" + mangled_argsigs</code></li>
+</ul>
+<p>The mangling scheme is the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">.       =&gt; _</span>
+<span class="err">/       =&gt; _</span>
+<span class="err">_       =&gt; _1</span>
+<span class="err">;       =&gt; _2</span>
+<span class="err">[       =&gt; _3</span>
+<span class="err">\uXXXX  =&gt; _0xxxx (unicode char.)</span>
+</code></pre></div>
+
+
+<p>Types names for mangled_argsigs are using the canonical JVM convention:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">boolean   =&gt; Z</span>
+<span class="err">byte      =&gt; B</span>
+<span class="err">char      =&gt; C</span>
+<span class="err">short     =&gt; S</span>
+<span class="err">int       =&gt; I</span>
+<span class="err">long      =&gt; J</span>
+<span class="err">float     =&gt; F</span>
+<span class="err">double    =&gt; D</span>
+<span class="err">classname =&gt; La/b/c/SomeClass;</span>
+</code></pre></div>
+
+
+<div class="admonition details">
+<p class="admonition-title">Details</p>
+<p>For additional details, refer to <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/design.html#wp615">this part</a> of the official specifications.</p>
+</div>
+<p>Examples for auto-binding:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">void f(int x) in class com.xyz.A</span>
+<span class="err">=&gt; short form: Java_com_xyz_A_f</span>
+<span class="err">=&gt; long form: Java_com_xyz_A_f__I</span>
+</code></pre></div>
+
+
+<div class="codehilite"><pre><span></span><code><span class="err">void g(long array[], String s) in class com.\x4f60\x597d</span>
+<span class="err">=&gt; short form: Java_com__04f60_0597d_g</span>
+<span class="err">=&gt; long form: Java_com__04f60_0597d_g___3JLjava_lang_String_2</span>
+</code></pre></div>
+
+
+<h5 id="static-linking">Static linking<a class="headerlink" href="#static-linking" title="Permanent link">#</a></h5>
+<p>Native libraries can use the JNI function <code>RegisterNatives</code> to manually bind native methods to Java counterparts, while not adhering to the JNI naming convention used for dynamic linking.</p>
+<p><code>RegisterNatives</code> can be called anywhere.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>In the snippet, a Java method <code>a.b.c.Foo.methodX()V</code> is bound to a static, non-exported native method <code>routineX</code>.</p>
+</div>
+<div class="codehilite"><pre><span></span><code><span class="n">jint</span> <span class="nf">JNI_OnLoad</span><span class="p">(</span><span class="n">JavaVM</span><span class="o">*</span> <span class="n">vm</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">reserved</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">vm</span><span class="o">-&gt;</span><span class="n">GetEnv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">env</span><span class="p">,</span> <span class="n">JNI_VERSION_1_4</span><span class="p">)</span> <span class="o">!=</span> <span class="n">JNI_OK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">registerNatives</span><span class="p">(</span><span class="n">env</span><span class="p">)</span> <span class="o">!=</span> <span class="n">JNI_TRUE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">JNI_VERSION_1_4</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">registerNatives</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">registerNativeMethods</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">classPathName</span><span class="p">,</span> <span class="n">methods</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">methods</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">methods</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">JNI_FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">JNI_TRUE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">registerNativeMethods</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">className</span><span class="p">,</span> <span class="n">JNINativeMethod</span><span class="o">*</span> <span class="n">gMethods</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numMethods</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">jclass</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">env</span><span class="o">-&gt;</span><span class="n">FindClass</span><span class="p">(</span><span class="n">className</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">clazz</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">JNI_FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">env</span><span class="o">-&gt;</span><span class="n">RegisterNatives</span><span class="p">(</span><span class="n">clazz</span><span class="p">,</span> <span class="n">gMethods</span><span class="p">,</span> <span class="n">numMethods</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">JNI_FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">JNI_TRUE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">classPathName</span> <span class="o">=</span> <span class="s">&quot;a/b/c/Foo&quot;</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">JNINativeMethod</span> <span class="n">methods</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">{</span><span class="s">&quot;methodX&quot;</span><span class="p">,</span> <span class="s">&quot;()V&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">routineX</span><span class="p">},</span>
+<span class="p">};</span>
+
+<span class="c1">// bound to Java method: a.b.c.Foo.methodX()V</span>
+<span class="k">static</span> <span class="n">jint</span> <span class="n">JNICALL</span> <span class="nf">routineX</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">env</span><span class="p">,</span> <span class="n">jobject</span> <span class="n">thiz</span><span class="p">,</span> <span class="n">jint</span> <span class="n">a</span><span class="p">,</span> <span class="n">jint</span> <span class="n">b</span><span class="p">,</span> <span class="n">jint</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h3 id="additional-views">Additional views<a class="headerlink" href="#additional-views" title="Permanent link">#</a></h3>
+<p>On top of the usual debugger fragment that were described in the Dalvik debugger section (threads, breakpoints, locals), native debuggers provide additional fragments.</p>
+<h4 id="memory-code">Memory code<a class="headerlink" href="#memory-code" title="Permanent link">#</a></h4>
+<p>The memory fragment displays the data and instructions located at any address within the target process. It is helpful in many situations, such as:
+- simple memory exploration and scanning 
+- snooping around Dalvik VM internal structures, and modifying them
+- single-stepping over code outside the analyzed <code>.so</code> files contained in the app's <code>lib/</code> folder</p>
+<p>A situation where the third scenario arises is when entering library code located somewhere in the process memory, outside a pre-analyzed so file. The execution will seem to have stalled in the main view (fixed blue line). Switch to the <em>Memory Code</em> fragment to see what is being executed.</p>
+<p><a href="img/e881dfb2.png"><img src="img/e881dfb2-small.png" srcset="img/e881dfb2-small.png 2x" /></a></p>
+<h4 id="stack">Stack<a class="headerlink" href="#stack" title="Permanent link">#</a></h4>
+<p>The stack view is similar to the memory fragment: it represents words of memory located at around the standard stack pointer on the target architecture (esp, rsp, r13, x31, etc.).</p>
+<h3 id="additional-interpreter-commands">Additional interpreter commands<a class="headerlink" href="#additional-interpreter-commands" title="Permanent link">#</a></h3>
+<p>...</p>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">#</a></h2>
+<p>The Android debuggers offer options to control low-level debugger parameters, such as ports and timeouts.</p>
+<p>Filter on <code>dbug_apk</code> and <code>dbug_elf</code> in the Engines options:</p>
+<p><a href="img/919c0dbc.png"><img src="img/919c0dbc-small.png" srcset="img/919c0dbc-small.png 2x" /></a></p>
+<p>The full documentation of each option can be found on <a href="engines-configuration.html">this page</a>.</p>
+<h2 id="api-scripts-plugins">API, Scripts, Plugins<a class="headerlink" href="#api-scripts-plugins" title="Permanent link">#</a></h2>
+<p>Debugger modules in implement the set of interfaces contained in the <code>com.pnfsoftware.jeb.core.units.code.debug</code> package. The principal interface in this package is <code>IDebuggerUnit</code>. Plugins, scripts, or third-party clients wishing to automate the usage of debuggers can use these well-defined interfaces. The official UI client uses this public API as well. Anything that the UI client does can be done and/or automated by third-party code.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Check out <a href="https://www.pnfsoftware.com/blog/crypto-monitoring-android-debuggers-api/">our blog post</a> on Android crypto primitives hooking to see how the API can be used to retrieve pre-encryption or post-decryption data on the fly.</p>
+</div>
+<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">#</a></h2>
+<ul>
+<li>A note on debugging caveats with recent Android versions (p, Q): <a href="https://www.pnfsoftware.com/blog/debugging-android-apps-on-android-pie-and-above/">Debugging Android apps on Android Pie and above</a></li>
+<li>API/Scripting: <a href="https://www.pnfsoftware.com/blog/crypto-monitoring-android-debuggers-api/">Crypto Monitoring with the Android Debuggers API</a></li>
+<li>Use-case, obfuscation: <a href="https://www.pnfsoftware.com/blog/defeating-appsolid-android-protector/">Defeating AppSolid Android application protector</a></li>
+<li>Use-case, dynamic dex: <a href="https://www.pnfsoftware.com/blog/debugging-dynamically-loaded-dex-files-with-jeb/">Debugging Dynamically Loaded DEX Bytecode Files</a></li>
+<li>JNI debugging helper: <a href="https://www.pnfsoftware.com/blog/dynamic-jni-detection-plugin/">Dynamic JNI Detection Plugin</a></li>
+</ul>
+<p>Reference: <a href="https://www.pnfsoftware.com/blog/category/debugging/">List to all blog articles on debugging</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="android.html" title="Android Analysis" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Android Analysis
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="native.html" title="Native Code Analysis" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Native Code Analysis
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2015 - 2020 PNF Software
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

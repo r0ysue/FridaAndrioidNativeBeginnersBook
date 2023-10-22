@@ -1,0 +1,4 @@
+操作指南：https://bbs.pediy.com/thread-259895-1.htm
+
+首先输入密码：pwd_ilbtcdnwiuypbzeo_
+其次选择manual激活：自己定个username，然后运行py来激活，注意使用python2

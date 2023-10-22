@@ -1,0 +1,37 @@
+:root {
+
+  /* Default color shades */
+  /*--md-default-fg-color:               inherit;
+  --md-default-fg-color--light:        inherit;
+  --md-default-fg-color--lighter:      inherit;
+  --md-default-fg-color--lightest:     inherit;
+  --md-default-bg-color:               inherit;
+  --md-default-bg-color--light:        inherit;
+  --md-default-bg-color--lighter:      inherit;
+  --md-default-bg-color--lightest:     inherit;*/
+
+  /* Primary color shades */
+  --md-primary-fg-color:               #7DA339;
+  --md-primary-fg-color--light:        #7DA339;
+  --md-primary-fg-color--dark:         #7DA339;
+  /*--md-primary-bg-color:               inherit;
+  --md-primary-bg-color--light:        inherit;*/
+
+  /* Accent color shades */
+  --md-accent-fg-color:                #7DA339;
+  --md-accent-fg-color--transparent:   #7DA339;
+  /*--md-accent-bg-color:                inherit;
+  --md-accent-bg-color--light:         inherit;*/
+
+  /* Code block color shades */
+  /*--md-code-bg-color:                  inherit;
+  --md-code-fg-color:                  inherit;*/
+}
+
+* {
+  font-size: 95%;
+}
+figcaption {
+  font-size: 70%;
+  color: grey;
+}

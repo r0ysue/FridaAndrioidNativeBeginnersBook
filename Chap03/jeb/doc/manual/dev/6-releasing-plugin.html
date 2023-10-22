@@ -1,0 +1,993 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for JEB Decompiler">
+      
+      
+        <link rel="canonical" href="https://www.pnfsoftware.com/jeb/manual/dev/6-releasing-plugin.html">
+      
+      
+        <meta name="author" content="PNF Software">
+      
+      <link rel="shortcut icon" href="../img/jeb-icon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Part 6: Releasing a Plugin - JEB Decompiler</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ant-build-file" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-header-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="../assets/jeb_128px_white.png" srcset="../assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            JEB Decompiler
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Part 6: Releasing a Plugin
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="../assets/jeb_128px_white.png" srcset="../assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    JEB Decompiler
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Using JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Using JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Using JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../workspace.html" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../actions.html" title="Common Actions" class="md-nav__link">
+      Common Actions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../views.html" title="Common Views" class="md-nav__link">
+      Common Views
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../decompiling.html" title="Decompiling" class="md-nav__link">
+      Decompiling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../debugging.html" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android.html" title="Android Analysis" class="md-nav__link">
+      Android Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android-debugging.html" title="Android Debugging" class="md-nav__link">
+      Android Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../native.html" title="Native Code Analysis" class="md-nav__link">
+      Native Code Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../webassembly.html" title="WebAssembly Analysis" class="md-nav__link">
+      WebAssembly Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ethereum.html" title="Ethereum Analysis" class="md-nav__link">
+      Ethereum Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../misc.html" title="Miscellaneous" class="md-nav__link">
+      Miscellaneous
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Extending JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Extending JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Extending JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="introducing-jeb-extensions.html" title="Introducing JEB Extensions" class="md-nav__link">
+      Introducing JEB Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-client-scripts.html" title="Writing Client Scripts" class="md-nav__link">
+      Writing Client Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android-scripting.html" title="Scripting for Android Reversing" class="md-nav__link">
+      Scripting for Android Reversing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Writing Parsers (Tutorial)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Writing Parsers (Tutorial)" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Writing Parsers (Tutorial)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="1-getting-started-with-parsers.html" title="Part 1: Getting Started with Parsers" class="md-nav__link">
+      Part 1: Getting Started with Parsers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-nav__link">
+      Part 2: Creating a Simple Parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="3-documents-delegation.html" title="Part 3: Documents and Delegation" class="md-nav__link">
+      Part 3: Documents and Delegation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="4-tables-trees.html" title="Part 4: Tables and Trees" class="md-nav__link">
+      Part 4: Tables and Trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="5-development-tips.html" title="Part 5: Development Tips" class="md-nav__link">
+      Part 5: Development Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Part 6: Releasing a Plugin
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="6-releasing-plugin.html" title="Part 6: Releasing a Plugin" class="md-nav__link md-nav__link--active">
+      Part 6: Releasing a Plugin
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ant-build-file" class="md-nav__link">
+    Ant Build File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-plugin" class="md-nav__link">
+    Building the Plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-build-template" class="md-nav__link">
+    Generic Build Template
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="7-unit-interactivity.html" title="Part 7: Interactivity" class="md-nav__link">
+      Part 7: Interactivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="8-more-interactivity.html" title="Part 8: More on Interactivity" class="md-nav__link">
+      Part 8: More on Interactivity
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-engines-plugins.html" title="Writing Engines Plugins" class="md-nav__link">
+      Writing Engines Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-front-ends.html" title="Writing Front-Ends" class="md-nav__link">
+      Writing Front-Ends
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="other-resources.html" title="Additional Resources" class="md-nav__link">
+      Additional Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../settings.html" title="Settings" class="md-nav__link">
+      Settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client-configuration.html" title="Client Configuration" class="md-nav__link">
+      Client Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../engines-configuration.html" title="Engines Configuration" class="md-nav__link">
+      Engines Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../floating.html" title="Floating Controller" class="md-nav__link">
+      Floating Controller
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../faq.html" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ant-build-file" class="md-nav__link">
+    Ant Build File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-plugin" class="md-nav__link">
+    Building the Plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-build-template" class="md-nav__link">
+    Generic Build Template
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Part 6: Releasing a Plugin</h1>
+                
+                <p><em>JEB Plugin Development Tutorial part 6/8</em></p>
+<p>When your plugin is ready, you may be looking into some way to share it. It is not convenient to hand out classfiles, not to mention changing Classpath and Classnames in the JEB <em>Options</em> panel. The solution is to package your plugin: this page shows you how to build a jar file containing your JEB plugin.</p>
+<h2 id="ant-build-file">Ant Build File<a class="headerlink" href="#ant-build-file" title="Permanent link">#</a></h2>
+<p>First, make sure to have a <em>JEB_HOME</em> environment variable pointing to your JEB directory. Then, use the following Ant <code>build.xml</code> file to build the sample JavaScript plugin.</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
+
+<span class="nt">&lt;project</span> <span class="na">basedir=</span><span class="s">&quot;.&quot;</span> <span class="na">default=</span><span class="s">&quot;build&quot;</span> <span class="na">name=</span><span class="s">&quot;jebplugin&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;jebjar&quot;</span> <span class="na">value=</span><span class="s">&quot;${env.JEB_HOME}/bin/cl/jeb.jar&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;jebpath&quot;</span> <span class="na">value=</span><span class="s">&quot;/home/clucas/jeb-2.0.6.201508260620/bin/cl/jeb.jar&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;outfile&quot;</span> <span class="na">value=</span><span class="s">&quot;out/JebJavascriptPlugin.jar&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;entryclass&quot;</span> <span class="na">value=</span><span class="s">&quot;com.jeb.sample.JavascriptPlugin&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;extcp_build&quot;</span> <span class="na">value=</span><span class="s">&quot;lib/js.jar&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;extcp_manifest&quot;</span> <span class="na">value=</span><span class="s">&quot;lib/js.jar&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;build&quot;</span> <span class="na">depends=</span><span class="s">&quot;compile,package&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;compile&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;delete</span> <span class="na">dir=</span><span class="s">&quot;bin&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;bin&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;javac</span> <span class="na">debug=</span><span class="s">&quot;true&quot;</span> <span class="na">debuglevel=</span><span class="s">&quot;source,lines,vars&quot;</span>
+               <span class="na">destdir=</span><span class="s">&quot;bin&quot;</span> <span class="na">includeantruntime=</span><span class="s">&quot;false&quot;</span> <span class="na">source=</span><span class="s">&quot;1.7&quot;</span> <span class="na">target=</span><span class="s">&quot;1.7&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;src</span> <span class="na">path=</span><span class="s">&quot;src&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;classpath&gt;</span>
+                <span class="nt">&lt;pathelement</span> <span class="na">location=</span><span class="s">&quot;${jebpath}&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;pathelement</span> <span class="na">path=</span><span class="s">&quot;${extcp_build}&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/classpath&gt;</span>
+        <span class="nt">&lt;/javac&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;package&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;delete</span> <span class="na">file=</span><span class="s">&quot;${outfile}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;jar</span> <span class="na">destfile=</span><span class="s">&quot;${outfile}&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;manifest&gt;</span>
+                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;Class-Path&quot;</span> <span class="na">value=</span><span class="s">&quot;${extcp_manifest}&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;JebPlugin-entryclass&quot;</span> <span class="na">value=</span><span class="s">&quot;${entryclass}&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/manifest&gt;</span>
+            <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;bin&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;.&quot;</span> <span class="na">includes=</span><span class="s">&quot;README.md&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/jar&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
+
+
+<h2 id="building-the-plugin">Building the Plugin<a class="headerlink" href="#building-the-plugin" title="Permanent link">#</a></h2>
+<p>You can run the build.xml directly from eclipse or execute the Ant command.</p>
+<p><a href="img/Plugin6-01.png"><img src="img/Plugin6-01.png" srcset="img/Plugin6-01.png 2x" /></a></p>
+<p>It will generate a jar which has 2 specific entries in the manifest:</p>
+<ul>
+<li><code>Class-Path</code> to indicate the required external libraries.</li>
+<li><code>JebPlugin-entryclass</code> to indicate the classname, ie your plugin entry-point</li>
+</ul>
+<p>Copy both JebJavascriptPlugin.jar and js.jar to your plugin folder. You can remove the classpath and classnames entries related to JavascriptPlugin and js.jar.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The best approach is to have one project per plugin.</p>
+</div>
+<p>Assignment: Split the project and generate JavascriptPlugin.jar and HashJavascriptPlugin.jar. Remove all classpaths and classnames to check that it works.</p>
+<h2 id="generic-build-template">Generic Build Template<a class="headerlink" href="#generic-build-template" title="Permanent link">#</a></h2>
+<p>The following Ant template can be customized for your own plugins needs: </p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
+
+<span class="c">&lt;!-- Sample Ant build file used to build and package a JEB plugin.</span>
+<span class="c">- Requirements: set up the JEB_HOME environment variable to point to your</span>
+<span class="c">JEB installation folder.</span>
+<span class="c">- Customize the outfile, entryclass, extcp_build, and extcp_manifest properties. --&gt;</span>
+
+<span class="nt">&lt;project</span> <span class="na">basedir=</span><span class="s">&quot;.&quot;</span> <span class="na">default=</span><span class="s">&quot;build&quot;</span> <span class="na">name=</span><span class="s">&quot;jebplugin&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;fail</span> <span class="na">message=</span><span class="s">&quot;Set the plugin version number: ant -Dversion=x.y.z&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;condition&gt;</span>
+        <span class="nt">&lt;not&gt;</span>
+          <span class="nt">&lt;isset</span> <span class="na">property=</span><span class="s">&quot;version&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/not&gt;</span>
+      <span class="nt">&lt;/condition&gt;</span>
+    <span class="nt">&lt;/fail&gt;</span>
+
+    <span class="nt">&lt;echo</span> <span class="na">message=</span><span class="s">&quot;Plugin version: ${version}&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;property</span> <span class="na">environment=</span><span class="s">&quot;env&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;echo</span> <span class="na">message=</span><span class="s">&quot;JEB_HOME: ${env.JEB_HOME}&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;jebjar&quot;</span> <span class="na">value=</span><span class="s">&quot;${env.JEB_HOME}/bin/cl/jeb.jar&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;echo</span> <span class="na">message=</span><span class="s">&quot;JEB Core expected at location: ${jebjar}&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;fail</span> <span class="na">message=</span><span class="s">&quot;Please set JEB_HOME environment variable to point to your JEB installation folder&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;condition&gt;</span>
+        <span class="nt">&lt;not&gt;</span>
+          <span class="nt">&lt;available</span> <span class="na">file=</span><span class="s">&quot;${jebjar}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/not&gt;</span>
+      <span class="nt">&lt;/condition&gt;</span>
+    <span class="nt">&lt;/fail&gt;</span>
+
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;debuglevel&quot;</span> <span class="na">value=</span><span class="s">&quot;source,lines,vars&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;target&quot;</span> <span class="na">value=</span><span class="s">&quot;1.7&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;source&quot;</span> <span class="na">value=</span><span class="s">&quot;1.7&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!-- Mandatory properties --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;outfile&quot;</span> <span class="na">value=</span><span class="s">&quot;CUSTOMIZE&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;entryclass&quot;</span> <span class="na">value=</span><span class="s">&quot;CUSTOMIZE&quot;</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- External libraries, for build process (semi-colon separated) --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;extcp_build&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- External libraries, for Manifest (space separated) --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;extcp_manifest&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;build&quot;</span> <span class="na">depends=</span><span class="s">&quot;clean,compile,package&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;audit&quot;</span> <span class="na">depends=</span><span class="s">&quot;clean,compile-audit&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;clean&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;delete</span> <span class="na">dir=</span><span class="s">&quot;bin&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;bin&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;compile&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;delete</span> <span class="na">dir=</span><span class="s">&quot;bin&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;bin&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;javac</span> <span class="na">debug=</span><span class="s">&quot;true&quot;</span> <span class="na">debuglevel=</span><span class="s">&quot;${debuglevel}&quot;</span> <span class="na">destdir=</span><span class="s">&quot;bin&quot;</span>
+               <span class="na">includeantruntime=</span><span class="s">&quot;false&quot;</span> <span class="na">source=</span><span class="s">&quot;${source}&quot;</span> <span class="na">target=</span><span class="s">&quot;${target}&quot;</span> <span class="na">encoding=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;src</span> <span class="na">path=</span><span class="s">&quot;src/main/java&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;classpath&gt;</span>
+                <span class="nt">&lt;pathelement</span> <span class="na">location=</span><span class="s">&quot;${jebjar}&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;pathelement</span> <span class="na">path=</span><span class="s">&quot;${extcp_build}&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/classpath&gt;</span>
+        <span class="nt">&lt;/javac&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;package&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;delete</span> <span class="na">file=</span><span class="s">&quot;${outfile}&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;jar</span> <span class="na">destfile=</span><span class="s">&quot;${outfile}&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;manifest&gt;</span>
+                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;Class-Path&quot;</span> <span class="na">value=</span><span class="s">&quot;${extcp_manifest}&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;JebPlugin-entryclass&quot;</span> <span class="na">value=</span><span class="s">&quot;${entryclass}&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;JebPlugin-version&quot;</span> <span class="na">value=</span><span class="s">&quot;${version}&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/manifest&gt;</span>
+            <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;bin&quot;</span><span class="nt">/&gt;</span>
+            <span class="c">&lt;!-- copy resources --&gt;</span>
+            <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;src/main/java&quot;</span> <span class="na">excludes=</span><span class="s">&quot;**/*.java&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;.&quot;</span> <span class="na">includes=</span><span class="s">&quot;README.md&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/jar&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="5-development-tips.html" title="Part 5: Development Tips" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Part 5: Development Tips
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="7-unit-interactivity.html" title="Part 7: Interactivity" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Part 7: Interactivity
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2015 - 2020 PNF Software
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

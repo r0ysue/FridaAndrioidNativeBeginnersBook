@@ -1,0 +1,1004 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for JEB Decompiler">
+      
+      
+        <link rel="canonical" href="https://www.pnfsoftware.com/jeb/manual/dev/3-documents-delegation.html">
+      
+      
+        <meta name="author" content="PNF Software">
+      
+      <link rel="shortcut icon" href="../img/jeb-icon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Part 3: Documents and Delegation - JEB Decompiler</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#process-the-input" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-header-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="../assets/jeb_128px_white.png" srcset="../assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            JEB Decompiler
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Part 3: Documents and Delegation
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="../assets/jeb_128px_white.png" srcset="../assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    JEB Decompiler
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Using JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Using JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Using JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../workspace.html" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../actions.html" title="Common Actions" class="md-nav__link">
+      Common Actions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../views.html" title="Common Views" class="md-nav__link">
+      Common Views
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../decompiling.html" title="Decompiling" class="md-nav__link">
+      Decompiling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../debugging.html" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android.html" title="Android Analysis" class="md-nav__link">
+      Android Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android-debugging.html" title="Android Debugging" class="md-nav__link">
+      Android Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../native.html" title="Native Code Analysis" class="md-nav__link">
+      Native Code Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../webassembly.html" title="WebAssembly Analysis" class="md-nav__link">
+      WebAssembly Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ethereum.html" title="Ethereum Analysis" class="md-nav__link">
+      Ethereum Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../misc.html" title="Miscellaneous" class="md-nav__link">
+      Miscellaneous
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Extending JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Extending JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Extending JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="introducing-jeb-extensions.html" title="Introducing JEB Extensions" class="md-nav__link">
+      Introducing JEB Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-client-scripts.html" title="Writing Client Scripts" class="md-nav__link">
+      Writing Client Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android-scripting.html" title="Scripting for Android Reversing" class="md-nav__link">
+      Scripting for Android Reversing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Writing Parsers (Tutorial)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Writing Parsers (Tutorial)" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Writing Parsers (Tutorial)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="1-getting-started-with-parsers.html" title="Part 1: Getting Started with Parsers" class="md-nav__link">
+      Part 1: Getting Started with Parsers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-nav__link">
+      Part 2: Creating a Simple Parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Part 3: Documents and Delegation
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="3-documents-delegation.html" title="Part 3: Documents and Delegation" class="md-nav__link md-nav__link--active">
+      Part 3: Documents and Delegation
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#process-the-input" class="md-nav__link">
+    Process the input
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-document-per-function" class="md-nav__link">
+    Add a Document per function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delegate-to-another-unit" class="md-nav__link">
+    Delegate to another Unit
+  </a>
+  
+    <nav class="md-nav" aria-label="Delegate to another Unit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assignment" class="md-nav__link">
+    Assignment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="4-tables-trees.html" title="Part 4: Tables and Trees" class="md-nav__link">
+      Part 4: Tables and Trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="5-development-tips.html" title="Part 5: Development Tips" class="md-nav__link">
+      Part 5: Development Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="6-releasing-plugin.html" title="Part 6: Releasing a Plugin" class="md-nav__link">
+      Part 6: Releasing a Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="7-unit-interactivity.html" title="Part 7: Interactivity" class="md-nav__link">
+      Part 7: Interactivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="8-more-interactivity.html" title="Part 8: More on Interactivity" class="md-nav__link">
+      Part 8: More on Interactivity
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-engines-plugins.html" title="Writing Engines Plugins" class="md-nav__link">
+      Writing Engines Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-front-ends.html" title="Writing Front-Ends" class="md-nav__link">
+      Writing Front-Ends
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="other-resources.html" title="Additional Resources" class="md-nav__link">
+      Additional Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../settings.html" title="Settings" class="md-nav__link">
+      Settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client-configuration.html" title="Client Configuration" class="md-nav__link">
+      Client Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../engines-configuration.html" title="Engines Configuration" class="md-nav__link">
+      Engines Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../floating.html" title="Floating Controller" class="md-nav__link">
+      Floating Controller
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../faq.html" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#process-the-input" class="md-nav__link">
+    Process the input
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-document-per-function" class="md-nav__link">
+    Add a Document per function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delegate-to-another-unit" class="md-nav__link">
+    Delegate to another Unit
+  </a>
+  
+    <nav class="md-nav" aria-label="Delegate to another Unit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assignment" class="md-nav__link">
+    Assignment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Part 3: Documents and Delegation</h1>
+                
+                <p><em>JEB Plugin Development Tutorial part 3/8</em></p>
+<p>The source code for part 3 of this sample plugin is located on GitHub:</p>
+<ul>
+<li>Clone <a href="https://github.com/pnfsoftware/jeb2-plugindemo-js">this repo</a>: <code>git clone https://github.com/pnfsoftware/jeb2-plugindemo-js.git</code></li>
+<li>Switch to the <em>tutorial3</em> branch: <code>git checkout tutorial3</code></li>
+</ul>
+<h2 id="process-the-input">Process the input<a class="headerlink" href="#process-the-input" title="Permanent link">#</a></h2>
+<p>In the previous part, we built a single document that displays the whole JavaScript file.</p>
+<p>Imagine we have large functions that we would like to split using the following simple rule: <strong>one function per document</strong>.</p>
+<p>Let's detail the flow of execution around <code>IUnit</code>:</p>
+<ul>
+<li>When opening a new file, all the <code>IPlugin.canIdentify</code> methods are called.</li>
+<li>If identified, the method <code>IPlugin.prepare</code> is called, which will create a new unit.</li>
+<li>When opening the unit, if the unit was not previously processed, the method <code>IUnit.process</code> method will be called.</li>
+<li>At last, <code>IUnit.getFormatter</code> is used to display the result of processing.</li>
+</ul>
+<p>The <code>process</code> method is where the heavy-lifting of your parser should be located. If you need to pre-process data, you may call the process method in <code>IUnitIdentifier.prepare</code>. Since we don't need it for now, we won't do it.</p>
+<p>So let's start with implementing <code>process()</code>. First, we need to extract the JavaScript and split this test block into two functions. For the sake of this tutorial, we will use <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino">Mozilla Rhino</a> to deal with JavaScript lexing and parsing. You can download it <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino/Download_Rhino">here</a>.</p>
+<p>First, add <strong>rhino-*.jar</strong> to your eclipse project (you can attach the javadoc to this .jar, the process is like adding javadoc to jeb.jar).
+Then, use the following snippet to extract the Functions from JavaScript:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">ILogger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">GlobalLog</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">SampleUnit</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+<span class="kd">private</span> <span class="n">AstRoot</span> <span class="n">root</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">FunctionNode</span><span class="o">&gt;</span> <span class="n">functions</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">FunctionNode</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">process</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// parse the javascript</span>
+    <span class="n">IRFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IRFactory</span><span class="p">();</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="p">(</span><span class="k">new</span> <span class="n">InputStreamReader</span><span class="p">(</span><span class="n">getInput</span><span class="p">().</span><span class="na">getStream</span><span class="p">()));</span>
+        <span class="n">reader</span><span class="p">.</span><span class="na">readLine</span><span class="p">();</span> <span class="c1">// ignore first line with #Javascript</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">factory</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span><span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">logger</span><span class="p">.</span><span class="na">catching</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// save functions</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">AstNode</span><span class="o">&gt;</span> <span class="n">statements</span> <span class="o">=</span> <span class="n">root</span><span class="p">.</span><span class="na">getStatements</span><span class="p">();</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">AstNode</span> <span class="n">statement</span><span class="p">:</span> <span class="n">statements</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">statement</span><span class="p">.</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="n">Token</span><span class="p">.</span><span class="na">FUNCTION</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">functions</span><span class="p">.</span><span class="na">add</span><span class="p">((</span><span class="n">FunctionNode</span><span class="p">)</span><span class="n">statement</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// done</span>
+    <span class="n">setProcessed</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>As you can see here, <code>process()</code> is only extracting data: <em>FunctionNode</em> objects are saved in the functions list.</p>
+<p>Note: JEB provides global logging facility that you can use anytime to send messages in the <em>Logger</em> panel. Do not hesitate to use it to investigate your code. We also recommend you enable the <em>Development Mode</em> in the <em>Options</em> panel: this will allow logging of debug and trace messages.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">com.pnfsoftware.jeb.util.logging.GlobalLog</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.pnfsoftware.jeb.util.logging.ILogger</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Xxx</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">ILogger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">GlobalLog</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">Xxx</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">...</span>
+</code></pre></div>
+
+
+<h2 id="add-a-document-per-function">Add a Document per function<a class="headerlink" href="#add-a-document-per-function" title="Permanent link">#</a></h2>
+<p>Now, let's modify the <code>getFormatter</code> method to change rendering, adding as many tabs (documents) as defined functions.</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">IUnitFormatter</span> <span class="nf">getFormatter</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">UnitFormatterAdapter</span> <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UnitFormatterAdapter</span><span class="p">(</span><span class="k">new</span> <span class="n">AbstractUnitRepresentation</span><span class="p">(</span><span class="s">&quot;javascript raw code&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">IGenericDocument</span> <span class="nf">getDocument</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="n">AsciiDocument</span><span class="p">(</span><span class="n">getInput</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">functions</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">final</span> <span class="n">FunctionNode</span> <span class="n">function</span><span class="p">:</span> <span class="n">functions</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">adapter</span><span class="p">.</span><span class="na">addDocumentPresentation</span><span class="p">(</span><span class="k">new</span> <span class="n">AbstractUnitRepresentation</span><span class="p">(</span><span class="n">function</span><span class="p">.</span><span class="na">getName</span><span class="p">())</span> <span class="p">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="n">IGenericDocument</span> <span class="nf">getDocument</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="k">new</span> <span class="n">AsciiDocument</span><span class="p">(</span><span class="k">new</span> <span class="n">BytesInput</span><span class="p">(</span><span class="n">function</span><span class="p">.</span><span class="na">toSource</span><span class="p">().</span><span class="na">getBytes</span><span class="p">()));</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">adapter</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>We called the method <code>UnitFormatterAdapter.addDocumentPresentation</code> to add more documents.</p>
+<blockquote>
+<p>Note: since <code>AsciiDocument</code> requires an <code>IInput</code> as entry, we used the most appropriate implementation:</p>
+</blockquote>
+<p><a href="img/Plugin3-01.png"><img src="img/Plugin3-01.png" srcset="img/Plugin3-01.png 2x" /></a></p>
+<p>Now, start JEB.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will probably see this exception: <code>java.lang.NoClassDefFoundError: org/mozilla/javascript/IRFactory</code>. Remember that js.jar was not added to JEB classpath. Add it to your plugin classpath (in the <em>Options</em> panel - refer to Part 1 of this tutorial).</p>
+</div>
+<p>If all works well, you shall to see two additional tabs:</p>
+<p><a href="img/Plugin3-02.png"><img src="img/Plugin3-02.png" srcset="img/Plugin3-02.png 2x" /></a></p>
+<h2 id="delegate-to-another-unit">Delegate to another Unit<a class="headerlink" href="#delegate-to-another-unit" title="Permanent link">#</a></h2>
+<p>These new documents are great but what if we have lots of functions? We will have lots of tabs and it will become unreadable. One solution would be to add these FunctionNodes as children unit of the test.js unit node. We can delegate the creation of those units to the unit processor.</p>
+<p>Here is a short explanation of delegation: assume have a zip file containing pdf, apk, js... You do not want to write a single parser that manages all those file types. A better approach is to have a Zip parser that will delegate parsing of its contents. That puts the Unit Processor in charge of finding the best Unit that match the file type: DEX Unit, Pdf Unit... and even our new Javascript Unit.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>More on delegation <a href="https://docs.google.com/document/d/1f9-gXVNhRixKUr02YzB4dttVJIqZefsms-EOVmazLjU/pub">here</a>. </p>
+</div>
+<p>So how to do it? You need to slightly modify process():</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// save functions</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">AstNode</span><span class="o">&gt;</span> <span class="n">statements</span> <span class="o">=</span> <span class="n">root</span><span class="p">.</span><span class="na">getStatements</span><span class="p">();</span>
+<span class="k">for</span><span class="p">(</span><span class="n">AstNode</span> <span class="n">statement</span><span class="p">:</span> <span class="n">statements</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">statement</span><span class="p">.</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="n">Token</span><span class="p">.</span><span class="na">FUNCTION</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">FunctionNode</span> <span class="n">function</span> <span class="o">=</span> <span class="p">(</span><span class="n">FunctionNode</span><span class="p">)</span><span class="n">statement</span><span class="p">;</span>
+            <span class="n">functions</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">function</span><span class="p">);</span>
+            <span class="n">IUnit</span> <span class="n">jsUnit</span> <span class="o">=</span> <span class="n">getUnitProcessor</span><span class="p">().</span><span class="na">process</span><span class="p">(</span><span class="n">function</span><span class="p">.</span><span class="na">getName</span><span class="p">(),</span> <span class="k">new</span> <span class="n">BytesInput</span><span class="p">(</span><span class="n">function</span><span class="p">.</span><span class="na">toSource</span><span class="p">().</span><span class="na">getBytes</span><span class="p">()),</span> <span class="k">this</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">jsUnit</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">addChildUnit</span><span class="p">(</span><span class="n">jsUnit</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>You should be able to see a generic binary output for <em>a</em> and <em>b</em>.</p>
+<h3 id="assignment">Assignment<a class="headerlink" href="#assignment" title="Permanent link">#</a></h3>
+<p>Build a simple JavascriptPlugin that takes advantage of the delegation. The solution lies in branch <em>tutorial3</em> of this sample plugin repository.</p>
+<p>Do not forget to register the parser plugin's classname in the options panel. You should obtain something like this:</p>
+<p><a href="img/Plugin3-03.png"><img src="img/Plugin3-03.png" srcset="img/Plugin3-03.png 2x" /></a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Part 2: Creating a Simple Parser
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="4-tables-trees.html" title="Part 4: Tables and Trees" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Part 4: Tables and Trees
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2015 - 2020 PNF Software
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

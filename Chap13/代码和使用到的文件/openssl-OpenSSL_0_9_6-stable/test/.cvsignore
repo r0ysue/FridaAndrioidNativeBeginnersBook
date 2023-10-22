@@ -1,0 +1,15 @@
+*test
+demoCA
+certCA.srl
+.rnd
+testkey.pem
+testreq.pem
+keyCA.ss
+reqCA.ss
+certCA.ss
+req2CA.ss
+keyU.ss
+reqU.ss
+certU.ss
+Makefile.save
+tmp.bntest

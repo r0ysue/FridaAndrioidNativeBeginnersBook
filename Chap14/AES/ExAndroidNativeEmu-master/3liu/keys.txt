@@ -1,0 +1,41 @@
+seed key
+FD22C75652058294AD0D241988AEF851E0254A86E9EE8F4FF67D739A2079B7CB
+
+expand result start:
+00000000: FD 22 C7 56 52 05 82 94  AD 0D 24 19 88 AE F8 51  .".VR.....$....Q
+00000010: E0 25 4A 86 E9 EE 8F 4F  F6 7D 73 9A 20 79 B7 CB  .%J....O.}s. y..
+
+expand result result:
+00000000: 4A 8B D8 E1 18 8E 5A 75  B5 83 7E 6C 3D 2D 86 3D  J.....Zu..~l=-.=
+00000010: C7 FD 0E A1 2E 13 81 EE  D8 6E F2 74 F8 17 45 BF  .........n.t..E.
+
+expand result result:
+00000000: B8 E5 D0 A0 A0 6B 8A D5  15 E8 F4 B9 28 C5 72 84  .....k......(.r.
+00000010: F3 5B 4E FE DD 48 CF 10  05 26 3D 64 FD 31 78 DB  .[N..H...&=d.1x.
+
+expand result result:
+00000000: 7B 59 69 F4 DB 32 E3 21  CE DA 17 98 E6 1F 65 1C  {Yi..2.!......e.
+00000010: 7D 9B 03 62 A0 D3 CC 72  A5 F5 F1 16 58 C4 89 CD  }..b...r....X...
+
+expand result result:
+00000000: 6F FE D4 9E B4 CC 37 BF  7A 16 20 27 9C 09 45 3B  o.....7.z. '..E;
+00000010: A3 9A 6D 80 03 49 A1 F2  A6 BC 50 E4 FE 78 D9 29  ..m..I....P..x.)
+
+expand result result:
+00000000: C3 CB 71 25 77 07 46 9A  0D 11 66 BD 91 18 23 86  ..q%w.F...f...#.
+00000010: 22 37 4B C4 21 7E EA 36  87 C2 BA D2 79 BA 63 FB  "7K.!~.6....y.c.
+
+expand result result:
+00000000: 17 30 7E 93 60 37 38 09  6D 26 5E B4 FC 3E 7D 32  .0~.`78.m&^..>}2
+00000010: 92 85 B4 E7 B3 FB 5E D1  34 39 E4 03 4D 83 87 F8  ......^.49..M...
+
+expand result result:
+00000000: BB 27 3F 70 DB 10 07 79  B6 36 59 CD 4A 08 24 FF  .'?p...y.6Y.J.$.
+00000010: 44 B5 82 F1 F7 4E DC 20  C3 77 38 23 8E F4 BF DB  D....N. .w8#....
+
+三次重复的key 运算，种子密钥都是
+FD 22 C7 56 52 05 82 94  AD 0D 24 19 88 AE F8 51
+E0 25 4A 86 E9 EE 8F 4F  F6 7D 73 9A 20 79 B7 CB
+
+调用
+0x681E 7次

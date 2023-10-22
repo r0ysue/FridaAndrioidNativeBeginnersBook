@@ -1,0 +1,30 @@
+clion
+   74 69 65 6d   30 6e 61 75   6b 6e 61 73   31 69 51 75   │ tiem0nauknas1iQu │
+   8c b8 f8 aa   bc d6 99 df   d7 b8 f8 ac   e6 d1 a9 d9   │ ················ │
+   b0 6b cd 24   0c bd 54 fb   db 05 ac 57   3d d4 05 8e   │ ·k·$··T····W=··· │
+   fc 00 d4 03   f0 bd 80 f8   2b b8 2c af   16 6c 29 21   │ ········+·,··l)! │
+   a4 a5 29 44   54 18 a9 bc   7f a0 85 13   69 cc ac 32   │ ··)DT·······i··2 │
+   ff 34 0a bd   ab 2c a3 01   d4 8c 26 12   bd 40 8a 20   │ ·4···,····&··@·  │
+   d6 4a bd c7   7d 66 1e c6   a9 ea 38 d4   14 aa b2 f4   │ ·J··}f····8····· │
+   3a 7d 02 3d   47 1b 1c fb   ee f1 24 2f   fa 5b 96 db   │ :}·=G·····$/·[·· │
+   83 ed bb 10   c4 f6 a7 eb   2a 07 83 c4   d0 5c 15 1f   │ ········*····\·· │
+   d2 b4 7b 60   16 42 dc 8b   3c 45 5f 4f   ec 19 4a 50   │ ··{`·B··<E_O··JP │
+   30 62 28 ae   26 20 f4 25   1a 65 ab 6a   f6 7c e1 3a   │ 0b(·& ·%·e·j·|·: │
+
+debug
+    74 69 65 6d 30 6e 61 75 6b 6e 61 73 31 69 61 75  tiem0nauknas1iau
+    e9 ae 9c 83 d9 c0 fd f6 b2 ae 9c 85 83 c7 fd f0  ................
+    65 42 5a d5 bc 82 a7 23 0e 2c 3b a6 8d eb c6 56  eBZ....#.,;....V
+    d4 1f b3 65 68 9d 14 46 66 b1 2f e0 eb 5a e9 b6  ...eh..Ff./..Z..
+    9a f6 0d 73 f2 6b 19 35 94 da 36 d5 7f 80 df 63  ...s.k.5..6....c
+    61 24 c0 fd 93 4f d9 c8 07 95 ef 1d 78 15 30 7e  a$...O......x.0~
+    92 98 99 d9 01 d7 40 11 06 42 af 0c 7e 57 9f 72  ......@..B..~W.r
+    d2 6b c2 42 d3 bc 82 53 d5 fe 2d 5f ab a9 b2 2d  .k.B...S..-_...-
+    0a 09 11 f5 d9 b5 93 a6 0c 4b be f9 a7 e2 0c d4  .........K......
+    42 55 89 10 9b e0 1a b6 97 ab a4 4f 30 49 a8 9b  BU.........O0I..
+    56 51 b2 e4 cd b1 a8 52 5a 1a 0c 1d 6a 53 a4 86  VQ.....RZ...jS..
+
+他妈的，它T函数有问题
+这个时候的下一步不应该是直接扣expand key
+而是应该用自己魔改的版本，直接塞进去的那个版本
+

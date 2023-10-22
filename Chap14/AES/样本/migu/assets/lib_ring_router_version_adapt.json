@@ -1,0 +1,47 @@
+[
+  {
+    "user/crbt-my-diy-ring":"crbt-my-diy-ring",
+    "vrbt/vrbt-fullscreen-play":"vrbt-fullscreen-play",
+    "vrbtdiy/open-mv-download-dialog": "open-mv-download-dialog",
+    "ringmain/crbt-homepage": "crbt-homepage",
+    "ringdiymain/video-download": "video-download",
+    "ringdiymain/crbt-diy": "crbt-diy",
+    "vrbt/video-crbt-order": "video-crbt-order",
+    "crbt/crbtring/local/ring/order": "ring/local/ring/order",
+    "vrbtdiy/video-crbt-edit": "video-crbt-edit",
+    "crbtdiy/local/ring/ringdroid": "ring/local/ring/ringdroid",
+    "search/ring/local/mine/search-ring": "ring/local/mine/search-ring",
+    "contact/ring/local/ring/contact-friend": "ring/local/ring/contact-friend",
+    "crbt/crbt-list-info": "crbt-list-info",
+    "crbt/crbt-vip-exclusive": "crbt-vip-exclusive",
+    "vrbtdiy/video-crbt-upload": "video-crbt-upload",
+    "search/ring/local/mine/search-ring-sdk": "search-ring-fullscreen-sdk",
+    
+    
+    "crbtdiy/local/ring/ringdiyselect":"ring/local/ring/ringdiyselect",
+    "crbt/wonderful-topic-home":"wonderful-topic-home",
+    "crbt/crbt-classification":"crbt-classification",
+    "crbt/ring/give":"ring/local/ring/give",
+    "crbt/crbt-classification-detail":"crbt-classification-detail",
+    "contact/ring/local/ring/contact-choose":"ring/local/ring/contact-choose",
+    "contact/ring/local/ring/contact-search":"ring/local/ring/contact-search",
+    "contact/ring/local/ring/contact-result":"ring/local/ring/contact-result",
+    "contact/crbt-friends":"crbt-friends",
+    "vip/ringtone-open":"ringtone-open",
+    "vip/rbt-open-function": "rbt-open-function",
+    "vip/rbt-monthly-index": "rbt-monthly-index",
+    "user/crbt-ring-list":"crbt-ring-list",
+    "user/ring/local/ring/local/ring/manager-diyringlist":"ring/local/ring/local/ring/manager-diyringlist",
+    "user/ring-diy-video-ring-manager":"ring-diy-video-ring-manager",
+    "vrbtdiy/local/ring/video-ring-material":"ring/local/ring/video-ring-material",
+    "vrbt/video-crbt-recommend-list":"video-crbt-recommend-list",
+    "vrbt/vrbt-fullscreen-play-list":"vrbt-fullscreen-play-list",
+    "vrbt/video-ring-simulate-play":"video-ring-simulate-play",
+    "vrbtdiy/diy-music-library-search": "diy-music-library-search",
+    "crbtdiy/edit-voice-page": "edit-voice-page",
+    "ring/local/ring/give-fault": "ring/local/ring/give-fault",
+    "ring/h5-crbtring-down": "h5-crbtring-down",
+
+    "lead/local/ring/lead-page": "ring-lead/local/ring/lead-page"
+  }
+]

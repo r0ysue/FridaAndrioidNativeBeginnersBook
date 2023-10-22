@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configs>
+    <!-- 渠道-->
+    <item name="channel_value">0146921</item>
+    <!--子渠道 -->
+    <item name="sub_channel_value"></item>
+
+    <!--<item name="channel_value">0147471</item>-->
+    <!--<item name="sub_channel_value">hl01</item>-->
+
+    <!--page 的 columId 配置 -->
+    <item name="debug">
+        page_recommend=15518820%page_song_list=10531270%page_song_list_recommend=15127315%page_song_list_banner=15127143%page_bill_board=15031292%page_ring=15031313%page_singer=15044676
+    </item>
+    <item name="release">
+        page_recommend=15518820%page_song_list=10531270%page_song_list_recommend=15127315%page_song_list_banner=15127143%page_bill_board=15031292%page_ring=15031313%page_singer=15044676
+    </item>
+</configs>

@@ -1,0 +1,120 @@
+{
+  "code": "000000",
+  "data": [
+    {
+      "key":"",
+      "type":0,
+      "skinName": "官方白",
+      "skinColor": "white",
+      "skinFileName": "default",
+      "skinImage": 0,
+      "inUse": true,
+      "isNeedStub":false
+    },{
+      "key":"",
+      "type":0,
+      "skinName": "咪咕红",
+      "skinColor": "red",
+      "skinFileName": "red-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":false
+    },{
+      "key":"",
+      "type":0,
+      "skinName": "清新绿",
+      "skinColor": "green",
+      "skinFileName": "green-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":false
+    },{
+      "key":"",
+      "type":0,
+      "skinName": "星空蓝",
+      "skinColor": "blue",
+      "skinFileName": "blue-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":false
+    },{
+      "key":"",
+      "type":0,
+      "skinName": "活力橙",
+      "skinColor": "orange",
+      "skinFileName": "orange-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":false
+    },{
+      "key":"",
+      "type":0,
+      "skinName": "丁香紫",
+      "skinColor": "purple",
+      "skinFileName": "purple-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":false
+    },{
+      "key":"",
+      "type":1,
+      "skinName": "",
+      "skinColor": "blank",
+      "skinFileName": "",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":false
+    },
+    {
+      "key":"Migu_Alien",
+      "type":2,
+      "skinName": "咪咕星人",
+      "skinColor": "migu",
+      "skinFileName": "migu-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":true
+    },
+    {
+      "key":"Cute_Panda",
+      "type":2,
+      "skinName": "呆萌熊猫",
+      "skinColor": "panda",
+      "skinFileName": "panda-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":true
+    },
+    {
+      "key":"Despicable_Me",
+      "type":2,
+      "skinName": "小黄人",
+      "skinColor": "despicable",
+      "skinFileName": "despicable-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":true
+    },
+    {
+      "key":"Naughty_Dog",
+      "type":2,
+      "skinName": "顽皮阿柴",
+      "skinColor": "dog",
+      "skinFileName": "dog-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":true
+    },{
+      "key":"Dark_test",
+      "type":2,
+      "skinName": "深色测试",
+      "skinColor": "dark",
+      "skinFileName": "dark-skin.skin",
+      "skinImage": 0,
+      "inUse": false,
+      "isNeedStub":true
+    }
+  ],
+  "dataVersion": "1511851754562",
+  "info": "SUCCESS"
+}

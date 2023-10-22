@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/abc,@drawable/abc_mark,@drawable/ad_pufa,
+    @drawable/bb,@drawable/bb_mark,@drawable/bc,@drawable/bc_mark,
+    @drawable/bos,@drawable/bos_mark,@drawable/cbc,@drawable/cbc_mark,
+    @drawable/checked,@drawable/gd,@drawable/gd_mark,@drawable/gdb,
+    @drawable/gdb_mark,@drawable/graph_error,@drawable/hx,
+    @drawable/hx_mark,@drawable/ic_checked,@drawable/ic_unchecked,
+    @drawable/icbc,@drawable/icbc_mark,@drawable/icon_correct_black,
+    @drawable/icon_correct_red,@drawable/icon_hebao,@drawable/icon_success,
+    @drawable/jw,@drawable/jw_mark,@drawable/loading,
+    @drawable/loading_1,@drawable/loading_2,@drawable/loading_4,
+    @drawable/ms,@drawable/ms_mark,@drawable/nj,
+    @drawable/nj_mark,@drawable/no_data,@drawable/no_union_pay_card,
+    @drawable/oa,@drawable/oa_mark,@drawable/pa,
+    @drawable/pa_mark,@drawable/pf,@drawable/pf_mark,
+    @drawable/sp,@drawable/sp_mark,@drawable/transparent,
+    @drawable/uk,@drawable/uk_mark,@drawable/uncheck,
+    @drawable/union_*,@drawable/xy,@drawable/xy_mark,
+    @drawable/zc,@drawable/zc_mark,@drawable/zo,
+    @drawable/zo_mark,@drawable/zx,@drawable/zx_mark" />

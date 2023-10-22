@@ -1,0 +1,53 @@
+#
+# ***** Rename or copy this file to dexdec-emu.cfg *****
+#
+
+# This is a configuration file for JEB Decompiler
+#
+# It contains additional settings for the emulator(s) used by 'dexdec', JEB's DEX/Dalvik decompiler.
+#
+# Note that the emulator and deobfuscators must NOT have been disabled in the Engines settings.
+# They are enabled by default. The following settings can be used to explicitly enable them:
+# in jeb-engines.cfg:
+#   .parsers.dcmp_dex.EmulationSupport=1 (or 2)
+#   .parsers.dcmp_dex.EnableDeobfuscators=true
+
+
+# this section contains settings for the emulator used to perform string decryptions and inlining
+[string_decryption]
+
+# maximum time in seconds allowed for the shared emulator to perform successful decryptions
+# if that duration is exhausted, the emulator will stop running
+# on a successful decryption, the duration value will be increased (reward system)
+emu_max_duration = 10
+
+# note: `ext_policy_xxx` values determine the emulation policy for external methods
+
+# forbid the emulation of Random methods, such as those in java.util.Random
+ext_policy_restrict_random = false
+
+# forbid the emulation of date, time, calendar and other time-related methods (including System.currentTimeMillis and System.nanoTime)
+ext_policy_restrict_time = false
+
+# forbid the emulation of environment read/write methods, such as System.getenv, System.getProperties, NetworkInterface, etc.
+ext_policy_restrict_env = false
+
+# a comma-separated list of class and method names (jvm canonical signatures) to restrict
+# e.g.: La/b/Foo;, Lc/d/Bar;->f()V
+# would block emulation for of any method in class a.b.Foo as well as method c.d.Bar.f()
+ext_policy_restrict_custom = 
+
+# a comma-separated list of class and method names (jvm canonical signatures) to allow even if a restriction is in place
+# note that is the signature was black-listed (see below), emulation wll be forbidden
+# eg: Ljava/lang/System;->currentTimeMillis()J
+# would allow emulation of System.currentTimeMillis(), even if ext_policy_restrict_time was set to true
+ext_policy_whitelist = 
+
+# a comma-separated list of class and method names (jvm canonical signatures) to never allow, regardless of other restrictions in place
+# eg: Ljava/lang/System;->currentTimeMillis()J
+# would always prevent emulation of System.currentTimeMillis(), regardless of other settings
+ext_policy_blacklist = 
+
+# the fall-back policy mode for: what do if the method is neither restricted, nor whitelisted or blacklisted
+# the default is true (allow); if you wish to allow the execeution of only a set of whitelisted methods, you may set this value to false
+ext_policy_default_allow = true

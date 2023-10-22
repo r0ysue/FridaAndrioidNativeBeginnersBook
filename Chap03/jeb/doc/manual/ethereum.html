@@ -1,0 +1,1207 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for JEB Decompiler">
+      
+      
+        <link rel="canonical" href="https://www.pnfsoftware.com/jeb/manual/ethereum.html">
+      
+      
+        <meta name="author" content="PNF Software">
+      
+      <link rel="shortcut icon" href="img/jeb-icon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Ethereum Analysis - JEB Decompiler</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="assets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#capabilities" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-header-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            JEB Decompiler
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Ethereum Analysis
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.pnfsoftware.com/jeb/manual" title="JEB Decompiler" class="md-nav__button md-logo" aria-label="JEB Decompiler">
+      
+  <img src="assets/jeb_128px_white.png" srcset="assets/jeb_128px_white.png 2x" alt="logo">
+
+    </a>
+    JEB Decompiler
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Using JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Using JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Using JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="workspace.html" title="Workspace" class="md-nav__link">
+      Workspace
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="actions.html" title="Common Actions" class="md-nav__link">
+      Common Actions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="views.html" title="Common Views" class="md-nav__link">
+      Common Views
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="decompiling.html" title="Decompiling" class="md-nav__link">
+      Decompiling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="debugging.html" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android.html" title="Android Analysis" class="md-nav__link">
+      Android Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="android-debugging.html" title="Android Debugging" class="md-nav__link">
+      Android Debugging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="native.html" title="Native Code Analysis" class="md-nav__link">
+      Native Code Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="webassembly.html" title="WebAssembly Analysis" class="md-nav__link">
+      WebAssembly Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Ethereum Analysis
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="ethereum.html" title="Ethereum Analysis" class="md-nav__link md-nav__link--active">
+      Ethereum Analysis
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    Capabilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    Basic usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract-processing" class="md-nav__link">
+    Contract Processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-views" class="md-nav__link">
+    Code views
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract-information" class="md-nav__link">
+    Contract information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    Commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-decompiled-contracts" class="md-nav__link">
+    Understanding decompiled contracts
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding decompiled contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispatcher-and-public-functions" class="md-nav__link">
+    Dispatcher and public functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-discovery" class="md-nav__link">
+    Interface discovery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-attributes" class="md-nav__link">
+    Function attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-variables" class="md-nav__link">
+    Storage variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precompiled-contracts" class="md-nav__link">
+    Precompiled contracts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ether-send" class="md-nav__link">
+    Ether send()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ether-transfer" class="md-nav__link">
+    Ether transfer()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-emission" class="md-nav__link">
+    Event emission
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="misc.html" title="Miscellaneous" class="md-nav__link">
+      Miscellaneous
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Extending JEB
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Extending JEB" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Extending JEB
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/introducing-jeb-extensions.html" title="Introducing JEB Extensions" class="md-nav__link">
+      Introducing JEB Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-client-scripts.html" title="Writing Client Scripts" class="md-nav__link">
+      Writing Client Scripts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/android-scripting.html" title="Scripting for Android Reversing" class="md-nav__link">
+      Scripting for Android Reversing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Writing Parsers (Tutorial)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Writing Parsers (Tutorial)" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Writing Parsers (Tutorial)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/1-getting-started-with-parsers.html" title="Part 1: Getting Started with Parsers" class="md-nav__link">
+      Part 1: Getting Started with Parsers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/2-creating-simple-parser.html" title="Part 2: Creating a Simple Parser" class="md-nav__link">
+      Part 2: Creating a Simple Parser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/3-documents-delegation.html" title="Part 3: Documents and Delegation" class="md-nav__link">
+      Part 3: Documents and Delegation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/4-tables-trees.html" title="Part 4: Tables and Trees" class="md-nav__link">
+      Part 4: Tables and Trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/5-development-tips.html" title="Part 5: Development Tips" class="md-nav__link">
+      Part 5: Development Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/6-releasing-plugin.html" title="Part 6: Releasing a Plugin" class="md-nav__link">
+      Part 6: Releasing a Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/7-unit-interactivity.html" title="Part 7: Interactivity" class="md-nav__link">
+      Part 7: Interactivity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/8-more-interactivity.html" title="Part 8: More on Interactivity" class="md-nav__link">
+      Part 8: More on Interactivity
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-engines-plugins.html" title="Writing Engines Plugins" class="md-nav__link">
+      Writing Engines Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/writing-front-ends.html" title="Writing Front-Ends" class="md-nav__link">
+      Writing Front-Ends
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="dev/other-resources.html" title="Additional Resources" class="md-nav__link">
+      Additional Resources
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="settings.html" title="Settings" class="md-nav__link">
+      Settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="client-configuration.html" title="Client Configuration" class="md-nav__link">
+      Client Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="engines-configuration.html" title="Engines Configuration" class="md-nav__link">
+      Engines Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="floating.html" title="Floating Controller" class="md-nav__link">
+      Floating Controller
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="faq.html" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    Capabilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    Basic usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract-processing" class="md-nav__link">
+    Contract Processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-views" class="md-nav__link">
+    Code views
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract-information" class="md-nav__link">
+    Contract information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    Commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-decompiled-contracts" class="md-nav__link">
+    Understanding decompiled contracts
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding decompiled contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispatcher-and-public-functions" class="md-nav__link">
+    Dispatcher and public functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-discovery" class="md-nav__link">
+    Interface discovery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-attributes" class="md-nav__link">
+    Function attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-variables" class="md-nav__link">
+    Storage variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precompiled-contracts" class="md-nav__link">
+    Precompiled contracts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ether-send" class="md-nav__link">
+    Ether send()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ether-transfer" class="md-nav__link">
+    Ether transfer()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-emission" class="md-nav__link">
+    Event emission
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Ethereum Analysis</h1>
+                
+                <div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This manual page assumes familiarity with common JEB <a href="actions.html">actions</a> and <a href="views.html">views</a>. We also assume a minimal amount of knowledge of the Ethereum Virtual Machine bytecode and framework of operations. This was adapted from contents we published <a href="https://www.pnfsoftware.com/blog/ethereum-smart-contract-decompiler/">on our blog</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The EVM decompiler update shipping with JEB 4, whose pre-release is planned for Q2 2020, fills up several gaps present in the first version of the decompiler.</p>
+</div>
+<h2 id="capabilities">Capabilities<a class="headerlink" href="#capabilities" title="Permanent link">#</a></h2>
+<p>The Ethereum plugin provides the following specific capabilities:</p>
+<ul>
+<li>The EVM code analyzer determines a contract public and private methods, including implementations of public methods synthetically generated by compilers. This analysis attempts to determine method and event names and prototypes, without access to an ABI.</li>
+<li>The EVM decompiler decompiled the analyzed EVM code to Solidity-like source code. The decompiler attempts to recover various high-level constructs, including:<ul>
+<li>Implementations of well-known interfaces, such as ERC20 for standard tokens, ERC721 for non-fungible tokens, MultiSigWallet contracts, etc.</li>
+<li>Storage variables and types</li>
+<li>High-level Solidity artifacts and idioms, including:</li>
+<li>Function mutability attributes</li>
+<li>Function payability state</li>
+<li>Event emission, including event name</li>
+<li>Invocations of address.send() or address.transfer()</li>
+<li>Precompiled contracts invocations</li>
+</ul>
+</li>
+</ul>
+<h2 id="basic-usage">Basic usage<a class="headerlink" href="#basic-usage" title="Permanent link">#</a></h2>
+<p>Open a contract via the <em>File, Open smart contract...</em> menu entry.</p>
+<p><a href="img/4a82f387.png"><img src="img/4a82f387-small.png" srcset="img/4a82f387-small.png 2x" /></a></p>
+<p>You will be offered two options:</p>
+<ul>
+<li>Open a binary file already stored on disk</li>
+<li>Or download and open a contract from one of the principal Ethereum networks: <em>mainnet</em>, <em>rinkeby</em>, <em>ropsten</em>, or <em>kovan</em>:<ul>
+<li>Select the network</li>
+<li>Provide the contract 20-byte address</li>
+<li>Click Download and select a file destination</li>
+</ul>
+</li>
+</ul>
+<p><a href="img/58e7d944.png"><figure><img src="img/58e7d944-small.png" srcset="img/58e7d944-small.png 2x" /><figcaption>Open a contract via the File, Open smart contract menu entry</figcaption></figure></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To be recognized as EVM code, a file must:</p>
+<ul>
+<li>have a ".evm-bytecode" extension: in this case, the file may contain binary or hex-encoded code;</li>
+<li>or have a ".runtime" or ".bin-runtime" extension (as generated by the solc Solidity compiler) <strong>and</strong> contain hex-encoded Solidity generated code.</li>
+</ul>
+<p>If you are opening raw files, we recommend you append the ".evm-extension" to them in order to guarantee that they will be processed as EVM contract code.</p>
+</div>
+<h3 id="contract-processing">Contract Processing<a class="headerlink" href="#contract-processing" title="Permanent link">#</a></h3>
+<p>JEB will process your contract file and generate a class item to represent it:</p>
+<p><a href="img/8dfb364c.png"><figure><img src="img/8dfb364c-small.png" srcset="img/8dfb364c-small.png 2x" /><figcaption>The Assembly view on the right panel shows the processed code.</figcaption></figure></a></p>
+<p>To switch to the decompiled view, select the "Decompiled Contract" node in the <em>Code Hierarchy</em> view, and press Tab (or right-click, Decompile).</p>
+<p><a href="img/7f04f80f.png"><figure><img src="img/7f04f80f-small.png" srcset="img/7f04f80f-small.png 2x" /><figcaption>Right-click on items to bring up context menus showing the principal commands and shortcuts.</figcaption></figure></a></p>
+<p><a href="img/84919098.png"><figure><img src="img/84919098-small.png" srcset="img/84919098-small.png 2x" /><figcaption>The decompiled view of a contract.</figcaption></figure></a></p>
+<p>A decompiled contract is rendered in Solidity-like code: it is mostly Solidity code, but not entirely. Constructs that are illegal in Solidity are used throughout the code to represent instructions that the decompiler could not represent otherwise. Examples include: statements representing some low-level EVM instructions, memory accesses, or very rarely, goto statements. Do not expect a DecompiledContract to be easily recompiled.</p>
+<h3 id="code-views">Code views<a class="headerlink" href="#code-views" title="Permanent link">#</a></h3>
+<p>You may adjust the View panels to have side-by-side views if you wish to navigate the assembly and high-level code at the same time.</p>
+<ul>
+<li>In the assembly view, within a routine, press Space to visualize its control flow graph.</li>
+<li>To navigate from assembly to source, and back, press the Tab key. The caret will be positioned on the closest matching instruction.</li>
+</ul>
+<p><a href="img/2efb784b.png"><figure><img src="img/2efb784b-small.png" srcset="img/2efb784b-small.png 2x" /><figcaption>Side by side views: assembly and source</figcaption></figure></a></p>
+<h3 id="contract-information">Contract information<a class="headerlink" href="#contract-information" title="Permanent link">#</a></h3>
+<p>In the Project Explorer panel, double click the contract node (the node with the official Ethereum Foundation logo), and then select the Description tab in the opened view to see interesting information about the processed contract, such as:</p>
+<ul>
+<li>The detected compiler and/or its version (currently supported are variants of Solidity and Vyper compilers).</li>
+<li>The list of detected routines (private and public, with their hashes).</li>
+<li>The Swarm hash of the metadata file, if any.</li>
+</ul>
+<p><a href="img/61638240.png"><figure><img src="img/61638240-small.png" srcset="img/61638240-small.png 2x" /><figcaption>The contract was identified as being compiled with Solidity &lt;= 0.4.21</figcaption></figure></a></p>
+<h3 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">#</a></h3>
+<p>The <a href="actions.html">usual commands</a> can be used to refactor and annotate the assembly or decompiled code. You will find the exhaustive list in the <em>Action</em> and <em>Native</em> menus. Here are basic commands:</p>
+<ul>
+<li>Rename items (methods, variables, globals, ...) using the N key</li>
+<li>Navigate the code by examining cross-references using the X key (e.g., find all callers of a method and jump to one of them)</li>
+<li>Comment using the Slash key</li>
+<li>As said earlier, the Tab key is useful to navigate back and forth from low-level EVM code to high-level decompiled code</li>
+</ul>
+<p><a href="img/f922bcb0.png"><figure><img src="img/f922bcb0-small.png" srcset="img/f922bcb0-small.png 2x" /><figcaption>Rename an item (e.g., a variable) by pressing the N key</figcaption></figure></a></p>
+<ul>
+<li>Immediate number bases and rendering can be changed by using the B key. In the example below, you can see a couple of strings present in the bad Fomo3D contract, initially rendered in Hex:</li>
+</ul>
+<p><a href="img/13b4e48b.png"><figure><img src="img/13b4e48b-small.png" srcset="img/13b4e48b-small.png 2x" /><figcaption>All immediates are rendered as hex-strings by default.</figcaption></figure></a></p>
+<p><a href="img/64af787f.png"><figure><img src="img/64af787f-small.png" srcset="img/64af787f-small.png 2x" /><figcaption>Use the B key to cycle through base (10, 16, etc.) and rendering (number, ascii)</figcaption></figure></a></p>
+<h2 id="understanding-decompiled-contracts">Understanding decompiled contracts<a class="headerlink" href="#understanding-decompiled-contracts" title="Permanent link">#</a></h2>
+<p>This section highlights idioms you will encounter throughout decompiled pseudo-Solidity code. The examples below show the UI client set up to display EVM disassembly on the left side, and high-level decompiled code on the right side. The contracts used as examples are live contracts active on <em>mainnet</em>.</p>
+<h3 id="dispatcher-and-public-functions">Dispatcher and public functions<a class="headerlink" href="#dispatcher-and-public-functions" title="Permanent link">#</a></h3>
+<p>The entry-point function of a contract, at address 0, is generally its dispatcher. It is named <code>start()</code> by JEB, and in most cases will consist in an if-statement comparing the input CALLDATA hash (the first 4 bytes) to pre-calculated hashes, to determine which routine is to be executed.</p>
+<ul>
+<li>JEB attempts to determine public method names by using a hash dictionary (currently containing more than 140,000 entries).</li>
+<li>Contracts compiled by Solidity generally use synthetic (compiler generated) methods as bridges between public routines, that use the public Ethereum ABI, and internal routines, using a compiler-specific ABI. Those routines are identified as well and, if their corresponding public method was named, will be assigned a similar name <code>__impl_{PUBLIC_NAME}</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Limitation</p>
+<p>Currently, JEB does not attempt to process input data of public routines and massage it back into an explicit prototype with regular variables. Therefore, you will see low-level access to CALLDATA bytes within public methods.</p>
+</div>
+<p><a href="img/4dee4b73.png"><figure><img src="img/4dee4b73-small.png" srcset="img/4dee4b73-small.png 2x" /><figcaption>A dispatcher.</figcaption></figure></a></p>
+<p>Below, see the public method <code>collectToken()</code>, which is retrieving its first parameter – a 20 byte address – from the <em>calldata</em>.</p>
+<p><a href="img/a5b9743a.png"><figure><img src="img/a5b9743a-small.png" srcset="img/a5b9743a-small.png 2x" /><figcaption>A public method reading its arguments from CALLDATA bytes.</figcaption></figure></a></p>
+<h3 id="interface-discovery">Interface discovery<a class="headerlink" href="#interface-discovery" title="Permanent link">#</a></h3>
+<p>At the time of writing, implementation of the following interfaces can be detected: ERC20, ERC165, ERC721, ERC721TokenReceiver, ERC721Metadata, ERC721Enumerable, ERC820, ERC223, ERC777, TokenFallback used by ERC223/ERC777 interfaces, as well as the common MultiSigWallet interface.</p>
+<p>E.g., the contract below was identified as an ERC20 token implementation:</p>
+<p><a href="img/eb3822bc.png"><figure><img src="img/eb3822bc-small.png" srcset="img/eb3822bc-small.png 2x" /><figcaption>This contract implements all methods specified by the ERC20 interface.</figcaption></figure></a></p>
+<h3 id="function-attributes">Function attributes<a class="headerlink" href="#function-attributes" title="Permanent link">#</a></h3>
+<p>JEB does its best to retrieve:</p>
+<ul>
+<li>low-level state mutability attributes (pure, read-only, read-write)</li>
+<li>the high-level Solidity ‘payable’ attribute, reserved for public methods</li>
+</ul>
+<p>Explicitly non-payable functions have lower-level synthetic stubs that verify that no Ether is being received. They REVERT if it is is the case. If JEB decides to remove this stub, the function will always have an inline comment <code>/* non payable */</code> to avoid any ambiguity.</p>
+<p>The contract below shows two public methods, one has a default mutability state (non-payable); the other one is payable. Note that the hash 0xFF03AD56 was not resolved, therefore the name of the method is unknown and was set to <code>sub_AF</code>; you may also see a call to <code>collect()</code>’s bridge function <code>__impl_collect()</code>, as was mentioned in the previous section.</p>
+<p><a href="img/1865b449.png"><figure><img src="img/1865b449-small.png" srcset="img/1865b449-small.png 2x" /><figcaption>Two public methods, one is payable, the other is not and will revert if it receives Ether.</figcaption></figure></a></p>
+<h3 id="storage-variables">Storage variables<a class="headerlink" href="#storage-variables" title="Permanent link">#</a></h3>
+<p>The current decompiler has a rather limited storage reconstructor module.</p>
+<ul>
+<li>Accesses to primitives (int8 to int256, uint8 to uint256) is reconstructed in most cases</li>
+<li>Packed small primitives in storage words are extracted (e.g., a 256-bit storage word containing 2x uint8 and 1x int32, and accessed as such throughout the code, will yield 3 contract variables, as one would expect to see in a Solidity contract</li>
+</ul>
+<p><a href="img/c1b44dd6.png"><figure><img src="img/c1b44dd6-small.png" srcset="img/c1b44dd6-small.png 2x" /><figcaption>Four primitive storage variables were reconstructed.</figcaption></figure></a></p>
+<div class="admonition note">
+<p class="admonition-title">Limitation</p>
+<p>Currently, accesses to complex storage variables, such as mappings, mappings of mappings, mappings of structures, etc. are not simplified. This limitation will be addressed in a future update.</p>
+</div>
+<p>When a storage variable is not resolved, you will see simple <code>storage[...]</code> assignments, such as:</p>
+<p><a href="img/34d4b6aa.png"><figure><img src="img/34d4b6aa-small.png" srcset="img/34d4b6aa-small.png 2x" /><figcaption>Unresolved storage assignment, here, to a mapping.</figcaption></figure></a></p>
+<p>Due to how storage on Ethereum is designed (a key-value store of uint256 to uint256), Solidity internally uses a two-or-more indirection level for computing actual storage keys. Those low-level storage keys depend on the position of the high level storage variables. The KECCAK256 opcode can be used to calculate intermediate and final keys. We will detail this mechanism in detail in a future blog post.</p>
+<h3 id="precompiled-contracts">Precompiled contracts<a class="headerlink" href="#precompiled-contracts" title="Permanent link">#</a></h3>
+<p>Ethereum defines at least four pre-compiled contracts at addresses 1, 2, 3, 4. Other addresses (5-8) have been reserved for additional pre-compiled contracts.</p>
+<p>JEB identifies CALLs that will eventually lead to pre-compiled code execution, and marks them as such in decompiled code: call_{specific}.</p>
+<p>The example below shows the <code>__impl_Receive</code> (named recovered) method of the <em>34C3 CTF</em> contract, which calls into address #2, a pre-compiled contract providing a fast implementation of SHA-256.</p>
+<p><a href="img/10b07ca2.png"><figure><img src="img/10b07ca2-small.png" srcset="img/10b07ca2-small.png 2x" /><figcaption>This contract calls address 2 to calculate the SHA-256 of a binary blob.</figcaption></figure></a></p>
+<h3 id="ether-send">Ether send()<a class="headerlink" href="#ether-send" title="Permanent link">#</a></h3>
+<p>Solidity's <code>send</code> can be translated into a lower-level call with a standard gas stipend and zero parameters. It is essentially used to send Ether to a contract through the target contract fall-back function.</p>
+<p>Currently, JEB renders them as <code>send(address, amount)</code> instead of <code>address.send(amount)</code>.</p>
+<p>The contract below is live on <em>mainnet</em>. It is a simple forwarder, that does not store ether: it forwards the received amount to another contract.</p>
+<p><a href="img/60d99077.png"><figure><img src="img/60d99077-small.png" srcset="img/60d99077-small.png 2x" /><figcaption>This contract makes use of address.send(...) to send Ether</figcaption></figure></a></p>
+<h3 id="ether-transfer">Ether transfer()<a class="headerlink" href="#ether-transfer" title="Permanent link">#</a></h3>
+<p>Solidity’s <code>transfer</code> is an even higher-level variant of <code>send</code> that checks and REVERTs with data if CALL failed. JEB identifies those calls as well.</p>
+<p>Currently, JEB renders them as <code>transfer(address, amount)</code> instead of <code>address.transfer(amount)</code>.</p>
+<p><a href="img/2ff14f8a.png"><figure><img src="img/2ff14f8a-small.png" srcset="img/2ff14f8a-small.png 2x" /><figcaption>This contract makes use of address.transfer(...) to send Ether</figcaption></figure></a></p>
+<h3 id="event-emission">Event emission<a class="headerlink" href="#event-emission" title="Permanent link">#</a></h3>
+<p>JEB attempts to partially reconstruct LOGx (x in 1..4) opcodes back into high-level Solidity <code>emit Event(...)</code>. The event name is resolved by reversing the Event method prototype hash.</p>
+<p>If JEB cannot reverse a LOGx instruction, or if LOG0 is used, then a lower-level <code>log(...)</code> call will be used.</p>
+<p>Currently, the event parameters are not processed; therefore, the emit construct used in the decompiled code has the following form: <code>emit Event(memory, size[, topic2[, topic3[, topic4]]])</code>. <em>topic1</em> is always used to store the event prototype hash.</p>
+<p><a href="img/4aef71ce.png"><figure><img src="img/4aef71ce-small.png" srcset="img/4aef71ce-small.png 2x" /><figcaption>An Invocation of LOG4 reversed to an <code>emit Deposit(...)</code> event emission</figcaption></figure></a></p>
+<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">#</a></h2>
+<p>The EVM analysis modules are built onto the native code analysis pipeline of JEB. Therefore, standard APIs can be used to automate analysis tasks. In particular, the decompiler API gives access to:</p>
+<ul>
+<li>the intermediate representation (IR)</li>
+<li>the final Solidity-like representation (AST)</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>This sample script demonstrates how to retrieve the decompiled EVM code of an Ethereum contract and print out AST nodes: <a href="https://github.com/pnfsoftware/jeb2-samplecode/blob/master/scripts/WalkEvmDecomp.py">code</a></p>
+</div>
+<p>Refer to "Extending JEB" to get started with developing scripts or plugins for JEB.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="webassembly.html" title="WebAssembly Analysis" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                WebAssembly Analysis
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="misc.html" title="Miscellaneous" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Miscellaneous
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2015 - 2020 PNF Software
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
